@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto Final — Curso Informática</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="../index.html" style="text-decoration:none;">
+      <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">← Volver al Dashboard</div>
+    </a>
+  </div>
+  <div style="padding:1rem 1.25rem;">
+    <div class="progress-bar"><div class="progress-fill main-progress-fill" style="width:0%"></div></div>
+    <div style="text-align:right;font-size:0.7rem;color:var(--text-secondary);margin-top:0.3rem;"><span class="main-progress-label">0%</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Módulos</div>
+    <a href="fase0.html"><span>🚀</span> Fase 0 · Bienvenida</a>
+    <a href="unidad1.html"><span>🔍</span> Unidad 1 · Información Digital</a>
+    <a href="unidad2.html"><span>🖥️</span> Unidad 2 · Procesamiento</a>
+    <a href="unidad3.html"><span>⚙️</span> Unidad 3 · Algoritmos</a>
+    <a href="proyecto.html" class="active"><span>🏆</span> Proyecto Final</a>
+    <a href="glosario.html"><span>📖</span> Glosario</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">🏆 Proyecto Integrador Final</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">Mi Asistente Digital Personal</div>
+      </div>
+    </div>
+    <span class="badge badge-amber">🏆 Semana 6</span>
+  </div>
+
+  <div style="padding:2rem;">
+
+    <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;background:linear-gradient(135deg,#1e293b 0%,#0f172a 40%,#1c1a0e 100%);">
+      <div style="position:relative;z-index:1;">
+        <div class="badge badge-amber" style="margin-bottom:1rem;">🏆 Proyecto Final</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">Mi <span style="background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Asistente Digital</span> Personal</h1>
+        <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
+          Integra todo lo aprendido en un proyecto funcional y personal. No hay una solución única — cada estudiante resuelve un problema real de su vida.
+        </p>
+      </div>
+    </div>
+
+    <!-- ¿Qué es? -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-header"><div style="font-weight:700;">📋 ¿Qué es el Proyecto Integrador?</div></div>
+      <div class="card-body">
+        <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+          Es un programa funcional (en Scratch, Python básico o una hoja de cálculo con lógica) que resuelve un problema <strong style="color:var(--text-primary);">real y personal</strong>. Integra habilidades de las 3 unidades:
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;">
+          <div style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);border-radius:.75rem;padding:.75rem;">
+            <div style="color:#22d3ee;font-weight:700;margin-bottom:.3rem;">De Unidad 1</div>
+            <div style="font-size:.82rem;color:var(--text-secondary);">Busca información confiable sobre tu tema. Organiza en Drive.</div>
+          </div>
+          <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:.75rem;padding:.75rem;">
+            <div style="color:#fbbf24;font-weight:700;margin-bottom:.3rem;">De Unidad 2</div>
+            <div style="font-size:.82rem;color:var(--text-secondary);">Identifica qué software usar y asegúrate de que tu equipo lo soporta.</div>
+          </div>
+          <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:.75rem;">
+            <div style="color:#34d399;font-weight:700;margin-bottom:.3rem;">De Unidad 3</div>
+            <div style="font-size:.82rem;color:var(--text-secondary);">Diseña algoritmo → diagrama → pseudocódigo → código.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPCIONES DE PROYECTO -->
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">🎯 Elige tu proyecto</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:2rem;">
+
+      <div class="card" style="border-color:rgba(6,182,212,0.4);">
+        <div class="card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">💰</div>
+          <div style="font-weight:700;margin-bottom:.4rem;color:#22d3ee;">Calculadora de Gastos</div>
+          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Registra tus gastos del mes, calcula totales y te dice cuánto te queda del presupuesto.</div>
+          <div style="font-size:.78rem;">
+            <span class="badge badge-cyan">Google Sheets</span>
+            <span class="badge badge-green" style="margin-left:.3rem;">Scratch</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-color:rgba(99,102,241,0.4);">
+        <div class="card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">📅</div>
+          <div style="font-weight:700;margin-bottom:.4rem;color:#818cf8;">Organizador de Tareas</div>
+          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Lista de pendientes con fecha y prioridad. Te recuerda qué hacer hoy.</div>
+          <div style="font-size:.78rem;">
+            <span class="badge badge-primary">Google Sheets</span>
+            <span class="badge badge-cyan" style="margin-left:.3rem;">Scratch</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-color:rgba(245,158,11,0.4);">
+        <div class="card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">❓</div>
+          <div style="font-weight:700;margin-bottom:.4rem;color:#fbbf24;">Juego de Trivia</div>
+          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Quiz de preguntas y respuestas sobre un tema que dominas. Guarda el puntaje.</div>
+          <div style="font-size:.78rem;">
+            <span class="badge badge-green">Scratch</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐⭐</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-color:rgba(16,185,129,0.4);">
+        <div class="card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">🍲</div>
+          <div style="font-weight:700;margin-bottom:.4rem;color:#34d399;">Catálogo de Recetas</div>
+          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Busca recetas por ingrediente disponible y calcula porciones automáticamente.</div>
+          <div style="font-size:.78rem;">
+            <span class="badge badge-primary">Google Sheets</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-color:rgba(239,68,68,0.4);">
+        <div class="card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">💡</div>
+          <div style="font-weight:700;margin-bottom:.4rem;color:#f87171;">Tu Propia Idea</div>
+          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">¿Tienes un problema de tu vida diaria que quieras resolver? ¡Propónlo y lo analizamos juntas!</div>
+          <div style="font-size:.78rem;">
+            <span class="badge badge-red">Cualquier herramienta</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: variable</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ETAPAS DEL PROYECTO -->
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">📅 Etapas del Proyecto</h2>
+
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-primary">Etapa 1</span>
+          <span style="font-weight:600;">Planteamiento del problema</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:.75rem;">Responde estas preguntas en un documento:</p>
+        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>¿Qué problema quiero resolver?</li>
+          <li>¿Para quién es útil?</li>
+          <li>¿Qué datos necesita el programa?</li>
+          <li>¿Qué resultados entregará?</li>
+          <li>¿Qué herramienta usaré (Scratch, Sheets, etc.)?</li>
+        </ul>
+        <div class="checklist-item" data-id="proy-1-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Documenté el planteamiento del problema</span></div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-cyan">Etapa 2</span>
+          <span style="font-weight:600;">Diseño: algoritmo y diagrama de flujo</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>Escribe el algoritmo completo en pseudocódigo.</li>
+          <li>Dibuja el diagrama de flujo (en papel o draw.io).</li>
+          <li>Identifica: ¿cuántas condiciones tiene? ¿cuántos bucles?</li>
+        </ul>
+        <div class="checklist-item" data-id="proy-2-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Pseudocódigo del proyecto completado</span></div>
+        <div class="checklist-item" data-id="proy-2-2"><div class="check-box"></div><span class="check-text">Diagrama de flujo creado y guardado</span></div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-green">Etapa 3</span>
+          <span style="font-weight:600;">Implementación: construye el programa</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>Construye tu programa paso a paso siguiendo el pseudocódigo.</li>
+          <li>Prueba con datos reales. ¿Funciona?</li>
+          <li>Documenta los errores que encuentres y cómo los resolviste ("debugging reflexivo").</li>
+        </ul>
+        <div class="checklist-item" data-id="proy-3-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Programa funciona con datos básicos</span></div>
+        <div class="checklist-item" data-id="proy-3-2"><div class="check-box"></div><span class="check-text">Documenté al menos 3 errores y sus soluciones</span></div>
+      </div>
+    </div>
+
+    <div class="session-block" style="margin-bottom:2rem;">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-amber">Etapa 4</span>
+          <span style="font-weight:600;">Presentación y evaluación</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:.75rem;">Prepara una presentación de 5 minutos que incluya:</p>
+        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>¿Qué problema resuelve tu programa?</li>
+          <li>Muestra el diagrama de flujo</li>
+          <li>Demuestra el programa en vivo</li>
+          <li>Menciona 2 errores que tuviste y cómo los solucionaste</li>
+          <li>¿Qué mejorarías con más tiempo?</li>
+        </ul>
+        <div class="checklist-item" data-id="proy-4-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Preparé mi presentación</span></div>
+        <div class="checklist-item" data-id="proy-4-2"><div class="check-box"></div><span class="check-text">Presenté el proyecto a la clase / profesora</span></div>
+        <div class="checklist-item" data-id="proy-4-3"><div class="check-box"></div><span class="check-text">Subí todos los archivos a mi carpeta en Drive</span></div>
+      </div>
+    </div>
+
+    <!-- RÚBRICA -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-header"><div style="font-weight:700;">📊 Rúbrica de Evaluación</div></div>
+      <div class="card-body" style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:.82rem;min-width:500px;">
+          <thead>
+            <tr style="background:var(--bg-card2);">
+              <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Criterio</th>
+              <th style="padding:.6rem 1rem;text-align:center;border-bottom:1px solid var(--border);color:#34d399;">Excelente</th>
+              <th style="padding:.6rem 1rem;text-align:center;border-bottom:1px solid var(--border);color:#fbbf24;">En proceso</th>
+              <th style="padding:.6rem 1rem;text-align:center;border-bottom:1px solid var(--border);color:#f87171;">Inicio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem 1rem;font-weight:600;">Algoritmo</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Completo, sin ambigüedades</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Algunos pasos poco claros</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Incompleto o confuso</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem 1rem;font-weight:600;">Diagrama de flujo</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Símbolos correctos, flujo claro</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Algunos errores de símbolos</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Sin diagrama</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem 1rem;font-weight:600;">Programa funcional</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Funciona sin errores</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Funciona parcialmente</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">No funciona</td>
+            </tr>
+            <tr>
+              <td style="padding:.5rem 1rem;font-weight:600;">Reflexión de errores</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">3+ errores documentados con solución</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">1–2 errores mencionados</td>
+              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Sin documentación</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;">
+      <a href="unidad3.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">← Unidad 3</a>
+      <a href="glosario.html" style="background:var(--primary);color:white;padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">Ver Glosario →</a>
+    </div>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

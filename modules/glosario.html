@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glosario — Curso Informática</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .glosario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .term-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      padding: 1rem;
+      transition: border-color .2s;
+    }
+    .term-card:hover { border-color: var(--primary); }
+    .term-name { font-weight: 700; font-size: .95rem; margin-bottom: .4rem; }
+    .term-def { font-size: .82rem; color: var(--text-secondary); line-height: 1.6; }
+    .term-cat { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="../index.html" style="text-decoration:none;">
+      <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">← Volver al Dashboard</div>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Módulos</div>
+    <a href="fase0.html"><span>🚀</span> Fase 0 · Bienvenida</a>
+    <a href="unidad1.html"><span>🔍</span> Unidad 1 · Información Digital</a>
+    <a href="unidad2.html"><span>🖥️</span> Unidad 2 · Procesamiento</a>
+    <a href="unidad3.html"><span>⚙️</span> Unidad 3 · Algoritmos</a>
+    <a href="proyecto.html"><span>🏆</span> Proyecto Final</a>
+    <a href="glosario.html" class="active"><span>📖</span> Glosario</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">📖 Glosario de Términos</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">Referencia rápida — 40+ conceptos</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:2rem;">
+    
+    <div style="margin-bottom:1.5rem;">
+      <input id="search-glosario" type="text" placeholder="🔍 Busca un término..." 
+        style="width:100%;max-width:400px;background:var(--bg-card);border:1px solid var(--border);border-radius:.5rem;padding:.65rem 1rem;color:var(--text-primary);font-size:.9rem;outline:none;"
+        oninput="filterGlosario(this.value)" />
+    </div>
+
+    <!-- UNIDAD 1 -->
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:#22d3ee;">🔍 Unidad 1 — Información Digital</h2>
+    <div class="glosario-grid" style="margin-bottom:2rem;" id="glosario-u1">
+
+      <div class="term-card" data-search="bit unidad minima informacion digital binario">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Bit</div>
+        <div class="term-def">La unidad mínima de información digital. Solo puede ser 0 o 1. El nombre viene de <em>Binary digiT</em>.</div>
+      </div>
+
+      <div class="term-card" data-search="byte 8 bits letra caracter">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Byte</div>
+        <div class="term-def">Conjunto de 8 bits. Representa un carácter (letra, número o símbolo). Es la unidad básica de almacenamiento.</div>
+      </div>
+
+      <div class="term-card" data-search="kilobyte kb 1024 bytes pagina texto">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Kilobyte (KB)</div>
+        <div class="term-def">1,024 bytes. Equivale aproximadamente a una página de texto sin formato.</div>
+      </div>
+
+      <div class="term-card" data-search="megabyte mb 1024 kb cancion imagen">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Megabyte (MB)</div>
+        <div class="term-def">1,024 KB. Una foto en alta calidad ocupa ~3–5 MB. Una canción MP3, ~4 MB.</div>
+      </div>
+
+      <div class="term-card" data-search="gigabyte gb 1024 mb pelicula disco">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Gigabyte (GB)</div>
+        <div class="term-def">1,024 MB. Una película HD ocupa ~1–4 GB. Los celulares suelen tener 64–256 GB de almacenamiento.</div>
+      </div>
+
+      <div class="term-card" data-search="malware virus software malicioso daño">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Malware</div>
+        <div class="term-def">Software malicioso diseñado para dañar, robar o tomar control de sistemas sin permiso del usuario.</div>
+      </div>
+
+      <div class="term-card" data-search="phishing correo engaño contraseña estafa">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Phishing</div>
+        <div class="term-def">Técnica de engaño digital donde atacantes se hacen pasar por empresas legítimas para robar datos personales.</div>
+      </div>
+
+      <div class="term-card" data-search="antivirus proteccion seguridad programa">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Antivirus</div>
+        <div class="term-def">Programa que detecta, previene y elimina malware. Windows Defender viene incluido en Windows 10/11.</div>
+      </div>
+
+      <div class="term-card" data-search="nube cloud almacenamiento remoto internet drive dropbox">
+        <div class="term-cat" style="color:#22d3ee;">Unidad 1</div>
+        <div class="term-name">Nube (Cloud)</div>
+        <div class="term-def">Almacenamiento y servicios en servidores remotos accesibles por internet. Ejemplos: Google Drive, iCloud, Dropbox.</div>
+      </div>
+    </div>
+
+    <!-- UNIDAD 2 -->
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:#fbbf24;">🖥️ Unidad 2 — Procesamiento Digital</h2>
+    <div class="glosario-grid" style="margin-bottom:2rem;" id="glosario-u2">
+
+      <div class="term-card" data-search="hardware componentes fisicos computadora">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">Hardware</div>
+        <div class="term-def">Los componentes físicos y tangibles de una computadora: CPU, RAM, disco duro, teclado, pantalla.</div>
+      </div>
+
+      <div class="term-card" data-search="software programas aplicaciones codigo">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">Software</div>
+        <div class="term-def">Conjunto de programas e instrucciones que le dicen al hardware qué hacer. No es físico, es lógico.</div>
+      </div>
+
+      <div class="term-card" data-search="cpu procesador cerebro velocidad ghz intel amd">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">CPU (Procesador)</div>
+        <div class="term-def">Central Processing Unit. El "cerebro" de la computadora que ejecuta instrucciones. Su velocidad se mide en GHz.</div>
+      </div>
+
+      <div class="term-card" data-search="ram memoria temporal rapida programas abiertos">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">RAM</div>
+        <div class="term-def">Random Access Memory. Memoria temporal que almacena lo que estás usando ahora. Se borra al apagar. Más RAM = más multitarea.</div>
+      </div>
+
+      <div class="term-card" data-search="disco duro hdd ssd almacenamiento permanente">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">Disco Duro / SSD</div>
+        <div class="term-def">Almacenamiento permanente. HDD (mecánico, más lento) vs SSD (sólido, mucho más rápido). Los datos persisten al apagar.</div>
+      </div>
+
+      <div class="term-card" data-search="sistema operativo windows macos linux android gestor">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">Sistema Operativo (SO)</div>
+        <div class="term-def">Software base que gestiona el hardware y permite que otros programas funcionen. Windows, macOS, Linux, Android.</div>
+      </div>
+
+      <div class="term-card" data-search="periferico entrada salida mouse teclado impresora">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">Periférico</div>
+        <div class="term-def">Dispositivo externo conectado a la computadora. De entrada (teclado, mouse) o salida (impresora, pantalla).</div>
+      </div>
+
+      <div class="term-card" data-search="software libre open source gratuito modificable">
+        <div class="term-cat" style="color:#fbbf24;">Unidad 2</div>
+        <div class="term-name">Software Libre</div>
+        <div class="term-def">Programas cuyo código fuente es público, gratuito y modificable. Ejemplos: LibreOffice, VLC, Linux.</div>
+      </div>
+    </div>
+
+    <!-- UNIDAD 3 -->
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:#34d399;">⚙️ Unidad 3 — Algoritmos y Programación</h2>
+    <div class="glosario-grid" style="margin-bottom:2rem;" id="glosario-u3">
+
+      <div class="term-card" data-search="algoritmo pasos instrucciones problema solucion finito">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Algoritmo</div>
+        <div class="term-def">Secuencia finita, ordenada y precisa de pasos para resolver un problema. Cualquier receta de cocina es un algoritmo.</div>
+      </div>
+
+      <div class="term-card" data-search="diagrama flujo simbolos visual proceso decision">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Diagrama de flujo</div>
+        <div class="term-def">Representación visual de un algoritmo usando símbolos estándar: óvalos (inicio/fin), rectángulos (acciones), rombos (decisiones).</div>
+      </div>
+
+      <div class="term-card" data-search="pseudocodigo lenguaje espanol codigo informal algoritmia">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Pseudocódigo</div>
+        <div class="term-def">Descripción informal de un algoritmo usando lenguaje natural estructurado (español). No tiene sintaxis rígida de programación.</div>
+      </div>
+
+      <div class="term-card" data-search="variable dato almacenar cambiar valor">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Variable</div>
+        <div class="term-def">Espacio con nombre que almacena un dato que puede cambiar durante la ejecución. Como una caja con etiqueta.</div>
+      </div>
+
+      <div class="term-card" data-search="condicional si entonces sino decision bifurcacion">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Condicional (Si/Sino)</div>
+        <div class="term-def">Estructura que ejecuta diferentes pasos según si una condición es verdadera o falsa. "Si llueve, lleva paraguas; si no, no."</div>
+      </div>
+
+      <div class="term-card" data-search="bucle loop repeticion mientras para ciclo">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Bucle (Loop)</div>
+        <div class="term-def">Estructura que repite un bloque de instrucciones hasta que se cumple una condición. "Mientras haya ropa sucia, lavar."</div>
+      </div>
+
+      <div class="term-card" data-search="scratch programacion visual bloques mit ninos">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Scratch</div>
+        <div class="term-def">Plataforma de programación visual (bloques) creada por el MIT. Ideal para aprender lógica sin preocuparse por sintaxis.</div>
+      </div>
+
+      <div class="term-card" data-search="bug error fallo programa depurar debugging">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Bug / Error</div>
+        <div class="term-def">Fallo en un programa que produce resultados incorrectos. "Debugging" es el proceso de encontrar y corregir bugs.</div>
+      </div>
+
+      <div class="term-card" data-search="paradigma programacion orientado objetos funcional estilo">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Paradigma de programación</div>
+        <div class="term-def">Estilo o enfoque para estructurar el código. Los más comunes: imperativo, orientado a objetos (Python, Java), funcional.</div>
+      </div>
+
+      <div class="term-card" data-search="pensamiento computacional logica problema descomponer">
+        <div class="term-cat" style="color:#34d399;">Unidad 3</div>
+        <div class="term-name">Pensamiento Computacional</div>
+        <div class="term-def">Habilidad para descomponer problemas complejos en pasos simples que una computadora (o persona) puede ejecutar.</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+function filterGlosario(term) {
+  const t = term.toLowerCase();
+  document.querySelectorAll('.term-card').forEach(card => {
+    const searchText = card.dataset.search + ' ' + card.querySelector('.term-name').textContent + ' ' + card.querySelector('.term-def').textContent;
+    card.style.display = searchText.toLowerCase().includes(t) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

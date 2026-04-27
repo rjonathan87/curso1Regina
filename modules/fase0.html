@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fase 0 · Bienvenida — Curso Informática</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="../index.html" style="text-decoration:none;">
+      <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">← Volver al Dashboard</div>
+    </a>
+  </div>
+  <div style="padding:1rem 1.25rem;">
+    <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.4rem;">Progreso general</div>
+    <div class="progress-bar"><div class="progress-fill main-progress-fill" style="width:0%"></div></div>
+    <div style="text-align:right;font-size:0.7rem;color:var(--text-secondary);margin-top:0.3rem;"><span class="main-progress-label">0%</span> completado</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Módulos</div>
+    <a href="fase0.html" class="active"><span>🚀</span> Fase 0 · Bienvenida</a>
+    <a href="unidad1.html"><span>🔍</span> Unidad 1 · Información Digital</a>
+    <a href="unidad2.html"><span>🖥️</span> Unidad 2 · Procesamiento</a>
+    <a href="unidad3.html"><span>⚙️</span> Unidad 3 · Algoritmos</a>
+    <a href="proyecto.html"><span>🏆</span> Proyecto Final</a>
+    <a href="glosario.html"><span>📖</span> Glosario</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">Fase 0 · Bienvenida al Mundo Digital</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">1–2 sesiones · Sin requisitos previos</div>
+      </div>
+    </div>
+    <span class="badge badge-primary">🚀 Inicio</span>
+  </div>
+
+  <div style="padding:2rem;">
+
+    <!-- BANNER -->
+    <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;">
+      <div style="position:relative;z-index:1;">
+        <div class="badge badge-primary" style="margin-bottom:1rem;">Fase 0 · Fundación</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">🚀 Bienvenida al <span class="text-gradient">Mundo Digital</span></h1>
+        <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
+          Antes de aprender conceptos, primero te sentirás cómoda con el equipo. El objetivo es eliminar el miedo y ganar confianza operativa desde el primer día.
+        </p>
+      </div>
+    </div>
+
+    <!-- OBJETIVOS -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-header">
+        <div style="font-weight:700;">🎯 Objetivos de esta fase</div>
+      </div>
+      <div class="card-body">
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+          <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;"><span style="color:#34d399;font-size:1.1rem;">✓</span> Encender y apagar correctamente una computadora</li>
+          <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;"><span style="color:#34d399;font-size:1.1rem;">✓</span> Usar mouse y teclado con fluidez básica</li>
+          <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;"><span style="color:#34d399;font-size:1.1rem;">✓</span> Crear, nombrar y organizar carpetas</li>
+          <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;"><span style="color:#34d399;font-size:1.1rem;">✓</span> Copiar y pegar archivos entre ubicaciones</li>
+          <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;"><span style="color:#34d399;font-size:1.1rem;">✓</span> Abrir y cerrar aplicaciones básicas</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SESIONES -->
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">📋 Sesiones</h2>
+
+    <!-- Sesión 1 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="badge badge-primary">Sesión 1</span>
+          <span style="font-weight:600;">Primer contacto con la computadora</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <!-- Teoría -->
+        <div id="tabs-s0-1" style="margin-bottom:1rem;">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-s0-1',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-s0-1',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-s0-1',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-s0-1',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">¿Qué es una computadora?</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Una computadora es una máquina que recibe información (entrada), la procesa y produce resultados (salida). Piensa en ella como una <strong style="color:var(--text-primary);">cocina muy veloz</strong>: recibe ingredientes (tus datos), los transforma con recetas (programas) y te sirve el platillo (resultado).
+              </p>
+              <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:0.75rem;padding:1rem;margin-bottom:1rem;">
+                <div style="font-weight:700;margin-bottom:0.5rem;color:#818cf8;">💡 Analogía clave</div>
+                <div style="font-size:0.85rem;color:var(--text-secondary);">
+                  <strong style="color:var(--text-primary);">Teclado y mouse</strong> = tus manos (entrada)<br/>
+                  <strong style="color:var(--text-primary);">Pantalla</strong> = el espejo donde ves el resultado (salida)<br/>
+                  <strong style="color:var(--text-primary);">CPU/RAM</strong> = la "cabeza pensante" (procesamiento)<br/>
+                  <strong style="color:var(--text-primary);">Disco duro</strong> = tu libreta de apuntes (almacenamiento)
+                </div>
+              </div>
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">Partes del escritorio</h4>
+              <ul style="font-size:0.88rem;color:var(--text-secondary);line-height:1.9;list-style:disc;padding-left:1.5rem;">
+                <li><strong style="color:var(--text-primary);">Barra de tareas</strong>: barra inferior con programas abiertos y el botón de inicio.</li>
+                <li><strong style="color:var(--text-primary);">Íconos del escritorio</strong>: accesos directos a tus programas favoritos.</li>
+                <li><strong style="color:var(--text-primary);">Botón Inicio (Windows) / Dock (Mac)</strong>: menú de todas las aplicaciones.</li>
+              </ul>
+            </div>
+
+            <div class="tab-panel">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=s_Az3Azecuc" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Curso de computación básica para principiantes (desde cero)</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=PsCgZqLTd2E" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">25 atajos de teclado Windows 10 — de la A a la Z</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
+              </a>
+              <a href="https://support.microsoft.com/es-es/windows" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(6,182,212,0.2);">📄</div>
+                <div>
+                  <div style="font-weight:600;">Guía oficial de Windows — Primeros pasos</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">Microsoft Support · Español</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">🔧 Actividad práctica: "Mi primera exploración"</h4>
+                <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Enciende la computadora y observa el proceso de arranque.</li>
+                  <li>Mueve el mouse y practica clic izquierdo / clic derecho / doble clic en el escritorio.</li>
+                  <li>Abre el explorador de archivos (carpeta amarilla en la barra de tareas).</li>
+                  <li>Crea una carpeta llamada <strong style="color:var(--text-primary);">"MiCurso"</strong> en el escritorio.</li>
+                  <li>Dentro de MiCurso, crea subcarpetas: <strong style="color:var(--text-primary);">Unidad1, Unidad2, Unidad3, Proyecto</strong>.</li>
+                  <li>Practica renombrar, mover y copiar una carpeta vacía.</li>
+                  <li>Cierra todas las ventanas y apaga la PC correctamente desde el botón Inicio.</li>
+                </ol>
+                <div style="margin-top:1rem;padding:0.75rem;background:rgba(245,158,11,0.1);border-radius:0.5rem;font-size:0.82rem;color:#fbbf24;">
+                  ⏱ Tiempo estimado: 30–45 minutos
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Marca cada tarea conforme la completes (se guarda automáticamente):</div>
+              <div class="checklist-item" data-id="f0-1-1"><div class="check-box"></div><span class="check-text">Encendí la computadora y observé el arranque</span></div>
+              <div class="checklist-item" data-id="f0-1-2"><div class="check-box"></div><span class="check-text">Practiqué clic, doble clic y clic derecho</span></div>
+              <div class="checklist-item" data-id="f0-1-3"><div class="check-box"></div><span class="check-text">Abrí el explorador de archivos</span></div>
+              <div class="checklist-item" data-id="f0-1-4"><div class="check-box"></div><span class="check-text">Creé la carpeta "MiCurso" con subcarpetas</span></div>
+              <div class="checklist-item" data-id="f0-1-5"><div class="check-box"></div><span class="check-text">Practiqué renombrar y mover carpetas</span></div>
+              <div class="checklist-item" data-id="f0-1-6"><div class="check-box"></div><span class="check-text">Apagué correctamente la PC</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sesión 2 -->
+    <div class="session-block" style="margin-bottom:2rem;">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="badge badge-cyan">Sesión 2</span>
+          <span style="font-weight:600;">Teclado, escritura y atajos esenciales</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-s0-2">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-s0-2',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-s0-2',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-s0-2',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-s0-2',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="margin-bottom:0.75rem;color:#22d3ee;">Atajos de teclado imprescindibles</h4>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;margin-bottom:1rem;">
+                <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.75rem;font-family:'Fira Code',monospace;font-size:0.82rem;">
+                  <span style="color:#fbbf24;">Ctrl + C</span><br/><span style="color:var(--text-secondary);">Copiar</span>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.75rem;font-family:'Fira Code',monospace;font-size:0.82rem;">
+                  <span style="color:#fbbf24;">Ctrl + V</span><br/><span style="color:var(--text-secondary);">Pegar</span>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.75rem;font-family:'Fira Code',monospace;font-size:0.82rem;">
+                  <span style="color:#fbbf24;">Ctrl + Z</span><br/><span style="color:var(--text-secondary);">Deshacer</span>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.75rem;font-family:'Fira Code',monospace;font-size:0.82rem;">
+                  <span style="color:#fbbf24;">Ctrl + S</span><br/><span style="color:var(--text-secondary);">Guardar</span>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.75rem;font-family:'Fira Code',monospace;font-size:0.82rem;">
+                  <span style="color:#fbbf24;">Alt + F4</span><br/><span style="color:var(--text-secondary);">Cerrar ventana</span>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.75rem;font-family:'Fira Code',monospace;font-size:0.82rem;">
+                  <span style="color:#fbbf24;">Win + D</span><br/><span style="color:var(--text-secondary);">Mostrar escritorio</span>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=ZXLVU9zFrvE" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">Cómo funciona el ratón o mouse — Curso de informática básica</div><div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://www.typingclub.com/" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(16,185,129,0.2);">⌨️</div>
+                <div><div style="font-weight:600;">TypingClub — Mecanografía gratuita</div><div style="font-size:0.75rem;color:var(--text-secondary);">Herramienta interactiva · Gratis</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">✏️ Actividad: "Mi primer documento"</h4>
+                <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Abre el Bloc de Notas (Notepad) o Google Docs.</li>
+                  <li>Escribe tu nombre, la fecha y 3 cosas que esperas aprender en este curso.</li>
+                  <li>Practica los atajos: selecciona todo el texto (Ctrl+A), cópialo (Ctrl+C), pégalo abajo (Ctrl+V).</li>
+                  <li>Guarda el archivo como <strong style="color:var(--text-primary);">dia1.txt</strong> dentro de la carpeta MiCurso.</li>
+                  <li>Practica deshacer (Ctrl+Z) y rehacer (Ctrl+Y).</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="f0-2-1"><div class="check-box"></div><span class="check-text">Memoricé los 6 atajos de teclado básicos</span></div>
+              <div class="checklist-item" data-id="f0-2-2"><div class="check-box"></div><span class="check-text">Creé mi primer documento de texto</span></div>
+              <div class="checklist-item" data-id="f0-2-3"><div class="check-box"></div><span class="check-text">Guardé el archivo en la carpeta correcta</span></div>
+              <div class="checklist-item" data-id="f0-2-4"><div class="check-box"></div><span class="check-text">Practiqué copiar, pegar y deshacer</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTREGABLE -->
+    <div class="card" style="border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.05);">
+      <div class="card-header" style="border-color:rgba(245,158,11,0.3);">
+        <div style="font-weight:700;color:#fbbf24;">🏅 Entregable de la Fase 0</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">
+          Estructura de carpetas <strong style="color:var(--text-primary);">MiCurso</strong> creada y organizada + archivo <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;font-size:0.8rem;">dia1.txt</code> con presentación personal.
+        </p>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span class="badge badge-amber">📁 Carpeta organizada</span>
+          <span class="badge badge-green">📄 Primer documento</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;display:flex;justify-content:flex-end;">
+      <a href="unidad1.html" style="background:var(--primary);color:white;padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">
+        Siguiente: Unidad 1 →
+      </a>
+    </div>
+  </div>
+</main>
+<script src="../js/app.js"></script>
+</body>
+</html>

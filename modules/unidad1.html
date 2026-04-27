@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unidad 1 · Información Digital — Curso Informática</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="../index.html" style="text-decoration:none;">
+      <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">← Volver al Dashboard</div>
+    </a>
+  </div>
+  <div style="padding:1rem 1.25rem;">
+    <div class="progress-bar"><div class="progress-fill main-progress-fill" style="width:0%"></div></div>
+    <div style="text-align:right;font-size:0.7rem;color:var(--text-secondary);margin-top:0.3rem;"><span class="main-progress-label">0%</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Módulos</div>
+    <a href="fase0.html"><span>🚀</span> Fase 0 · Bienvenida</a>
+    <a href="unidad1.html" class="active"><span>🔍</span> Unidad 1 · Información Digital</a>
+    <a href="unidad2.html"><span>🖥️</span> Unidad 2 · Procesamiento</a>
+    <a href="unidad3.html"><span>⚙️</span> Unidad 3 · Algoritmos</a>
+    <a href="proyecto.html"><span>🏆</span> Proyecto Final</a>
+    <a href="glosario.html"><span>📖</span> Glosario</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">Unidad 1 · Información Digital</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">4 sesiones · Semanas 1–2</div>
+      </div>
+    </div>
+    <span class="badge badge-cyan">🔍 Unidad 1</span>
+  </div>
+
+  <div style="padding:2rem;">
+
+    <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;">
+      <div style="position:relative;z-index:1;">
+        <div class="badge badge-cyan" style="margin-bottom:1rem;">Unidad 1 · Semanas 1–2</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">🔍 <span class="text-gradient">Información Digital</span></h1>
+        <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
+          Aprende a buscar, medir, organizar y proteger la información digital. Desde Google hasta la seguridad contra malware.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mapa de temas -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;">
+      <div class="stat-card"><div style="font-size:1.5rem;">🌐</div><div style="font-weight:700;margin:.3rem 0;">1.1 Búsqueda</div><div style="font-size:0.78rem;color:var(--text-secondary);">Google, Wikipedia, operadores</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">📜</div><div style="font-weight:700;margin:.3rem 0;">1.2 Historia</div><div style="font-size:0.78rem;color:var(--text-secondary);">Evolución de la informática</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">📦</div><div style="font-weight:700;margin:.3rem 0;">1.3 Unidades</div><div style="font-size:0.78rem;color:var(--text-secondary);">Bits, bytes, KB, MB, GB, TB</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">💾</div><div style="font-weight:700;margin:.3rem 0;">1.4 Almacenamiento</div><div style="font-size:0.78rem;color:var(--text-secondary);">Local, nube, USB</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">🔒</div><div style="font-weight:700;margin:.3rem 0;">1.5 Seguridad</div><div style="font-size:0.78rem;color:var(--text-secondary);">Malware, phishing, ética</div></div>
+    </div>
+
+    <!-- SESIÓN 1 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="badge badge-cyan">Sesión 1</span>
+          <span style="font-weight:600;">Búsqueda de información en internet</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u1-1">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u1-1',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-1',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-1',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-1',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#22d3ee;margin-bottom:.75rem;">Tipos de búsqueda</h4>
+              <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                No toda información en internet tiene la misma calidad. Aprender a distinguir fuentes confiables es la habilidad más valiosa del siglo XXI.
+              </p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;margin-bottom:1rem;">
+                <div style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);border-radius:.75rem;padding:1rem;">
+                  <div style="font-weight:700;color:#22d3ee;margin-bottom:.5rem;">🌐 Google</div>
+                  <div style="font-size:.82rem;color:var(--text-secondary);">Búsqueda general. Usa comillas para frases exactas: <code style="background:var(--bg-dark);padding:0 .3rem;border-radius:.2rem;">"receta de tamales"</code></div>
+                </div>
+                <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:.75rem;padding:1rem;">
+                  <div style="font-weight:700;color:#818cf8;margin-bottom:.5rem;">📚 Wikipedia</div>
+                  <div style="font-size:.82rem;color:var(--text-secondary);">Enciclopedia colaborativa. Buena para conceptos generales, siempre verifica las fuentes al pie.</div>
+                </div>
+                <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:.75rem;padding:1rem;">
+                  <div style="font-weight:700;color:#f87171;margin-bottom:.5rem;">▶️ YouTube</div>
+                  <div style="font-size:.82rem;color:var(--text-secondary);">Ideal para tutoriales visuales. Verifica el número de vistas y si el canal es oficial.</div>
+                </div>
+              </div>
+              <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:.75rem;padding:1rem;">
+                <div style="font-weight:700;color:#fbbf24;margin-bottom:.5rem;">🔍 Operadores avanzados de Google</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.5rem;font-size:.82rem;">
+                  <div><code style="color:#fbbf24;">site:gob.mx</code> — Solo sitios de gobierno</div>
+                  <div><code style="color:#fbbf24;">filetype:pdf</code> — Solo archivos PDF</div>
+                  <div><code style="color:#fbbf24;">"frase exacta"</code> — Búsqueda literal</div>
+                  <div><code style="color:#fbbf24;">-palabra</code> — Excluir término</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=MMF2T0Yhf70" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">21 trucos para buscar en Google como un profesional</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=VNjSCUxrvWQ" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">5 tips para encontrar fuentes de información confiables</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://applieddigitalskills.withgoogle.com/es/" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(6,182,212,0.2);">📄</div>
+                <div><div style="font-weight:600;">Google Applied Digital Skills (gratis)</div><div style="font-size:.75rem;color:var(--text-secondary);">Curso completo de habilidades digitales · Español</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">🔧 "Caza del Tesoro Digital"</h4>
+                <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.75rem;">Busca el mismo tema en 3 fuentes distintas y compáralas:</p>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Elige un tema que te interese (receta, lugar, evento histórico).</li>
+                  <li>Búscalo en Google, Wikipedia y YouTube. Toma nota de los resultados.</li>
+                  <li>Anota en tu carpeta: ¿Cuál fuente te dio más información? ¿Cuál parece más confiable?</li>
+                  <li>Intenta la búsqueda con operadores: <code style="background:var(--bg-dark);padding:0 .3rem;border-radius:.2rem;">filetype:pdf</code> y <code style="background:var(--bg-dark);padding:0 .3rem;border-radius:.2rem;">site:.edu</code></li>
+                  <li>Guarda 3 enlaces a fuentes confiables en un documento de texto.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u1-1-1"><div class="check-box"></div><span class="check-text">Busqué el mismo tema en Google, YouTube y Wikipedia</span></div>
+              <div class="checklist-item" data-id="u1-1-2"><div class="check-box"></div><span class="check-text">Usé al menos 2 operadores avanzados de Google</span></div>
+              <div class="checklist-item" data-id="u1-1-3"><div class="check-box"></div><span class="check-text">Guardé 3 enlaces a fuentes confiables</span></div>
+              <div class="checklist-item" data-id="u1-1-4"><div class="check-box"></div><span class="check-text">Anoté diferencias entre las fuentes consultadas</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESIÓN 2 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-cyan">Sesión 2</span>
+          <span style="font-weight:600;">Unidades de almacenamiento: bits, bytes y más</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u1-2">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u1-2',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-2',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-2',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-2',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#22d3ee;margin-bottom:.75rem;">De bits a terabytes: la escala de la información</h4>
+              <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
+                <div style="font-weight:700;color:#818cf8;margin-bottom:.5rem;">💡 Analogía: la carta</div>
+                <p style="font-size:.85rem;color:var(--text-secondary);line-height:1.6;">Un <strong style="color:var(--text-primary);">bit</strong> es como una respuesta sí/no. Una <strong style="color:var(--text-primary);">letra</strong> son 8 bits (1 byte). Una <strong style="color:var(--text-primary);">página</strong> es ~1 KB. Un <strong style="color:var(--text-primary);">libro</strong> es ~1 MB. Una <strong style="color:var(--text-primary);">biblioteca</strong> es ~1 GB. Un <strong style="color:var(--text-primary);">almacén de libros</strong> es ~1 TB.</p>
+              </div>
+              <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:.85rem;">
+                  <thead>
+                    <tr style="background:var(--bg-card2);">
+                      <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Unidad</th>
+                      <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Equivalencia</th>
+                      <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Analogía</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#818cf8;font-weight:600;">1 Bit</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">0 ó 1</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Interruptor de luz</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#22d3ee;font-weight:600;">1 Byte</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">8 bits</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Una letra del abecedario</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#fbbf24;font-weight:600;">1 KB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">1,024 bytes</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Una página de texto</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#34d399;font-weight:600;">1 MB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">1,024 KB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Un libro de 300 páginas</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#f87171;font-weight:600;">1 GB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">1,024 MB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">1,000 libros (una biblioteca)</td></tr>
+                    <tr><td style="padding:.5rem 1rem;color:#a78bfa;font-weight:600;">1 TB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">1,024 GB</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">1,000 bibliotecas</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=8X-kpzZOjNE" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Qué son los kilobytes, megabytes, gigabytes y terabytes?</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=1GSjbWt0c9M" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Cuánto espacio ocupa realmente una foto, canción o video?</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~5 min · Español</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">📊 "Calculadora de la nube"</h4>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Abre Google Sheets (sheets.google.com) o Excel.</li>
+                  <li>Crea una tabla: Tipo de archivo | Tamaño aproximado | ¿Cuántos caben en 64 GB?</li>
+                  <li>Llena con: foto (3 MB), canción (4 MB), video HD 1 min (100 MB), documento Word (50 KB).</li>
+                  <li>Usa fórmulas para calcular cuántos archivos de cada tipo caben en 64 GB.</li>
+                  <li>Guarda la hoja de cálculo en tu carpeta MiCurso/Unidad1.</li>
+                </ol>
+                <div class="code-block" style="margin-top:1rem;">
+                  <div class="code-header"><span>Ejemplo de fórmula en Google Sheets</span></div>
+                  <div class="code-body">=64*1024 / 3   → cuántas fotos de 3MB caben en 64GB</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u1-2-1"><div class="check-box"></div><span class="check-text">Memoricé la escala: Bit → Byte → KB → MB → GB → TB</span></div>
+              <div class="checklist-item" data-id="u1-2-2"><div class="check-box"></div><span class="check-text">Creé la tabla de tamaños en Google Sheets</span></div>
+              <div class="checklist-item" data-id="u1-2-3"><div class="check-box"></div><span class="check-text">Calculé cuántos archivos caben en 64 GB</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESIÓN 3 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-cyan">Sesión 3</span>
+          <span style="font-weight:600;">Almacenamiento: local, nube y USB</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u1-3">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u1-3',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-3',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-3',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-3',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#22d3ee;margin-bottom:.75rem;">¿Dónde guardar mi información?</h4>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-bottom:1rem;">
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;">
+                  <div style="font-size:1.5rem;margin-bottom:.4rem;">💻</div>
+                  <div style="font-weight:700;margin-bottom:.3rem;">Local (disco duro)</div>
+                  <div style="font-size:.8rem;color:var(--text-secondary);">✅ Sin internet<br/>✅ Acceso rápido<br/>❌ Se puede dañar<br/>❌ Sin respaldo automático</div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;">
+                  <div style="font-size:1.5rem;margin-bottom:.4rem;">☁️</div>
+                  <div style="font-weight:700;margin-bottom:.3rem;">Nube (Drive, Dropbox)</div>
+                  <div style="font-size:.8rem;color:var(--text-secondary);">✅ Acceso desde cualquier lugar<br/>✅ Respaldo automático<br/>❌ Necesita internet<br/>❌ Privacidad a cuidar</div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;">
+                  <div style="font-size:1.5rem;margin-bottom:.4rem;">🔌</div>
+                  <div style="font-weight:700;margin-bottom:.3rem;">USB / Memoria</div>
+                  <div style="font-size:.8rem;color:var(--text-secondary);">✅ Portable<br/>✅ Sin internet<br/>❌ Fácil de perder<br/>❌ Puede tener virus</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=pRb4LFNaxAU" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Qué es el almacenamiento en la nube? Ventajas y características</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=3Foav_QWdoo" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">Google Drive vs Dropbox vs OneDrive — ¿cuál es mejor?</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">☁️ "Mi Portfolio Digital"</h4>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Crea una cuenta en Google Drive (drive.google.com) si no tienes una.</li>
+                  <li>Crea una carpeta llamada <strong style="color:var(--text-primary);">CursoInformatica</strong> en Drive.</li>
+                  <li>Sube los archivos que creaste en las sesiones anteriores.</li>
+                  <li>Comparte la carpeta con tu profesora (modo "Solo lectura").</li>
+                  <li>Escribe en un documento: ventajas y riesgos de cada tipo de almacenamiento.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u1-3-1"><div class="check-box"></div><span class="check-text">Creé mi carpeta en Google Drive</span></div>
+              <div class="checklist-item" data-id="u1-3-2"><div class="check-box"></div><span class="check-text">Subí mis archivos del curso a la nube</span></div>
+              <div class="checklist-item" data-id="u1-3-3"><div class="check-box"></div><span class="check-text">Anoté ventajas y riesgos de cada tipo de almacenamiento</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESIÓN 4 -->
+    <div class="session-block" style="margin-bottom:2rem;">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-red">Sesión 4</span>
+          <span style="font-weight:600;">Seguridad digital: malware, phishing y ética</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u1-4">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u1-4',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-4',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-4',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u1-4',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#f87171;margin-bottom:.75rem;">Amenazas digitales comunes</h4>
+              <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem;">
+                <div style="background:rgba(239,68,68,0.1);border-left:3px solid #ef4444;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;">
+                  <strong style="color:#f87171;">🦠 Virus / Malware</strong>
+                  <p style="font-size:.83rem;color:var(--text-secondary);margin-top:.3rem;">Software malicioso que daña archivos o roba información. Se propaga por descargas, USB infectadas o correos.</p>
+                </div>
+                <div style="background:rgba(245,158,11,0.1);border-left:3px solid #f59e0b;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;">
+                  <strong style="color:#fbbf24;">🎣 Phishing</strong>
+                  <p style="font-size:.83rem;color:var(--text-secondary);margin-top:.3rem;">Engaños por correo o mensajes que simulan ser empresas reales para robar contraseñas o datos bancarios.</p>
+                </div>
+                <div style="background:rgba(99,102,241,0.1);border-left:3px solid #6366f1;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;">
+                  <strong style="color:#818cf8;">🔐 Protección básica</strong>
+                  <p style="font-size:.83rem;color:var(--text-secondary);margin-top:.3rem;">Contraseñas fuertes (+12 caracteres, mayúsculas+números), actualizar el sistema, Windows Defender activado, no descargar de sitios desconocidos.</p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=HuasitV4lcw" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Qué es el malware? Principales tipos de ataques y cómo protegerse</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=UuuAlP7ay6U" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Qué es el phishing y cómo funciona? Cómo evitar ataques</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+              <a href="https://staysafeonline.org/es/" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(16,185,129,0.2);">🔒</div>
+                <div><div style="font-weight:600;">Stay Safe Online — Guía de seguridad en español</div><div style="font-size:.75rem;color:var(--text-secondary);">NCSA · Recurso gratuito</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">🎭 Juego de roles: "El correo sospechoso"</h4>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Lee este escenario: "Recibes un correo de <em>banco@seguridad-cuenta.com</em> que dice que tu cuenta fue bloqueada. Incluye un link para 'verificar'."</li>
+                  <li>Identifica 5 señales de alerta en el correo (remitente, urgencia, link sospechoso, etc.).</li>
+                  <li>Escribe en un documento tus <strong style="color:var(--text-primary);">5 Reglas de Seguridad Personal</strong>.</li>
+                  <li>Verifica tu contraseña actual: ¿tiene más de 12 caracteres? ¿mayúsculas, números y símbolos?</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u1-4-1"><div class="check-box"></div><span class="check-text">Identifiqué 5 señales de un correo de phishing</span></div>
+              <div class="checklist-item" data-id="u1-4-2"><div class="check-box"></div><span class="check-text">Escribí mis 5 Reglas de Seguridad Personal</span></div>
+              <div class="checklist-item" data-id="u1-4-3"><div class="check-box"></div><span class="check-text">Verifiqué que mis contraseñas son seguras</span></div>
+              <div class="checklist-item" data-id="u1-4-4"><div class="check-box"></div><span class="check-text">Confirmé que Windows Defender está activo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTREGABLE -->
+    <div class="card" style="border-color:rgba(6,182,212,0.4);background:rgba(6,182,212,0.05);margin-bottom:1.5rem;">
+      <div class="card-header" style="border-color:rgba(6,182,212,0.3);">
+        <div style="font-weight:700;color:#22d3ee;">🏅 Entregable de la Unidad 1</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+          <strong style="color:var(--text-primary);">Portfolio Digital Personal</strong> en Google Drive con:
+        </p>
+        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>3 fuentes confiables sobre un tema de tu interés (con comentario de por qué son confiables)</li>
+          <li>Tabla de tamaños de archivos en Google Sheets</li>
+          <li>Documento con ventajas/riesgos de cada tipo de almacenamiento</li>
+          <li>"Manual de Seguridad Personal" con 5 reglas escritas por ti</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;">
+      <a href="fase0.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">← Fase 0</a>
+      <a href="unidad2.html" style="background:var(--primary);color:white;padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">Siguiente: Unidad 2 →</a>
+    </div>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

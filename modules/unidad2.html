@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unidad 2 · Procesamiento Digital — Curso Informática</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="../index.html" style="text-decoration:none;">
+      <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">← Volver al Dashboard</div>
+    </a>
+  </div>
+  <div style="padding:1rem 1.25rem;">
+    <div class="progress-bar"><div class="progress-fill main-progress-fill" style="width:0%"></div></div>
+    <div style="text-align:right;font-size:0.7rem;color:var(--text-secondary);margin-top:0.3rem;"><span class="main-progress-label">0%</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Módulos</div>
+    <a href="fase0.html"><span>🚀</span> Fase 0 · Bienvenida</a>
+    <a href="unidad1.html"><span>🔍</span> Unidad 1 · Información Digital</a>
+    <a href="unidad2.html" class="active"><span>🖥️</span> Unidad 2 · Procesamiento</a>
+    <a href="unidad3.html"><span>⚙️</span> Unidad 3 · Algoritmos</a>
+    <a href="proyecto.html"><span>🏆</span> Proyecto Final</a>
+    <a href="glosario.html"><span>📖</span> Glosario</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">Unidad 2 · Procesamiento Digital</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">4 sesiones · Semanas 3–4</div>
+      </div>
+    </div>
+    <span class="badge badge-amber">🖥️ Unidad 2</span>
+  </div>
+
+  <div style="padding:2rem;">
+
+    <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;">
+      <div style="position:relative;z-index:1;">
+        <div class="badge badge-amber" style="margin-bottom:1rem;">Unidad 2 · Semanas 3–4</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">🖥️ <span class="text-gradient">Procesamiento Digital</span></h1>
+        <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
+          Desmitifica la "caja negra". Aprende qué hay dentro de tu computadora, cómo funciona y qué hace cada componente.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mapa de temas -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;">
+      <div class="stat-card"><div style="font-size:1.5rem;">🔧</div><div style="font-weight:700;margin:.3rem 0;">2.1 Tipos de equipos</div><div style="font-size:.78rem;color:var(--text-secondary);">PC, laptop, móvil, tablet</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">🧠</div><div style="font-weight:700;margin:.3rem 0;">2.2 Hardware</div><div style="font-size:.78rem;color:var(--text-secondary);">CPU, RAM, disco, periféricos</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">🪟</div><div style="font-weight:700;margin:.3rem 0;">2.3 Sistemas Operativos</div><div style="font-size:.78rem;color:var(--text-secondary);">Windows, macOS, Linux, Android</div></div>
+      <div class="stat-card"><div style="font-size:1.5rem;">📱</div><div style="font-weight:700;margin:.3rem 0;">2.4 Software</div><div style="font-size:.78rem;color:var(--text-secondary);">Libre, propietario, apps</div></div>
+    </div>
+
+    <!-- SESIÓN 1 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-amber">Sesión 1</span>
+          <span style="font-weight:600;">Hardware: los órganos de la computadora</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u2-1">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u2-1',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-1',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-1',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-1',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#fbbf24;margin-bottom:.75rem;">Los componentes como órganos del cuerpo</h4>
+              <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
+                <div style="font-weight:700;color:#fbbf24;margin-bottom:.5rem;">💡 Analogía: el cuerpo humano</div>
+                <p style="font-size:.85rem;color:var(--text-secondary);line-height:1.6;">
+                  La computadora funciona como un cuerpo: el <strong style="color:var(--text-primary);">CPU</strong> es el cerebro, la <strong style="color:var(--text-primary);">RAM</strong> es la memoria a corto plazo, el <strong style="color:var(--text-primary);">disco duro</strong> es la memoria a largo plazo, la <strong style="color:var(--text-primary);">placa madre</strong> es el esqueleto que conecta todo.
+                </p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:.6rem;">
+                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem 1rem;display:flex;align-items:flex-start;gap:.75rem;">
+                  <span style="font-size:1.4rem;">🧠</span>
+                  <div><strong style="color:#fbbf24;">CPU (Procesador)</strong><br/><span style="font-size:.83rem;color:var(--text-secondary);">Ejecuta instrucciones. Velocidad en GHz. Más GHz = más rápido. Intel Core / AMD Ryzen son marcas comunes.</span></div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem 1rem;display:flex;align-items:flex-start;gap:.75rem;">
+                  <span style="font-size:1.4rem;">💨</span>
+                  <div><strong style="color:#22d3ee;">RAM (Memoria)</strong><br/><span style="font-size:.83rem;color:var(--text-secondary);">Almacena lo que estás usando AHORA. Se borra al apagar. Más RAM = más programas abiertos a la vez. Mínimo 8 GB hoy.</span></div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem 1rem;display:flex;align-items:flex-start;gap:.75rem;">
+                  <span style="font-size:1.4rem;">💾</span>
+                  <div><strong style="color:#34d399;">Disco Duro / SSD</strong><br/><span style="font-size:.83rem;color:var(--text-secondary);">Almacena todo permanentemente. SSD (sólido) = mucho más rápido que HDD (mecánico). Capacidad en GB o TB.</span></div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem 1rem;display:flex;align-items:flex-start;gap:.75rem;">
+                  <span style="font-size:1.4rem;">🔌</span>
+                  <div><strong style="color:#a78bfa;">Placa Madre</strong><br/><span style="font-size:.83rem;color:var(--text-secondary);">Conecta todos los componentes. Es el "sistema nervioso" de la máquina.</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=ExxFxD4OSZ0" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Qué hay dentro de una computadora? (animación)</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~10 min · Español</div></div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=d86ws7mQYIg" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">CPU vs RAM vs Disco Duro — diferencias explicadas</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~8 min · Español</div></div>
+              </a>
+              <a href="https://es.khanacademy.org/computing/computers-and-the-internet" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(16,185,129,0.2);">🎓</div>
+                <div><div style="font-weight:600;">Khan Academy — Computadoras e Internet (interactivo)</div><div style="font-size:.75rem;color:var(--text-secondary);">Khan Academy · Gratis · Español · Con ejercicios</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">🔍 "Administrador de Tareas"</h4>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Presiona <code style="background:var(--bg-dark);padding:0 .3rem;border-radius:.2rem;">Ctrl + Shift + Esc</code> para abrir el Administrador de Tareas.</li>
+                  <li>Ve a la pestaña "Rendimiento" y observa CPU, RAM y Disco.</li>
+                  <li>Abre 5, 10 y 15 pestañas en el navegador y observa cómo sube el uso de RAM.</li>
+                  <li>Anota: ¿Cuánta RAM tienes? ¿Qué porcentaje usas con 10 pestañas?</li>
+                  <li>Busca en Google las especificaciones de tu PC y completa una "ficha técnica".</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u2-1-1"><div class="check-box"></div><span class="check-text">Identifiqué CPU, RAM y disco de mi equipo</span></div>
+              <div class="checklist-item" data-id="u2-1-2"><div class="check-box"></div><span class="check-text">Observé el uso de RAM con múltiples pestañas</span></div>
+              <div class="checklist-item" data-id="u2-1-3"><div class="check-box"></div><span class="check-text">Inicié mi ficha técnica del equipo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESIÓN 2 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-amber">Sesión 2</span>
+          <span style="font-weight:600;">Sistemas Operativos: el director de orquesta</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u2-2">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u2-2',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-2',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-2',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-2',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#fbbf24;margin-bottom:.75rem;">¿Qué es un Sistema Operativo?</h4>
+              <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                El SO es el software que gestiona todos los recursos del hardware y permite que los programas funcionen. Sin él, la computadora es solo metal y plástico.
+              </p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem;">
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;text-align:center;">
+                  <div style="font-size:2rem;margin-bottom:.5rem;">🪟</div>
+                  <div style="font-weight:700;">Windows</div>
+                  <div style="font-size:.78rem;color:var(--text-secondary);">El más usado en PCs. Fácil para principiantes. Microsoft.</div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;text-align:center;">
+                  <div style="font-size:2rem;margin-bottom:.5rem;">🍎</div>
+                  <div style="font-weight:700;">macOS</div>
+                  <div style="font-size:.78rem;color:var(--text-secondary);">Solo en equipos Apple. Elegante y seguro. Curva de aprendizaje media.</div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;text-align:center;">
+                  <div style="font-size:2rem;margin-bottom:.5rem;">🐧</div>
+                  <div style="font-weight:700;">Linux</div>
+                  <div style="font-size:.78rem;color:var(--text-secondary);">Gratuito y de código abierto. Muy flexible. Ubuntu es el más amigable.</div>
+                </div>
+                <div style="background:var(--bg-card2);border-radius:.75rem;padding:1rem;text-align:center;">
+                  <div style="font-size:2rem;margin-bottom:.5rem;">🤖</div>
+                  <div style="font-weight:700;">Android / iOS</div>
+                  <div style="font-size:.78rem;color:var(--text-secondary);">Para dispositivos móviles. Android (Google) e iOS (Apple).</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=26QPDBe-NB8" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">¿Qué es un sistema operativo? — Explicación simple</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~7 min · Español</div></div>
+              </a>
+              <a href="https://www.youtube.com/watch?v=QXe-59uoibU" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">Windows 10 tutorial — Conocimientos básicos para principiantes</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">🖥️ "Explora tu sistema operativo"</h4>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Ve a Configuración del sistema (Inicio → Configuración o ⚙️).</li>
+                  <li>Anota: versión de Windows/macOS, nombre del equipo, espacio disponible.</li>
+                  <li>Abre el Panel de Control y explora "Sistema y seguridad".</li>
+                  <li>Agrega esta info a tu ficha técnica del equipo.</li>
+                  <li>Busca en YouTube cómo se ve Ubuntu Linux y compáralo con tu SO.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u2-2-1"><div class="check-box"></div><span class="check-text">Identifiqué mi sistema operativo y versión</span></div>
+              <div class="checklist-item" data-id="u2-2-2"><div class="check-box"></div><span class="check-text">Exploré la configuración del sistema</span></div>
+              <div class="checklist-item" data-id="u2-2-3"><div class="check-box"></div><span class="check-text">Comparé Windows con Linux y macOS</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESIÓN 3 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-amber">Sesión 3</span>
+          <span style="font-weight:600;">Tipos de software: sistema, aplicaciones y libre</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u2-3">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u2-3',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-3',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-3',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-3',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:.85rem;">
+                  <thead>
+                    <tr style="background:var(--bg-card2);">
+                      <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Tipo</th>
+                      <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Descripción</th>
+                      <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Ejemplos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#fbbf24;font-weight:600;">Sistema</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Gestiona el hardware, indispensable</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Windows, macOS, Linux</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#22d3ee;font-weight:600;">Aplicaciones</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Realiza tareas específicas del usuario</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Word, Chrome, Spotify, WhatsApp</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);"><td style="padding:.5rem 1rem;color:#34d399;font-weight:600;">Libre / Open Source</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Código abierto, gratuito y modificable</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">LibreOffice, VLC, Firefox, Scratch</td></tr>
+                    <tr><td style="padding:.5rem 1rem;color:#a78bfa;font-weight:600;">Propietario</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Requiere licencia de pago</td><td style="padding:.5rem 1rem;color:var(--text-secondary);">Microsoft Office, Adobe Photoshop</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=zgfw2hlIOIA" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">Diferencia entre Open Source y Software libre</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">📊 "Inventario de mis programas"</h4>
+                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
+                  <li>Lista los 10 programas o apps que más usas (celular o PC).</li>
+                  <li>Clasifícalos: ¿Es de sistema, aplicación, libre o propietario?</li>
+                  <li>Identifica cuáles te cuestan dinero y busca alternativas gratuitas.</li>
+                  <li>Instala VLC Media Player (libre y gratuito) desde videolan.org.</li>
+                  <li>Documenta el proceso de instalación con capturas de pantalla.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u2-3-1"><div class="check-box"></div><span class="check-text">Clasifiqué 10 programas que uso regularmente</span></div>
+              <div class="checklist-item" data-id="u2-3-2"><div class="check-box"></div><span class="check-text">Encontré alternativas gratuitas a programas de pago</span></div>
+              <div class="checklist-item" data-id="u2-3-3"><div class="check-box"></div><span class="check-text">Instalé un programa gratuito correctamente</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESIÓN 4 -->
+    <div class="session-block" style="margin-bottom:2rem;">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="badge badge-amber">Sesión 4</span>
+          <span style="font-weight:600;">Mi Ficha Técnica: diagnóstico de mi equipo</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u2-4">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u2-4',0)">📖 Guía</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-4',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-4',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u2-4',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="color:#fbbf24;margin-bottom:.75rem;">¿Cómo saber las especificaciones de mi equipo?</h4>
+              <div class="code-block" style="margin-bottom:1rem;">
+                <div class="code-header"><span>Windows — Información del sistema</span></div>
+                <div class="code-body">
+Inicio → Configuración → Sistema → Acerca de<br/>
+O bien: tecla Win + R → escribir "msinfo32" → Enter<br/><br/>
+También: Ctrl + Shift + Esc → Rendimiento → CPU / Memoria / Disco
+                </div>
+              </div>
+              <div class="code-block">
+                <div class="code-header"><span>Android — Información del dispositivo</span></div>
+                <div class="code-body">
+Configuración → Acerca del dispositivo<br/>
+Información de software y hardware disponible aquí.
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <a href="https://www.youtube.com/watch?v=_MQcWmMp3bI" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div><div style="font-weight:600;">Cómo saber las características de mi laptop: RAM, procesador, almacenamiento</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+              </a>
+            </div>
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:.75rem;">📋 Entregable: Ficha Técnica de mi equipo</h4>
+                <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.75rem;">Crea un documento Word o Google Docs con esta información:</p>
+                <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+                  <li>Marca y modelo del equipo</li>
+                  <li>Procesador (CPU): marca, velocidad en GHz</li>
+                  <li>Memoria RAM: cantidad en GB</li>
+                  <li>Almacenamiento: tipo (HDD/SSD) y capacidad</li>
+                  <li>Sistema Operativo y versión</li>
+                  <li>Tu diagnóstico: ¿Sirve tu equipo para lo que necesitas?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u2-4-1"><div class="check-box"></div><span class="check-text">Encontré el procesador, RAM y almacenamiento de mi equipo</span></div>
+              <div class="checklist-item" data-id="u2-4-2"><div class="check-box"></div><span class="check-text">Completé la ficha técnica en un documento</span></div>
+              <div class="checklist-item" data-id="u2-4-3"><div class="check-box"></div><span class="check-text">Escribí mi diagnóstico personal del equipo</span></div>
+              <div class="checklist-item" data-id="u2-4-4"><div class="check-box"></div><span class="check-text">Guardé la ficha en Drive en CursoInformatica/Unidad2</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTREGABLE -->
+    <div class="card" style="border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.05);margin-bottom:1.5rem;">
+      <div class="card-header" style="border-color:rgba(245,158,11,0.3);">
+        <div style="font-weight:700;color:#fbbf24;">🏅 Entregable de la Unidad 2</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;">
+          <strong style="color:var(--text-primary);">Ficha Técnica de tu equipo</strong> (documento completo con specs reales + diagnóstico personal) y el inventario clasificado de tus 10 programas más usados.
+        </p>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;">
+      <a href="unidad1.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">← Unidad 1</a>
+      <a href="unidad3.html" style="background:var(--primary);color:white;padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">Siguiente: Unidad 3 →</a>
+    </div>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de Informática — Regina</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .week-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 1fr 1fr 1fr 1fr;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .week-row:last-child { border-bottom: none; }
+    .day-cell {
+      background: rgba(255,255,255,0.03);
+      border-radius: 0.4rem;
+      padding: 0.4rem 0.5rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+    <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">Curso Introductorio</div>
+  </div>
+
+  <div style="padding:1rem 1.25rem;">
+    <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.4rem;">Progreso general</div>
+    <div class="progress-bar">
+      <div class="progress-fill main-progress-fill" style="width:0%"></div>
+    </div>
+    <div style="text-align:right;font-size:0.7rem;color:var(--text-secondary);margin-top:0.3rem;">
+      <span class="main-progress-label">0%</span> completado
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Inicio</div>
+    <a href="index.html" class="active">
+      <span>🏠</span> Dashboard
+    </a>
+    <a href="index.html#calendario">
+      <span>📅</span> Calendario semanal
+    </a>
+
+    <div class="sidebar-section-title">Módulos del Curso</div>
+    <a href="modules/fase0.html">
+      <span>🚀</span> Fase 0 · Bienvenida
+    </a>
+    <a href="modules/unidad1.html">
+      <span>🔍</span> Unidad 1 · Información Digital
+    </a>
+    <a href="modules/unidad2.html">
+      <span>🖥️</span> Unidad 2 · Procesamiento
+    </a>
+    <a href="modules/unidad3.html">
+      <span>⚙️</span> Unidad 3 · Algoritmos
+    </a>
+    <a href="modules/proyecto.html">
+      <span>🏆</span> Proyecto Final
+    </a>
+
+    <div class="sidebar-section-title">Recursos</div>
+    <a href="modules/glosario.html">
+      <span>📖</span> Glosario
+    </a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="main-content">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;display:none;" id="menu-btn">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">Dashboard del Curso</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">Introducción a la Informática y Pensamiento Computacional</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <div class="pulse-dot"></div>
+      <span style="font-size:0.8rem;color:var(--text-secondary);">En curso</span>
+    </div>
+  </div>
+
+  <div style="padding:2rem;">
+
+    <!-- HERO -->
+    <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;">
+      <div style="position:relative;z-index:1;">
+        <div class="badge badge-primary" style="margin-bottom:1rem;">📚 Programa completo · 6 semanas</div>
+        <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">
+          Bienvenida al Curso de <span class="text-gradient">Informática</span>
+        </h1>
+        <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
+          Un recorrido práctico desde cero: aprenderás a buscar información, entender tu equipo y crear tus primeros programas. Sin conocimientos previos necesarios.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;">
+          <a href="modules/fase0.html" style="background:var(--primary);color:white;padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">Comenzar →</a>
+          <a href="#modulos" style="background:rgba(255,255,255,0.08);color:var(--text-primary);padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">Ver módulos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="grid-stats" style="margin-bottom:2rem;">
+      <div class="stat-card">
+        <div style="font-size:2rem;font-weight:800;color:#818cf8;">6</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">Semanas de curso</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:2rem;font-weight:800;color:#22d3ee;">4</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">Módulos + Fase 0</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:2rem;font-weight:800;color:#fbbf24;">20+</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">Actividades prácticas</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:2rem;font-weight:800;color:#34d399;">1</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">Proyecto integrador</div>
+      </div>
+    </div>
+
+    <!-- MÓDULOS -->
+    <h2 id="modulos" style="font-size:1.2rem;font-weight:700;margin-bottom:1.25rem;">🗂 Módulos del Curso</h2>
+    <div class="modules-grid" style="margin-bottom:2.5rem;">
+
+      <!-- Fase 0 -->
+      <a href="modules/fase0.html" class="module-card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);"></div>
+        <div style="padding:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <span style="font-size:2rem;">🚀</span>
+            <span class="badge badge-primary">Inicio</span>
+          </div>
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Fase 0 · Bienvenida al Mundo Digital</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Encender la PC, usar teclado y mouse, crear carpetas. Eliminar el miedo y ganar confianza.</p>
+          <hr class="divider" />
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-cyan">1–2 sesiones</span>
+            <span class="badge badge-green">Sin requisitos</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Unidad 1 -->
+      <a href="modules/unidad1.html" class="module-card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#06b6d4,#0ea5e9);"></div>
+        <div style="padding:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <span style="font-size:2rem;">🔍</span>
+            <span class="badge badge-cyan">Unidad 1</span>
+          </div>
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Información Digital</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Búsqueda, almacenamiento, bytes & seguridad. Aprende a buscar, organizar y proteger tu información.</p>
+          <hr class="divider" />
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-cyan">4 sesiones</span>
+            <span class="badge badge-amber">Semanas 1–2</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Unidad 2 -->
+      <a href="modules/unidad2.html" class="module-card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#f59e0b,#ef4444);"></div>
+        <div style="padding:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <span style="font-size:2rem;">🖥️</span>
+            <span class="badge badge-amber">Unidad 2</span>
+          </div>
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Procesamiento Digital</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Hardware, RAM, CPU, sistemas operativos y software. Desmitifica la "caja negra" de tu computadora.</p>
+          <hr class="divider" />
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-cyan">4 sesiones</span>
+            <span class="badge badge-amber">Semanas 3–4</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Unidad 3 -->
+      <a href="modules/unidad3.html" class="module-card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#10b981,#06b6d4);"></div>
+        <div style="padding:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <span style="font-size:2rem;">⚙️</span>
+            <span class="badge badge-green">Unidad 3</span>
+          </div>
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Metodología de Solución de Problemas</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Algoritmos, diagramas de flujo, pseudocódigo y codificación en Scratch/Python. Piensa como programador.</p>
+          <hr class="divider" />
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-cyan">5 sesiones</span>
+            <span class="badge badge-amber">Semanas 5–6</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Proyecto Final -->
+      <a href="modules/proyecto.html" class="module-card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+        <div style="padding:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <span style="font-size:2rem;">🏆</span>
+            <span class="badge badge-amber">Final</span>
+          </div>
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Proyecto Integrador</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Mi Asistente Digital Personal: un programa funcional que integra todo lo aprendido.</p>
+          <hr class="divider" />
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-amber">Semana 6</span>
+            <span class="badge badge-green">Entregable</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Glosario -->
+      <a href="modules/glosario.html" class="module-card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#8b5cf6,#6366f1);"></div>
+        <div style="padding:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+            <span style="font-size:2rem;">📖</span>
+            <span class="badge badge-primary">Recurso</span>
+          </div>
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Glosario de Términos</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Diccionario visual de todos los conceptos del curso. Referencia rápida siempre disponible.</p>
+          <hr class="divider" />
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-primary">40+ términos</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CALENDARIO SEMANAL -->
+    <h2 id="calendario" style="font-size:1.2rem;font-weight:700;margin-bottom:1.25rem;">📅 Flujo Semanal Sugerido</h2>
+    <div class="card" style="margin-bottom:2rem;">
+      <div class="card-header">
+        <div style="font-weight:600;">Modelo Híbrido — Distribución por días</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">20% teoría · 80% práctica activa</div>
+      </div>
+      <div class="card-body" style="overflow-x:auto;">
+        <div style="min-width:600px;">
+          <div class="week-row" style="font-weight:700;color:var(--text-secondary);">
+            <div></div>
+            <div style="text-align:center;">Lunes</div>
+            <div style="text-align:center;">Martes</div>
+            <div style="text-align:center;">Miércoles</div>
+            <div style="text-align:center;">Jueves</div>
+            <div style="text-align:center;">Viernes</div>
+          </div>
+          <div class="week-row">
+            <div style="font-weight:600;font-size:0.8rem;color:var(--text-secondary);">Modalidad</div>
+            <div class="day-cell" style="background:rgba(99,102,241,0.15);color:#818cf8;">Teoría guiada<br/><small>30 min</small></div>
+            <div class="day-cell" style="background:rgba(6,182,212,0.15);color:#22d3ee;">Práctica individual<br/><small>45 min</small></div>
+            <div class="day-cell" style="background:rgba(245,158,11,0.15);color:#fbbf24;">Colaborativa<br/><small>45 min</small></div>
+            <div class="day-cell" style="background:rgba(16,185,129,0.15);color:#34d399;">Laboratorio<br/><small>60 min</small></div>
+            <div class="day-cell" style="background:rgba(139,92,246,0.15);color:#a78bfa;">Metacognición<br/><small>30 min</small></div>
+          </div>
+          <div class="week-row">
+            <div style="font-weight:600;font-size:0.8rem;color:var(--text-secondary);">Actividad</div>
+            <div class="day-cell">Presentar concepto con analogía cotidiana</div>
+            <div class="day-cell">Ejercicio manipulativo o digital</div>
+            <div class="day-cell">Resolución de problema en parejas</div>
+            <div class="day-cell">Avance del proyecto integrador</div>
+            <div class="day-cell">Autoevaluación y glosario</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINCIPIOS PEDAGÓGICOS -->
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1.25rem;">🧠 Principios Pedagógicos</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin-bottom:2rem;">
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">🎯</div>
+          <div style="font-weight:700;margin-bottom:0.4rem;">Contextualización</div>
+          <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Cada concepto nuevo se ancla a una situación cotidiana del estudiante antes de formalizarlo.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">⚡</div>
+          <div style="font-weight:700;margin-bottom:0.4rem;">Microaprendizajes</div>
+          <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Sesiones de 20–45 minutos con un solo objetivo medible. Sin sobrecarga cognitiva.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">🔧</div>
+          <div style="font-weight:700;margin-bottom:0.4rem;">Manipulación tangible</div>
+          <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Antes de ver la teoría, el estudiante interactúa directamente con el fenómeno.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">💬</div>
+          <div style="font-weight:700;margin-bottom:0.4rem;">Retroalimentación inmediata</div>
+          <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Ejercicios con resultado visible al instante. Errores = oportunidades de aprendizaje documentadas.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /padding -->
+</main>
+
+<script src="js/app.js"></script>
+<script>
+  document.getElementById('menu-btn').style.display = 'block';
+</script>
+</body>
+</html>
