@@ -1,0 +1,8 @@
+{
+  "name": "curso-informatica-regina",
+  "version": "1.0.0",
+  "description": "Curso de Informática — Regina",
+  "dependencies": {
+    "@upstash/redis": "^1.34.9"
+  }
+}

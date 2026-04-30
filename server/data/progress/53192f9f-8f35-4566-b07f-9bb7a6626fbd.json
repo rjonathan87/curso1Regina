@@ -1,0 +1,43 @@
+{
+  "userId": "53192f9f-8f35-4566-b07f-9bb7a6626fbd",
+  "email": "rjonathan87@gmail.com",
+  "name": "JOhn",
+  "registeredAt": "2026-04-30T14:56:03.519Z",
+  "lastActivity": "2026-04-30T14:57:50.903Z",
+  "completedCount": 8,
+  "percentComplete": 13,
+  "progress": {
+    "f0-1-1": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:56:23.605Z"
+    },
+    "f0-1-2": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:56:28.378Z"
+    },
+    "f0-1-3": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:56:31.635Z"
+    },
+    "f0-1-4": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:56:35.874Z"
+    },
+    "f0-1-5": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:56:40.575Z"
+    },
+    "f0-1-6": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:56:45.963Z"
+    },
+    "f0-2-1": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:57:10.740Z"
+    },
+    "f0-2-2": {
+      "checked": true,
+      "updatedAt": "2026-04-30T14:57:50.903Z"
+    }
+  }
+}
