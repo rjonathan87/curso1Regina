@@ -4,5 +4,8 @@
       "memory": 128,
       "maxDuration": 10
     }
+  },
+  "env": {
+    "ADMIN_TOKEN": "@admin-token"
   }
 }
