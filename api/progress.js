@@ -1,14 +1,26 @@
 // POST /api/progress
 // Body: { userId, checklistId, checked, totalItems }
 // Actualiza el ítem marcado/desmarcado de un usuario.
+// Usa el mismo sistema de archivos JSON que server/server.js (server/data/).
 
 'use strict';
 
-const { Redis } = require('@upstash/redis');
+const fs   = require('fs');
+const path = require('path');
 
-const kv = Redis.fromEnv();
+const DATA_DIR     = path.join(__dirname, '..', 'server', 'data');
+const USERS_FILE   = path.join(DATA_DIR, 'users.json');
+const PROGRESS_DIR = path.join(DATA_DIR, 'progress');
 
 const sanitize = (str, max) => String(str || '').trim().slice(0, max);
+
+function readJSON(file) {
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
+}
+
+function writeJSON(file, data) {
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+}
 
 function setCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,8 +41,10 @@ module.exports = async function handler(req, res) {
   if (!userId || !checklistId) return res.status(400).json({ error: 'userId y checklistId son requeridos.' });
   if (!/^[0-9a-f-]{36}$/.test(userId)) return res.status(400).json({ error: 'userId inválido.' });
 
-  const prog = await kv.get(`progress:${userId}`);
-  if (!prog) return res.status(404).json({ error: 'Usuario no encontrado.' });
+  const progressFile = path.join(PROGRESS_DIR, `${userId}.json`);
+  if (!fs.existsSync(progressFile)) return res.status(404).json({ error: 'Usuario no encontrado.' });
+
+  const prog = readJSON(progressFile);
 
   prog.progress[checklistId] = { checked, updatedAt: new Date().toISOString() };
 
@@ -41,13 +55,14 @@ module.exports = async function handler(req, res) {
   prog.percentComplete = percentComplete;
   prog.lastActivity    = new Date().toISOString();
 
-  await kv.set(`progress:${userId}`, prog);
+  writeJSON(progressFile, prog);
 
-  // Actualizar lastActivity en el registro del usuario
-  const user = await kv.get(`user:${userId}`);
+  // Actualizar lastActivity en users.json
+  const db   = readJSON(USERS_FILE);
+  const user = db.users.find(u => u.id === userId);
   if (user) {
     user.lastActivity = prog.lastActivity;
-    await kv.set(`user:${userId}`, user);
+    writeJSON(USERS_FILE, db);
   }
 
   return res.status(200).json({ ok: true, completedCount, percentComplete });

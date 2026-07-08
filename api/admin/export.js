@@ -1,12 +1,16 @@
 // GET /api/admin/export?token=TU_TOKEN_SECRETO
 // Devuelve un CSV con el progreso de todos los usuarios.
 // Protegido por token — solo el administrador puede acceder.
+// Usa el mismo sistema de archivos JSON que server/server.js (server/data/).
 
 'use strict';
 
-const { Redis } = require('@upstash/redis');
+const fs   = require('fs');
+const path = require('path');
 
-const kv = Redis.fromEnv();
+const DATA_DIR     = path.join(__dirname, '..', '..', 'server', 'data');
+const USERS_FILE   = path.join(DATA_DIR, 'users.json');
+const PROGRESS_DIR = path.join(DATA_DIR, 'progress');
 
 // Lista completa de ítems del curso (mismo orden que app.js)
 const ALL_IDS = [
@@ -31,6 +35,10 @@ const ALL_IDS = [
   'proy-4-1','proy-4-2','proy-4-3',
 ];
 
+function readJSON(file) {
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
+}
+
 function escapeCSV(value) {
   const str = String(value ?? '');
   if (str.includes(',') || str.includes('"') || str.includes('\n')) {
@@ -50,14 +58,20 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'No autorizado.' });
   }
 
-  // Obtener todos los IDs de usuarios
-  const ids = await kv.lrange('users:ids', 0, -1) || [];
-  if (ids.length === 0) {
+  const db = readJSON(USERS_FILE);
+
+  if (db.users.length === 0) {
     return res.status(200).send('Sin usuarios registrados.');
   }
 
-  // Obtener progreso de cada usuario en paralelo
-  const progresses = await Promise.all(ids.map(id => kv.get(`progress:${id}`)));
+  // Cargar progreso de cada usuario
+  const progresses = db.users.map(u => {
+    const progressFile = path.join(PROGRESS_DIR, `${u.id}.json`);
+    if (fs.existsSync(progressFile)) {
+      return readJSON(progressFile);
+    }
+    return null;
+  }).filter(Boolean);
 
   // Construir CSV
   const headers = [
@@ -70,20 +84,18 @@ module.exports = async function handler(req, res) {
     ...ALL_IDS,
   ];
 
-  const rows = progresses
-    .filter(Boolean)
-    .map(p => {
-      const itemCols = ALL_IDS.map(id => (p.progress?.[id]?.checked ? '1' : '0'));
-      return [
-        escapeCSV(p.name),
-        escapeCSV(p.email),
-        escapeCSV(p.registeredAt ? p.registeredAt.slice(0, 10) : ''),
-        escapeCSV(p.lastActivity ? p.lastActivity.slice(0, 10) : ''),
-        escapeCSV(p.percentComplete ?? 0),
-        escapeCSV(p.completedCount ?? 0),
-        ...itemCols,
-      ].join(',');
-    });
+  const rows = progresses.map(p => {
+    const itemCols = ALL_IDS.map(id => (p.progress?.[id]?.checked ? '1' : '0'));
+    return [
+      escapeCSV(p.name),
+      escapeCSV(p.email),
+      escapeCSV(p.registeredAt ? p.registeredAt.slice(0, 10) : ''),
+      escapeCSV(p.lastActivity ? p.lastActivity.slice(0, 10) : ''),
+      escapeCSV(p.percentComplete ?? 0),
+      escapeCSV(p.completedCount ?? 0),
+      ...itemCols,
+    ].join(',');
+  });
 
   const csv = [headers.map(escapeCSV).join(','), ...rows].join('\r\n');
 

@@ -1,11 +1,13 @@
 // GET /api/progress/:userId
 // Devuelve el progreso completo de un usuario.
+// Usa el mismo sistema de archivos JSON que server/server.js (server/data/).
 
 'use strict';
 
-const { Redis } = require('@upstash/redis');
+const fs   = require('fs');
+const path = require('path');
 
-const kv = Redis.fromEnv();
+const PROGRESS_DIR = path.join(__dirname, '..', '..', 'server', 'data', 'progress');
 
 const sanitize = (str, max) => String(str || '').trim().slice(0, max);
 
@@ -23,8 +25,8 @@ module.exports = async function handler(req, res) {
   const userId = sanitize(req.query.userId, 36);
   if (!/^[0-9a-f-]{36}$/.test(userId)) return res.status(400).json({ error: 'userId inválido.' });
 
-  const prog = await kv.get(`progress:${userId}`);
-  if (!prog) return res.status(404).json({ error: 'Usuario no encontrado.' });
+  const progressFile = path.join(PROGRESS_DIR, `${userId}.json`);
+  if (!fs.existsSync(progressFile)) return res.status(404).json({ error: 'Usuario no encontrado.' });
 
-  return res.status(200).json(prog);
+  return res.status(200).json(JSON.parse(fs.readFileSync(progressFile, 'utf8')));
 };
