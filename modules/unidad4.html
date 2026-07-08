@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unidad 4 · Scratch — Curso Informática</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="../index.html" style="text-decoration:none;">
+      <div style="font-size:1.3rem;font-weight:800;color:white;">💻 InformaticaReg</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">← Volver al Dashboard</div>
+    </a>
+  </div>
+  <div style="padding:1rem 1.25rem;">
+    <div class="progress-bar"><div class="progress-fill main-progress-fill" style="width:0%"></div></div>
+    <div style="text-align:right;font-size:0.7rem;color:var(--text-secondary);margin-top:0.3rem;"><span class="main-progress-label">0%</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-title">Módulos</div>
+    <a href="fase0.html"><span>🚀</span> Fase 0 · Bienvenida</a>
+    <a href="unidad1.html"><span>🔍</span> Unidad 1 · Información Digital</a>
+    <a href="unidad2.html"><span>🧩</span> Unidad 2 · Lógica y Programación</a>
+    <a href="unidad3.html"><span>🐍</span> Unidad 3 · Python</a>
+    <a href="unidad4.html" class="active"><span>🎮</span> Unidad 4 · Scratch</a>
+    <a href="proyecto.html"><span>🏆</span> Proyecto Final</a>
+    <a href="glosario.html"><span>📖</span> Glosario</a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
+      <div>
+        <div style="font-weight:600;font-size:0.95rem;">Unidad 4 · Programación Visual con Scratch</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">3 sesiones · Semanas 7–8</div>
+      </div>
+    </div>
+    <span class="badge badge-primary">🎮 Unidad 4</span>
+  </div>
+
+  <div style="padding:2rem;">
+
+    <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;background:linear-gradient(135deg,#1e293b 0%,#0f172a 40%,#1a1a2e 100%);">
+      <div style="position:relative;z-index:1;">
+        <div class="badge badge-primary" style="margin-bottom:1rem;">Unidad 4 · Semanas 7–8</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">🎮 <span class="text-gradient">Programación Visual</span></h1>
+        <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
+          Scratch es la puerta de entrada perfecta al mundo de la programación. Creado por el MIT, te permite crear juegos, animaciones e historias interactivas ensamblando bloques de colores como si fueran rompecabezas. ¡Sin errores de sintaxis, solo diversión!
+        </p>
+      </div>
+    </div>
+
+    <!-- SESIONES -->
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">📋 Sesiones</h2>
+
+    <!-- Sesión 1 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="badge badge-primary">Sesión 1</span>
+          <span style="font-weight:600;">¡Hola, Scratch! — Primeros pasos</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u4-1" style="margin-bottom:1rem;">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u4-1',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-1',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-1',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-1',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">¿Qué es Scratch?</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Scratch es un lenguaje de programación visual creado por el <strong style="color:var(--text-primary);">MIT Media Lab</strong>. En lugar de escribir código con texto, <strong style="color:var(--text-primary);">arrastras y sueltas bloques</strong> de colores que se ensamblan como piezas de un rompecabezas. Es usado por millones de niños y principiantes en todo el mundo.
+              </p>
+              <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:0.75rem;padding:1rem;margin-bottom:1rem;">
+                <div style="font-weight:700;margin-bottom:0.5rem;color:#818cf8;">🔧 Bloques en Scratch → Conceptos de programación</div>
+                <div style="font-size:0.85rem;color:var(--text-secondary);line-height:1.8;">
+                  <strong style="color:#22d3ee;">🎬 Eventos</strong> (color amarillo) = "Cuando la bandera verde se haga clic" — el inicio del programa<br/>
+                  <strong style="color:#fbbf24;">⚙️ Control</strong> (color naranja) = condicionales (if) y bucles (repetir, por siempre)<br/>
+                  <strong style="color:#a78bfa;">💙 Movimiento</strong> (color azul) = mover el personaje, girar, ir a una posición<br/>
+                  <strong style="color:#f87171;">❤️ Variables</strong> (color rojo) = guardar datos como puntuación, nombre, etc.
+                </div>
+              </div>
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">🖥️ El editor de Scratch</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">
+                El editor tiene 3 áreas principales:
+              </p>
+              <ul style="font-size:0.88rem;color:var(--text-secondary);line-height:1.9;list-style:disc;padding-left:1.5rem;">
+                <li><strong style="color:var(--text-primary);">Panel de bloques</strong> (izquierda): todos los bloques organizados por categoría de color.</li>
+                <li><strong style="color:var(--text-primary);">Área de scripts</strong> (centro): aquí arrastras los bloques para armar tu programa.</li>
+                <li><strong style="color:var(--text-primary);">Escenario</strong> (derecha): la ventana donde ves lo que hace tu programa.</li>
+              </ul>
+            </div>
+
+            <div class="tab-panel">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=a5DOIvjxiQ0" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Curso de Scratch 3.0 desde cero — Para principiantes</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
+              </a>
+              <a href="https://scratch.mit.edu" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(99,102,241,0.2);">🐱</div>
+                <div>
+                  <div style="font-weight:600;">Scratch — Plataforma oficial (MIT)</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">scratch.mit.edu · Gratis · Sin instalación</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">🐱 \"El gato bailarín\"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Tu primer programa en Scratch. El gato se mueve, dice algo y cambia de disfraz.</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 1:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Arrastra un bloque "al hacer clic en bandera verde" (Eventos).</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 2:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Agrega "decir ¡Hola! por 2 segundos" (Apariencia).</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 3:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Agrega "mover 10 pasos" y "esperar 1 segundo" (Movimiento + Control).</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 4:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Agrega "siguiente disfraz" (Apariencia) y haz clic en la bandera verde.</span>
+                  </div>
+                </div>
+                <div style="background:rgba(99,102,241,0.1);border-radius:0.5rem;padding:0.75rem;font-size:0.82rem;color:#818cf8;">
+                  💡 <strong>Desafío:</strong> Haz que el gato rebote cuando toque el borde. Pista: busca "rebotar si está tocando un borde" en Movimiento.
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u4-1-1"><div class="check-box"></div><span class="check-text">Abrí scratch.mit.edu y creé mi cuenta</span></div>
+              <div class="checklist-item" data-id="u4-1-2"><div class="check-box"></div><span class="check-text">Exploré el editor: bloques, área de scripts y escenario</span></div>
+              <div class="checklist-item" data-id="u4-1-3"><div class="check-box"></div><span class="check-text">Hice el programa "El gato bailarín" funcionando</span></div>
+              <div class="checklist-item" data-id="u4-1-4"><div class="check-box"></div><span class="check-text">Guardé mi proyecto en Scratch (compartir o descargar)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sesión 2 -->
+    <div class="session-block">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="badge badge-primary">Sesión 2</span>
+          <span style="font-weight:600;">Condicionales y sensores — programas que reaccionan</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u4-2" style="margin-bottom:1rem;">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u4-2',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-2',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-2',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-2',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">🔀 Condicionales en Scratch</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Así como en Python usamos <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">if</code>, en Scratch usamos el bloque <strong style="color:var(--text-primary);">"si… entonces"</strong> de color naranja (Control). Podemos preguntar cosas como "¿tocando el borde?", "¿tecla presionada?" o "¿número aleatorio?".
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:0.75rem;padding:1rem;">
+                  <div style="font-weight:700;color:#fbbf24;margin-bottom:0.4rem;">🧪 Sensores</div>
+                  <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">
+                    • ¿tocando el borde?<br/>
+                    • ¿tocando el color X?<br/>
+                    • ¿tecla [espacio] presionada?<br/>
+                    • respuesta a "preguntar"
+                  </div>
+                </div>
+                <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:0.75rem;padding:1rem;">
+                  <div style="font-weight:700;color:#fbbf24;margin-bottom:0.4rem;">🔀 Control</div>
+                  <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">
+                    • si… entonces<br/>
+                    • si… entonces… si no<br/>
+                    • esperar hasta que…<br/>
+                    • repetir hasta que…
+                  </div>
+                </div>
+              </div>
+              <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:0.75rem;padding:1rem;">
+                <div style="font-weight:700;margin-bottom:0.5rem;color:#818cf8;">💡 Conexión con Python</div>
+                <div style="font-size:0.85rem;color:var(--text-secondary);">
+                  El bloque "si &lt;tocando borde&gt; entonces → rebotar" en Scratch es exactamente:<br/>
+                  <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">if tocando_borde: rebotar()</code> en Python.<br/>
+                  El concepto es el mismo, solo cambia la forma de escribirlo.
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=oJh2Y5VjV64" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Scratch: condicionales y sensores — Tutorial para niños</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
+              </a>
+              <a href="https://scratch.mit.edu" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(99,102,241,0.2);">🐱</div>
+                <div>
+                  <div style="font-weight:600;">Scratch — Editor online</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">scratch.mit.edu · Gratis</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">🎾 \"Juego de atrapar objetos\"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Un objeto cae desde arriba y tú lo atrapas moviendo una canasta con el mouse.</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 1:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Crea un objeto (pelota) que caiga desde arriba con "por siempre → cambiar y por -3".</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 2:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Crea una canasta (otro objeto) que siga al mouse: "por siempre → ir a puntero del mouse".</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Paso 3:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Agrega un "si ¿tocando Canasta? → decir ¡Atrapado!" y si toca el borde inferior, pierdes.</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Desafío:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Agrega una variable "puntuación" que aumente cada vez que atrapas la pelota.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u4-2-1"><div class="check-box"></div><span class="check-text">Entendí cómo funcionan los condicionales en Scratch (si… entonces)</span></div>
+              <div class="checklist-item" data-id="u4-2-2"><div class="check-box"></div><span class="check-text">Usé sensores como "¿tocando?" y "¿tecla presionada?"</span></div>
+              <div class="checklist-item" data-id="u4-2-3"><div class="check-box"></div><span class="check-text">Hice el juego de atrapar objetos funcionando</span></div>
+              <div class="checklist-item" data-id="u4-2-4"><div class="check-box"></div><span class="check-text">Guardé mi proyecto en Scratch</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sesión 3 -->
+    <div class="session-block" style="margin-bottom:2rem;">
+      <div class="session-header" onclick="toggleSession(this)">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="badge badge-primary">Sesión 3</span>
+          <span style="font-weight:600;">Variables, clonación y tu primer juego completo</span>
+        </div>
+        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+      </div>
+      <div class="session-content">
+        <div id="tabs-u4-3" style="margin-bottom:1rem;">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tabs-u4-3',0)">📖 Teoría</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-3',1)">🎬 Videos</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-3',2)">✏️ Práctica</button>
+            <button class="tab-btn" onclick="switchTab('tabs-u4-3',3)">✅ Checklist</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <div class="tab-panel active">
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">📊 Variables en Scratch</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Así como en Python creabas variables con <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">puntos = 0</code>, en Scratch creas variables desde el bloque <strong style="color:var(--text-primary);">"Variables"</strong> (color rojo). Son ideales para guardar puntuaciones, vidas, nombres o cualquier dato que cambie durante el juego.
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div class="code-block">
+                  <div class="code-header"><span>Scratch (visual)</span></div>
+                  <div class="code-body">[Variables] → "Crear una variable"<br/>&nbsp;&nbsp;→ "puntuación"<br/>[por siempre]<br/>&nbsp;&nbsp;[si tocando Canasta?]<br/>&nbsp;&nbsp;&nbsp;&nbsp;[cambiar puntuación por 1]</div>
+                </div>
+                <div class="code-block">
+                  <div class="code-header"><span>Python (equivalente)</span></div>
+                  <div class="code-body">puntuacion = 0<br/>while True:<br/>&nbsp;&nbsp;if tocando_canasta():<br/>&nbsp;&nbsp;&nbsp;&nbsp;puntuacion += 1</div>
+                </div>
+              </div>
+
+              <h4 style="margin-bottom:0.75rem;color:#818cf8;">🔁 Clonación</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                La <strong style="color:var(--text-primary);">clonación</strong> permite crear copias de un objeto mientras el juego se ejecuta. Es perfecta para: disparar balas, crear enemigos múltiples, estrellas que caen, etc.
+              </p>
+              <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:0.75rem;padding:1rem;">
+                <div style="font-weight:700;margin-bottom:0.5rem;color:#818cf8;">💡 Flujo de clonación</div>
+                <div style="font-size:0.85rem;color:var(--text-secondary);line-height:1.8;">
+                  1. Objeto original: "al hacer clic en bandera verde" → "por siempre → esperar 2 segundos → clonar"<br/>
+                  2. Objeto clon: "al empezar como clon" → "por siempre → mover 10 pasos"<br/>
+                  3. Cuando el clon toca el borde → "eliminar este clon"
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=F5YmQhXBMFA" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Scratch: variables y clonación — Tutorial de juego completo</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">👾 \"Mi primer juego completo\"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Combina TODO lo aprendido: movimiento, condicionales, variables y clonación.</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Requisitos del juego:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Elige uno de estos dos proyectos:</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;border-left:3px solid #22d3ee;">
+                    <strong style="color:#22d3ee;">Opción A — Atrapa estrellas:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Estrellas caen del cielo (clonación), las atrapas con una canasta (mouse), cada atrapada suma puntos (variable), si una toca el suelo pierdes una vida (3 vidas).</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;border-left:3px solid #fbbf24;">
+                    <strong style="color:#fbbf24;">Opción B — Esquivar obstáculos:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Un personaje se mueve con flechas (teclado), obstáculos aparecen de la derecha (clonación), si tocas uno pierdes (sensor), sobrevive el máximo tiempo posible (variable temporizador).</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <div class="checklist-item" data-id="u4-3-1"><div class="check-box"></div><span class="check-text">Creé y usé variables en Scratch (puntos, vidas, etc.)</span></div>
+              <div class="checklist-item" data-id="u4-3-2"><div class="check-box"></div><span class="check-text">Usé clonación para crear múltiples objetos</span></div>
+              <div class="checklist-item" data-id="u4-3-3"><div class="check-box"></div><span class="check-text">Completé mi juego funcional (Opción A o B)</span></div>
+              <div class="checklist-item" data-id="u4-3-4"><div class="check-box"></div><span class="check-text">Compartí mi juego en la comunidad Scratch o lo descargué</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTREGABLE -->
+    <div class="card" style="border-color:rgba(99,102,241,0.4);background:rgba(99,102,241,0.05);margin-bottom:1.5rem;">
+      <div class="card-header" style="border-color:rgba(99,102,241,0.3);">
+        <div style="font-weight:700;color:#818cf8;">🏅 Entregable de la Unidad 4</div>
+      </div>
+      <div class="card-body">
+        <ul style="font-size:0.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>Proyecto "El gato bailarín" funcionando (Sesión 1)</li>
+          <li>Juego de atrapar objetos con condicionales (Sesión 2)</li>
+          <li>Juego completo con variables y clonación (Sesión 3) — compartido en Scratch o descargado</li>
+        </ul>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span class="badge badge-primary">🎮 3 proyectos</span>
+          <span class="badge badge-green">🐱 scratch.mit.edu</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;">
+      <a href="unidad3.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">← Unidad 3</a>
+      <a href="proyecto.html" style="background:var(--primary);color:white;padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">Siguiente: Proyecto Final →</a>
+    </div>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+</body>
+</html>
