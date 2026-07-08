@@ -356,6 +356,84 @@
       </div>
     </div>
 
+    <!-- PUENTE SCRATCH → PYTHON -->
+    <div class="card" style="margin-bottom:2rem;border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.03);">
+      <div class="card-header" style="border-color:rgba(16,185,129,0.2);">
+        <div style="font-weight:700;color:#34d399;">🔗 Puente: De Scratch a Python</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:1rem;">
+          ¿Sabías que TODO lo que hiciste en Scratch también se puede hacer en Python? Los conceptos son los mismos, solo cambia la forma de escribirlos. Esta tabla te muestra el "idioma" equivalente:
+        </p>
+        <div style="overflow-x:auto;margin-bottom:1rem;">
+          <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border);color:var(--text-secondary);">
+                <th style="text-align:left;padding:.5rem .75rem;">Concepto</th>
+                <th style="text-align:left;padding:.5rem .75rem;">🐱 Scratch</th>
+                <th style="text-align:left;padding:.5rem .75rem;">🐍 Python</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Iniciar programa</td><td style="padding:.4rem .75rem;font-family:monospace;">al hacer clic en 🏴</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">while True:</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Mostrar mensaje</td><td style="padding:.4rem .75rem;font-family:monospace;">decir "Hola" por 2s</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">print("Hola")</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Repetir siempre</td><td style="padding:.4rem .75rem;font-family:monospace;">por siempre</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">while True:</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Repetir N veces</td><td style="padding:.4rem .75rem;font-family:monospace;">repetir 10</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">for i in range(10):</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Decisión simple</td><td style="padding:.4rem .75rem;font-family:monospace;">si … entonces</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">if ... :</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Decisión con alternativas</td><td style="padding:.4rem .75rem;font-family:monospace;">si … si no</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">if ... else ...</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Preguntar al usuario</td><td style="padding:.4rem .75rem;font-family:monospace;">preguntar y esperar</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">input()</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Guardar un dato</td><td style="padding:.4rem .75rem;font-family:monospace;">variable: puntuación</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">puntuacion = 0</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .75rem;">Cambiar un dato</td><td style="padding:.4rem .75rem;font-family:monospace;">cambiar puntuación por 1</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">puntuacion += 1</td></tr>
+              <tr><td style="padding:.4rem .75rem;">Número al azar</td><td style="padding:.4rem .75rem;font-family:monospace;">número aleatorio entre 1 y 10</td><td style="padding:.4rem .75rem;font-family:monospace;color:#34d399;">random.randint(1, 10)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
+          <h4 style="color:#34d399;margin-bottom:.5rem;">🧠 "Traduce tu juego"</h4>
+          <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">Toma el juego que hiciste en Scratch (el de atrapar objetos o el de esquivar) y escribe el equivalente en Python. No tiene que funcionar perfecto, solo intenta escribir la lógica:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="code-block">
+              <div class="code-header"><span>🐱 Scratch</span></div>
+              <div class="code-body">por siempre:<br/>&nbsp;&nbsp;si ¿tocando Canasta?<br/>&nbsp;&nbsp;&nbsp;&nbsp;cambiar puntuación x 1</div>
+            </div>
+            <div class="code-block">
+              <div class="code-header"><span>🐍 Python</span></div>
+              <div class="code-body">while True:<br/>&nbsp;&nbsp;if tocando_canasta():<br/>&nbsp;&nbsp;&nbsp;&nbsp;puntuacion += 1</div>
+            </div>
+          </div>
+          <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem;">
+            <div class="checklist-item" data-id="u4-4-1"><div class="check-box"></div><span class="check-text">Leí la tabla comparativa Scratch → Python</span></div>
+            <div class="checklist-item" data-id="u4-4-2"><div class="check-box"></div><span class="check-text">Identifiqué las similitudes entre bloques y código real</span></div>
+            <div class="checklist-item" data-id="u4-4-3"><div class="check-box"></div><span class="check-text">Traduje al menos un programa de Scratch a Python (mentalmente o en papel)</span></div>
+            <div class="checklist-item" data-id="u4-4-4"><div class="check-box"></div><span class="check-text">Escribí el equivalente Python de una parte de mi juego</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETOS EXTRA -->
+    <div class="card" style="margin-bottom:2rem;border-color:rgba(139,92,246,0.3);background:rgba(139,92,246,0.03);">
+      <div class="card-header" style="border-color:rgba(139,92,246,0.2);">
+        <div style="font-weight:700;color:#a78bfa;">⭐ Retos extra — ¿Terminaste? ¡Más diversión!</div>
+      </div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;">
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
+            <div style="font-weight:600;color:#22d3ee;margin-bottom:.25rem;">🧠 Juego de memoria</div>
+            <div style="font-size:.8rem;color:var(--text-secondary);">Aparecen figuras por 2 segundos y el jugador debe recordar cuáles eran. Usa clones, variables y temporizador.</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
+            <div style="font-weight:600;color:#fbbf24;margin-bottom:.25rem;">🐢 Carrera de animales</div>
+            <div style="font-size:.8rem;color:var(--text-secondary);">Dos personajes compiten avanzando pasos aleatorios por turno. El primero en la meta gana.</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
+            <div style="font-weight:600;color:#f87171;margin-bottom:.25rem;">🏓 Pong simplificado</div>
+            <div style="font-size:.8rem;color:var(--text-secondary);">Dos paletas (W/S y flechas) y una pelota que rebota. Punto cuando la pelota pasa al oponente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ENTREGABLE -->
     <div class="card" style="border-color:rgba(99,102,241,0.4);background:rgba(99,102,241,0.05);margin-bottom:1.5rem;">
       <div class="card-header" style="border-color:rgba(99,102,241,0.3);">
