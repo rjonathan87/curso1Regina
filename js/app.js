@@ -3,6 +3,7 @@
 // ── Endpoint de la API ──────────────────────────────────────────────────────
 // • Live Server (puerto 5500)  → apunta al servidor Express local en :3000
 // • Vercel / Express (:3000)   → ruta relativa /api (mismo origen)
+// • Si la API no responde, TODO funciona con localStorage igualmente.
 const API_BASE =
   (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') &&
   window.location.port === '5500'
@@ -95,10 +96,11 @@ function initChecklists() {
 }
 
 function toggleCheck(item) {
-  const key = 'check_' + item.dataset.id;
-  const box = item.querySelector('.check-box');
+  const key     = 'check_' + item.dataset.id;
+  const box     = item.querySelector('.check-box');
   item.classList.toggle('checked');
-  if (item.classList.contains('checked')) {
+  const checked = item.classList.contains('checked');
+  if (checked) {
     localStorage.setItem(key, '1');
     if (box) box.innerHTML = '✓';
   } else {
@@ -106,12 +108,13 @@ function toggleCheck(item) {
     if (box) box.innerHTML = '';
   }
   updateProgress();
+  syncProgressToServer(item.dataset.id, checked);
 }
 
 function updateProgress() {
-  const total = ALL_CHECKLIST_IDS.length;
+  const total   = ALL_CHECKLIST_IDS.length;
   const checked = ALL_CHECKLIST_IDS.filter(id => localStorage.getItem('check_' + id) === '1').length;
-  const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+  const pct     = total > 0 ? Math.round((checked / total) * 100) : 0;
   document.querySelectorAll('.main-progress-fill').forEach(b => b.style.width = pct + '%');
   document.querySelectorAll('.main-progress-label').forEach(l => l.textContent = pct + '%');
 }
@@ -122,6 +125,14 @@ function highlightCurrentModule() {
   document.querySelectorAll('.sidebar-nav a').forEach(a => {
     const href = a.getAttribute('href');
     if (href === page) a.classList.add('active');
+  });
+}
+
+// ── Generar un UUID simple (sin depender de servidor) ────────────────────────
+function generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
   });
 }
 
@@ -201,6 +212,18 @@ async function handleWelcomeSubmit(e) {
   btn.disabled    = true;
   btn.textContent = 'Guardando…';
 
+  // ── 1. Generar userId local (SIN DEPENDER DEL SERVIDOR) ──
+  const localId = generateUUID();
+
+  // ── 2. Guardar inmediato en localStorage ──
+  localStorage.setItem('userId', localId);
+  localStorage.setItem('userName', name);
+  localStorage.setItem('userEmail', email);
+  localStorage.setItem('userRegisteredAt', new Date().toISOString());
+
+  currentUser = { userId: localId, name, email };
+
+  // ── 3. Intentar registrar en servidor (opcional — puede fallar) ──
   try {
     const res  = await fetch(`${API_BASE}/register`, {
       method:  'POST',
@@ -209,39 +232,32 @@ async function handleWelcomeSubmit(e) {
     });
     const data = await res.json();
 
-    if (!res.ok) {
-      showModalError(data.error || 'Error al registrar. Intenta de nuevo.');
-      btn.disabled    = false;
-      btn.textContent = 'Comenzar el curso →';
-      return;
+    if (res.ok && data.userId) {
+      // Si el servidor nos da un userId, lo usamos en lugar del local
+      localStorage.setItem('userId', data.userId);
+      localStorage.setItem('userName', data.name);
+      localStorage.setItem('userEmail', data.email);
+      currentUser = { userId: data.userId, name: data.name, email: data.email };
     }
-
-    // Guardar en localStorage
-    localStorage.setItem('userId', data.userId);
-    localStorage.setItem('userName', data.name);
-    localStorage.setItem('userEmail', data.email);
-    currentUser = { userId: data.userId, name: data.name, email: data.email };
-
-    // Mostrar saludo y cerrar modal
-    const overlay = document.getElementById('welcome-overlay');
-    overlay.innerHTML = `
-      <div style="background:#1e293b;border:1px solid #22d3ee;border-radius:1.25rem;padding:2.5rem 2rem;
-                  max-width:380px;width:100%;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.6);">
-        <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
-        <h2 style="color:#f1f5f9;font-size:1.3rem;font-weight:800;margin-bottom:0.75rem;">
-          ¡Hola, ${escapeHtml(data.name)}!
-        </h2>
-        <p style="color:#94a3b8;font-size:0.9rem;line-height:1.7;">
-          Tu progreso se irá guardando automáticamente. ¡Que empiece el aprendizaje!
-        </p>
-      </div>`;
-    setTimeout(closeWelcomeModal, 1800);
-
-  } catch (err) {
-    showModalError('No se pudo conectar con el servidor. Verifica que esté activo.');
-    btn.disabled    = false;
-    btn.textContent = 'Comenzar el curso →';
+  } catch (_) {
+    // Servidor no disponible → el registro local es suficiente
+    console.log('Registro offline — usando localStorage');
   }
+
+  // ── 4. Mostrar saludo y cerrar modal ──
+  const overlay = document.getElementById('welcome-overlay');
+  overlay.innerHTML = `
+    <div style="background:#1e293b;border:1px solid #22d3ee;border-radius:1.25rem;padding:2.5rem 2rem;
+                max-width:380px;width:100%;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.6);">
+      <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+      <h2 style="color:#f1f5f9;font-size:1.3rem;font-weight:800;margin-bottom:0.75rem;">
+        ¡Hola, ${escapeHtml(currentUser.name)}!
+      </h2>
+      <p style="color:#94a3b8;font-size:0.9rem;line-height:1.7;">
+        Tu progreso se irá guardando automáticamente. ¡Que empiece el aprendizaje!
+      </p>
+    </div>`;
+  setTimeout(closeWelcomeModal, 1800);
 }
 
 function showModalError(msg) {
@@ -318,92 +334,6 @@ function initUserSystem() {
   } else {
     injectWelcomeModal();
   }
-}
-
-// ── Navigation ───────────────────────────────────────────────────────────────
-function initNav() {
-  const links = document.querySelectorAll('.sidebar-nav a');
-  links.forEach(link => {
-    link.addEventListener('click', function () {
-      links.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      if (window.innerWidth < 768) {
-        document.getElementById('sidebar').classList.remove('open');
-      }
-    });
-  });
-}
-
-// ---- Mobile sidebar toggle ----
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-}
-
-// ---- Accordion Sessions ----
-function toggleSession(el) {
-  const content = el.nextElementSibling;
-  const icon = el.querySelector('.toggle-icon');
-  content.classList.toggle('open');
-  if (icon) icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
-}
-
-// ---- Tabs ----
-function switchTab(groupId, tabIndex) {
-  const group = document.getElementById(groupId);
-  if (!group) return;
-  group.querySelectorAll('.tab-btn').forEach((btn, i) => {
-    btn.classList.toggle('active', i === tabIndex);
-  });
-  group.querySelectorAll('.tab-panel').forEach((panel, i) => {
-    panel.classList.toggle('active', i === tabIndex);
-  });
-}
-
-// ---- Checklist (persisted in localStorage + sincronizado con servidor) ----
-function initChecklists() {
-  document.querySelectorAll('.checklist-item').forEach(item => {
-    const key = 'check_' + item.dataset.id;
-    if (localStorage.getItem(key) === '1') {
-      item.classList.add('checked');
-      const box = item.querySelector('.check-box');
-      if (box) box.innerHTML = '✓';
-    }
-    item.addEventListener('click', () => toggleCheck(item));
-  });
-  updateProgress();
-}
-
-function toggleCheck(item) {
-  const key     = 'check_' + item.dataset.id;
-  const box     = item.querySelector('.check-box');
-  item.classList.toggle('checked');
-  const checked = item.classList.contains('checked');
-  if (checked) {
-    localStorage.setItem(key, '1');
-    if (box) box.innerHTML = '✓';
-  } else {
-    localStorage.removeItem(key);
-    if (box) box.innerHTML = '';
-  }
-  updateProgress();
-  syncProgressToServer(item.dataset.id, checked);
-}
-
-function updateProgress() {
-  const total   = ALL_CHECKLIST_IDS.length;
-  const checked = ALL_CHECKLIST_IDS.filter(id => localStorage.getItem('check_' + id) === '1').length;
-  const pct     = total > 0 ? Math.round((checked / total) * 100) : 0;
-  document.querySelectorAll('.main-progress-fill').forEach(b => b.style.width = pct + '%');
-  document.querySelectorAll('.main-progress-label').forEach(l => l.textContent = pct + '%');
-}
-
-// ---- Module page active highlight in sidebar ----
-function highlightCurrentModule() {
-  const page = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.sidebar-nav a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === page) a.classList.add('active');
-  });
 }
 
 // ---- Init ----
