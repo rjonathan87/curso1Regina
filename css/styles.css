@@ -428,6 +428,9 @@ body {
 }
 @keyframes py-spin { to { transform: rotate(360deg); } }
 
+/* ===== ÁREA DE INPUT PARA EL USUARIO ===== */
+#py-input-area input:focus { border-color: #22d3ee !important; }
+
 /* ===== BOTÓN "EJECUTAR" EN BLOQUES DE CÓDIGO ===== */
 .py-run-code-btn {
   background: linear-gradient(90deg,#22d3ee,#06b6d4);
