@@ -70,26 +70,18 @@
       </div>
     </div>
 
-    <!-- Editor Python embebido (visible siempre) -->
+    <!-- NOTA: Consola Python flotante -->
     <div class="card" style="margin-bottom:2rem;border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.03);">
       <div class="card-header" style="border-color:rgba(34,211,238,0.2);">
-        <div style="font-weight:700;color:#22d3ee;">💻 Consola de Python — ¡Pruébalo aquí mismo!</div>
+        <div style="font-weight:700;color:#22d3ee;">🐍 Consola Python disponible</div>
       </div>
-      <div class="card-body">
-        <div class="py-editor-wrap">
-          <div class="py-editor-header">
-            <span>🐍 Python 3.12 (en tu navegador)</span>
-            <button class="py-editor-btn" id="py-run-btn" onclick="runPython()">▶ Ejecutar</button>
-          </div>
-          <textarea class="py-editor-textarea" id="py-code" placeholder="# Escribe tu código Python aquí y presiona Ejecutar
-print('¡Hola, mundo!')
-nombre = input('¿Cómo te llamas? ')
-print('Mucho gusto, ' + nombre)" spellcheck="false">print('¡Hola, mundo!')</textarea>
-          <div class="py-editor-output" id="py-output">💡 Escribe código arriba y presiona "Ejecutar" para ver el resultado aquí.</div>
-          <div class="py-loading" id="py-loading" style="display:none;">
-            <div class="spinner"></div>
-            Cargando Python…
-          </div>
+      <div class="card-body" style="text-align:center;">
+        <p style="font-size:.9rem;color:var(--text-secondary);margin-bottom:.75rem;">
+          Haz clic en el botón <strong style="color:#22d3ee;">🐍</strong> de la esquina inferior derecha para abrir la consola de Python en cualquier momento. Está disponible en <strong style="color:var(--text-primary);">todas las páginas</strong> del curso.
+        </p>
+        <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.2);border-radius:99px;padding:.5rem 1.25rem;">
+          <span style="font-size:1.2rem;">🐍</span>
+          <span style="font-size:.85rem;color:#22d3ee;">Haz clic aquí abajo →</span>
         </div>
       </div>
     </div>
@@ -514,83 +506,6 @@ print('Mucho gusto, ' + nombre)" spellcheck="false">print('¡Hola, mundo!')</tex
 </main>
 
 <script src="../js/app.js"></script>
-<script>
-// ── Pyodide — Python en el navegador ────────────────────────────────────
-let pyodide = null;
-const pyBtn     = document.getElementById('py-run-btn');
-const pyCode    = document.getElementById('py-code');
-const pyOutput  = document.getElementById('py-output');
-const pyLoading = document.getElementById('py-loading');
-
-async function loadPyodideRuntime() {
-  if (pyodide) return;
-  pyLoading.style.display = 'flex';
-  pyOutput.textContent = '⏳ Cargando Python en tu navegador… (solo la primera vez)';
-  try {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js';
-    script.onload = async () => {
-      pyodide = await globalThis.loadPyodide();
-      pyLoading.style.display = 'none';
-      pyOutput.textContent = '✅ Python listo. Escribe código y presiona "Ejecutar".';
-      pyOutput.className = 'py-editor-output success';
-      pyBtn.disabled = false;
-    };
-    document.head.appendChild(script);
-  } catch (e) {
-    pyLoading.style.display = 'none';
-    pyOutput.textContent = '❌ Error al cargar Python: ' + e.message;
-    pyOutput.className = 'py-editor-output error';
-  }
-}
-
-async function runPython() {
-  if (!pyodide) {
-    pyOutput.textContent = '⏳ Python todavía no termina de cargar. Espera un momento…';
-    pyOutput.className = 'py-editor-output';
-    return;
-  }
-
-  const code = pyCode.value.trim();
-  if (!code) {
-    pyOutput.textContent = '✏️ Escribe código en el editor antes de ejecutar.';
-    pyOutput.className = 'py-editor-output';
-    return;
-  }
-
-  pyBtn.disabled = true;
-  pyBtn.textContent = '⏳ Ejecutando…';
-  pyOutput.className = 'py-editor-output';
-
-  try {
-    // Capturar print()
-    pyodide.runPython(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-    `);
-    pyodide.runPython(code);
-    const result = pyodide.runPython('sys.stdout.getvalue()');
-    if (result && result.trim()) {
-      pyOutput.textContent = result;
-      pyOutput.className = 'py-editor-output success';
-    } else {
-      pyOutput.textContent = '✅ Código ejecutado sin errores (no hubo output de print())';
-      pyOutput.className = 'py-editor-output success';
-    }
-  } catch (e) {
-    pyOutput.textContent = '❌ ' + e.message;
-    pyOutput.className = 'py-editor-output error';
-  }
-
-  pyBtn.disabled = false;
-  pyBtn.textContent = '▶ Ejecutar';
-}
-
-// Cargar Pyodide al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-  loadPyodideRuntime();
-});
-</script>
+<script src="../js/py-console.js"></script>
 </body>
 </html>

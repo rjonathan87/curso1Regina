@@ -361,6 +361,72 @@ body {
   }
 }
 
+/* ===== PYTHON CONSOLE FLOATING BUTTON ===== */
+#py-console-fab {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+  width: 3.5rem; height: 3.5rem; border-radius: 50%;
+  background: linear-gradient(135deg,#22d3ee,#06b6d4);
+  border: none; color: #0f172a; font-size: 1.5rem; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.4);
+  transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
+}
+#py-console-fab:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(6,182,212,0.6); }
+#py-console-fab:active { transform: scale(0.95); }
+
+/* ===== PYTHON CONSOLE MODAL ===== */
+#py-console-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center; padding: 1rem;
+}
+#py-console-overlay.open { display: flex; }
+#py-console-modal {
+  background: #0f172a; border: 1px solid #334155; border-radius: 1rem;
+  width: 100%; max-width: 720px; max-height: 80vh; overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  display: flex; flex-direction: column;
+}
+#py-console-modal .py-editor-header {
+  background: #1e293b; padding: .75rem 1rem; display: flex;
+  align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #334155; flex-shrink: 0;
+}
+#py-console-modal .py-editor-header span { font-size: .85rem; color: #94a3b8; font-weight: 600; }
+#py-console-close {
+  background: none; border: none; color: #94a3b8; font-size: 1.3rem; cursor: pointer;
+  padding: .25rem; transition: color .2s; line-height: 1;
+}
+#py-console-close:hover { color: #f87171; }
+#py-console-modal .py-run-btn {
+  background: linear-gradient(90deg,#22d3ee,#06b6d4); border: none; color: #0f172a;
+  padding: .35rem 1rem; border-radius: .4rem; font-weight: 700; font-size: .8rem;
+  cursor: pointer; transition: opacity .2s;
+}
+#py-console-modal .py-run-btn:hover { opacity: .85; }
+#py-console-modal .py-run-btn:disabled { opacity: .4; cursor: not-allowed; }
+#py-console-modal textarea {
+  width: 100%; min-height: 180px; background: #0f172a; border: none;
+  color: #e2e8f0; font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  font-size: .85rem; padding: 1rem; resize: vertical; outline: none; tab-size: 2;
+}
+#py-console-modal .py-output {
+  background: #0f172a; padding: .75rem 1rem;
+  font-family: 'Fira Code', 'Courier New', monospace; font-size: .82rem;
+  min-height: 50px; max-height: 200px; overflow-y: auto;
+  border-top: 1px solid #334155; white-space: pre-wrap; color: #94a3b8;
+}
+#py-console-modal .py-output.success { color: #34d399; }
+#py-console-modal .py-output.error { color: #f87171; }
+#py-console-modal .py-loading {
+  display: flex; align-items: center; gap: .5rem; padding: .5rem 1rem;
+  font-size: .82rem; color: #94a3b8; border-top: 1px solid #334155;
+}
+#py-console-modal .py-loading .spinner {
+  width: 14px; height: 14px; border: 2px solid #334155;
+  border-top-color: #22d3ee; border-radius: 50%; animation: py-spin .8s linear infinite;
+}
+@keyframes py-spin { to { transform: rotate(360deg); } }
+
 /* ===== UTILITIES ===== */
 .text-gradient {
   background: linear-gradient(135deg, #818cf8, #22d3ee);
