@@ -246,6 +246,13 @@ builtins.input = _medplat_input
       `);
     }
 
+    // Limpiar output y cola para empezar fresco (ejecucion manual)
+    pyodide.runPython(`
+_medplat_output = ""
+_medplat_input_queue = []
+    `);
+    output.textContent = '⏳ Ejecutando…';
+
     executeWithIO(code, output, btn, true);
 
     btn.disabled = false;
