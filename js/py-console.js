@@ -29,7 +29,7 @@
             <button id="py-console-close">✕</button>
           </div>
         </div>
-        <textarea id="py-fab-code" spellcheck="false" placeholder="# Escribe tu código Python aquí y presiona Ejecutar">print('¡Hola desde la consola!')</textarea>
+        <textarea id="py-fab-code" spellcheck="false" placeholder="# Escribe tu código Python aquí" style="min-height:120px;">print('¡Hola desde la consola!')</textarea>
         <div class="py-output" id="py-fab-output">💡 Escribe código arriba y presiona "Ejecutar".</div>
         <div class="py-loading" id="py-fab-loading" style="display:none;">
           <div class="spinner"></div>

@@ -385,35 +385,36 @@ body {
   width: 100%; max-width: 720px; max-height: 80vh; overflow: hidden;
   box-shadow: 0 25px 60px rgba(0,0,0,0.6);
   display: flex; flex-direction: column;
+  margin: .5rem;
 }
 #py-console-modal .py-editor-header {
-  background: #1e293b; padding: .75rem 1rem; display: flex;
+  background: #1e293b; padding: .6rem .75rem; display: flex;
   align-items: center; justify-content: space-between;
-  border-bottom: 1px solid #334155; flex-shrink: 0;
+  border-bottom: 1px solid #334155; flex-shrink: 0; gap: .5rem;
 }
-#py-console-modal .py-editor-header span { font-size: .85rem; color: #94a3b8; font-weight: 600; }
+#py-console-modal .py-editor-header span { font-size: .8rem; color: #94a3b8; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #py-console-close {
-  background: none; border: none; color: #94a3b8; font-size: 1.3rem; cursor: pointer;
-  padding: .25rem; transition: color .2s; line-height: 1;
+  background: none; border: none; color: #94a3b8; font-size: 1.2rem; cursor: pointer;
+  padding: .25rem; transition: color .2s; line-height: 1; flex-shrink: 0;
 }
 #py-console-close:hover { color: #f87171; }
 #py-console-modal .py-run-btn {
   background: linear-gradient(90deg,#22d3ee,#06b6d4); border: none; color: #0f172a;
-  padding: .35rem 1rem; border-radius: .4rem; font-weight: 700; font-size: .8rem;
-  cursor: pointer; transition: opacity .2s;
+  padding: .35rem .75rem; border-radius: .4rem; font-weight: 700; font-size: .75rem;
+  cursor: pointer; transition: opacity .2s; white-space: nowrap; flex-shrink: 0;
 }
 #py-console-modal .py-run-btn:hover { opacity: .85; }
 #py-console-modal .py-run-btn:disabled { opacity: .4; cursor: not-allowed; }
 #py-console-modal textarea {
-  width: 100%; min-height: 180px; background: #0f172a; border: none;
+  width: 100%; min-height: 140px; background: #0f172a; border: none;
   color: #e2e8f0; font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
-  font-size: .85rem; padding: 1rem; resize: vertical; outline: none; tab-size: 2;
+  font-size: .82rem; padding: .75rem; resize: vertical; outline: none; tab-size: 2;
 }
 #py-console-modal .py-output {
-  background: #0f172a; padding: .75rem 1rem;
-  font-family: 'Fira Code', 'Courier New', monospace; font-size: .82rem;
-  min-height: 50px; max-height: 200px; overflow-y: auto;
-  border-top: 1px solid #334155; white-space: pre-wrap; color: #94a3b8;
+  background: #0f172a; padding: .65rem .75rem;
+  font-family: 'Fira Code', 'Courier New', monospace; font-size: .8rem;
+  min-height: 40px; max-height: 150px; overflow-y: auto;
+  border-top: 1px solid #334155; white-space: pre-wrap; color: #94a3b8; word-break: break-all;
 }
 #py-console-modal .py-output.success { color: #34d399; }
 #py-console-modal .py-output.error { color: #f87171; }
@@ -426,6 +427,16 @@ body {
   border-top-color: #22d3ee; border-radius: 50%; animation: py-spin .8s linear infinite;
 }
 @keyframes py-spin { to { transform: rotate(360deg); } }
+
+/* Responsive: pantallas pequeñas */
+@media (max-width: 480px) {
+  #py-console-fab { width: 2.8rem; height: 2.8rem; font-size: 1.2rem; bottom: 1rem; right: 1rem; }
+  #py-console-modal { max-height: 90vh; margin: .25rem; border-radius: .75rem; }
+  #py-console-modal .py-editor-header { padding: .4rem .5rem; }
+  #py-console-modal .py-editor-header span { font-size: .72rem; }
+  #py-console-modal textarea { min-height: 100px; font-size: .78rem; padding: .5rem; }
+  #py-console-modal .py-output { min-height: 35px; max-height: 120px; font-size: .75rem; padding: .5rem; }
+}
 
 /* ===== UTILITIES ===== */
 .text-gradient {
