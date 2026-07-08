@@ -226,88 +226,52 @@
     inputQueue = [];
     waitingForInput = false;
 
-    try {
-      // Redefinir input() para que use nuestra cola
+    // Limpiar namespace solo en primera ejecucion
+    try { pyodide.runPython('_medplat_initialized'); } catch(e) {
+      // Primera ejecucion: inicializar
       pyodide.runPython(`
 import sys
 from io import StringIO
-sys.stdout = StringIO()
-
-# input() personalizado: si hay valores en cola los usa, si no lanza InputRequired
-_input_queue = []
-def _custom_input(prompt=""):
+_medplat_initialized = True
+_medplat_output = ""
+_medplat_input_queue = []
+def _medplat_input(prompt=""):
     import js
-    if _input_queue:
-        return _input_queue.pop(0)
-    # Guardar el prompt para mostrarlo
-    _last_prompt = prompt
+    if _medplat_input_queue:
+        return _medplat_input_queue.pop(0)
+    _medplat_last_prompt = prompt
     raise Exception("__INPUT_REQUIRED__:" + prompt)
-
-# Reemplazar input global
 import builtins
-builtins.input = _custom_input
+builtins.input = _medplat_input
       `);
-
-      pyodide.runPython(code);
-      const result = pyodide.runPython('sys.stdout.getvalue()');
-
-      if (result && result.trim()) {
-        output.textContent = result;
-        output.className = 'py-output success';
-      } else {
-        output.textContent = '✅ Código ejecutado sin errores.';
-        output.className = 'py-output success';
-      }
-
-      btn.disabled = false;
-      btn.textContent = '▶ Ejecutar';
-
-    } catch (e) {
-      const msg = e.message;
-
-      // Detectar si el código necesita input()
-      if (msg.includes('__INPUT_REQUIRED__:')) {
-        const prompt = msg.split('__INPUT_REQUIRED__:')[1] || '';
-        output.textContent = (prompt ? '✏️ ' + prompt : '✏️ El programa necesita tu respuesta:');
-        output.className = 'py-output';
-        showInput();
-        waitingForInput = true;
-
-        pendingInput = (userValue) => {
-          // Meter el valor en la cola y continuar
-          inputQueue.push(userValue);
-          waitingForInput = false;
-          continueExecution(code, output, btn);
-        };
-        return;
-      }
-
-      output.textContent = '❌ ' + msg;
-      output.className = 'py-output error';
-      btn.disabled = false;
-      btn.textContent = '▶ Ejecutar';
     }
+
+    executeWithIO(code, output, btn, true);
+
+    btn.disabled = false;
+    btn.textContent = '▶ Ejecutar';
   }
 
-  async function continueExecution(code, output, btn) {
+  async function executeWithIO(code, output, btn, isFirstRun) {
     try {
+      // Restaurar output previo de Python
+      const prevOutput = pyodide.runPython(`
+_medplat_output if '_medplat_output' in dir() else ""
+      `);
       pyodide.runPython(`
 import sys
 from io import StringIO
 sys.stdout = StringIO()
-_input_queue = ${JSON.stringify([...inputQueue].reverse())}
-def _custom_input(prompt=""):
-    import js
-    if _input_queue:
-        return _input_queue.pop(0)
-    _last_prompt = prompt
-    raise Exception("__INPUT_REQUIRED__:" + prompt)
-import builtins
-builtins.input = _custom_input
+if ${JSON.stringify(prevOutput)}:
+    sys.stdout.write(${JSON.stringify(prevOutput)})
       `);
 
       pyodide.runPython(code);
-      const result = pyodide.runPython('sys.stdout.getvalue()');
+
+      const result = pyodide.runPython(`
+_medplat_output = sys.stdout.getvalue()
+_medplat_output
+      `);
 
       if (result && result.trim()) {
         output.textContent = result;
@@ -316,30 +280,40 @@ builtins.input = _custom_input
         output.textContent = '✅ Código ejecutado sin errores.';
         output.className = 'py-output success';
       }
+      hideInput();
+
     } catch (e) {
       const msg = e.message;
       if (msg.includes('__INPUT_REQUIRED__:')) {
+        // Preservar el output actual
+        pyodide.runPython('_medplat_output = sys.stdout.getvalue() if hasattr(sys.stdout, "getvalue") else ""');
+
         const prompt = msg.split('__INPUT_REQUIRED__:')[1] || '';
-        output.textContent += '\n✏️ ' + (prompt || 'El programa necesita otro valor:');
+        const currentOutput = output.textContent;
+        output.textContent = currentOutput + '\n✏️ ' + (prompt || 'Respuesta:');
         output.className = 'py-output';
         showInput();
         waitingForInput = true;
 
         pendingInput = (userValue) => {
-          inputQueue.push(userValue);
+          // Poner el valor en la cola de Python y continuar
+          pyodide.runPython(`_medplat_input_queue.append(${JSON.stringify(userValue)})`);
           waitingForInput = false;
-          continueExecution(code, output, btn);
+          executeWithIO(code, output, btn, false);
         };
         return;
       }
+
       output.textContent = '❌ ' + msg;
       output.className = 'py-output error';
+      hideInput();
     }
 
     btn.disabled = false;
     btn.textContent = '▶ Ejecutar';
-    hideInput();
   }
+
+  // Eliminar continueExecution, ya no se necesita
 
   // Exponer función para que pueda ser llamada desde cualquier lado
   window.runPythonCode = openModalAndRun;
