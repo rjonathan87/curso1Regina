@@ -8,6 +8,8 @@
 
   let pyodide = null;
   let pendingInput = null;  // Resolve callback para input()
+  let inputQueue = [];      // Cola de valores para input()
+  let waitingForInput = false;
 
   // ── Crear elementos DOM ──────────────────────────────────────────────
   function createUI() {
@@ -152,8 +154,15 @@
   function extractPythonCode(block) {
     let html = block.innerHTML;
     html = html.replace(/<br\s*\/?>/gi, '\n');
+    // Reemplazar &nbsp; y variantes de espacios duros HTML por espacios normales
+    html = html.replace(/&nbsp;/g, ' ');
+    html = html.replace(/\u00a0/g, ' ');
+    html = html.replace(/&#xa0;/gi, ' ');
+    html = html.replace(/&#160;/gi, ' ');
+    // Tambien limpiar &amp;nbsp; (doble escape)
+    html = html.replace(/&amp;nbsp;/g, ' ');
     const text = html.replace(/<[^>]+>/g, '');
-    const lines = text.split('\n').map(l => l.replace(/\u00a0/g, ' ').trimEnd());
+    const lines = text.split('\n').map(l => l.trimEnd());
     return lines.join('\n').trim();
   }
 
@@ -214,17 +223,89 @@
     btn.textContent = '⏳ Ejecutando…';
     output.className = 'py-output';
     hideInput();
+    inputQueue = [];
+    waitingForInput = false;
 
     try {
-      // Redefinir input() para que use el campo de entrada del modal
+      // Redefinir input() para que use nuestra cola
       pyodide.runPython(`
 import sys
 from io import StringIO
 sys.stdout = StringIO()
-sys.stdin = StringIO()
+
+# input() personalizado: si hay valores en cola los usa, si no lanza InputRequired
+_input_queue = []
+def _custom_input(prompt=""):
+    import js
+    if _input_queue:
+        return _input_queue.pop(0)
+    # Guardar el prompt para mostrarlo
+    _last_prompt = prompt
+    raise Exception("__INPUT_REQUIRED__:" + prompt)
+
+# Reemplazar input global
+import builtins
+builtins.input = _custom_input
       `);
 
-      // Ejecutar el código del usuario
+      pyodide.runPython(code);
+      const result = pyodide.runPython('sys.stdout.getvalue()');
+
+      if (result && result.trim()) {
+        output.textContent = result;
+        output.className = 'py-output success';
+      } else {
+        output.textContent = '✅ Código ejecutado sin errores.';
+        output.className = 'py-output success';
+      }
+
+      btn.disabled = false;
+      btn.textContent = '▶ Ejecutar';
+
+    } catch (e) {
+      const msg = e.message;
+
+      // Detectar si el código necesita input()
+      if (msg.includes('__INPUT_REQUIRED__:')) {
+        const prompt = msg.split('__INPUT_REQUIRED__:')[1] || '';
+        output.textContent = (prompt ? '✏️ ' + prompt : '✏️ El programa necesita tu respuesta:');
+        output.className = 'py-output';
+        showInput();
+        waitingForInput = true;
+
+        pendingInput = (userValue) => {
+          // Meter el valor en la cola y continuar
+          inputQueue.push(userValue);
+          waitingForInput = false;
+          continueExecution(code, output, btn);
+        };
+        return;
+      }
+
+      output.textContent = '❌ ' + msg;
+      output.className = 'py-output error';
+      btn.disabled = false;
+      btn.textContent = '▶ Ejecutar';
+    }
+  }
+
+  async function continueExecution(code, output, btn) {
+    try {
+      pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+_input_queue = ${JSON.stringify([...inputQueue].reverse())}
+def _custom_input(prompt=""):
+    import js
+    if _input_queue:
+        return _input_queue.pop(0)
+    _last_prompt = prompt
+    raise Exception("__INPUT_REQUIRED__:" + prompt)
+import builtins
+builtins.input = _custom_input
+      `);
+
       pyodide.runPython(code);
       const result = pyodide.runPython('sys.stdout.getvalue()');
 
@@ -237,65 +318,21 @@ sys.stdin = StringIO()
       }
     } catch (e) {
       const msg = e.message;
-
-      // Detectar si el error es porque el código necesita input()
-      if (msg.includes('input())') || msg.includes('input() called') ||
-          msg.includes('EOFError') || msg.includes('eof') ||
-          msg.includes('input') && msg.includes('EOF')) {
-        output.textContent = '✏️ El programa necesita tu respuesta. Escribe abajo y presiona Enter:';
+      if (msg.includes('__INPUT_REQUIRED__:')) {
+        const prompt = msg.split('__INPUT_REQUIRED__:')[1] || '';
+        output.textContent += '\n✏️ ' + (prompt || 'El programa necesita otro valor:');
         output.className = 'py-output';
         showInput();
-        btn.disabled = false;
-        btn.textContent = '▶ Ejecutar';
+        waitingForInput = true;
 
-        // Re-ejecutar con un input() personalizado
         pendingInput = (userValue) => {
-          reRunWithInput(code, userValue);
+          inputQueue.push(userValue);
+          waitingForInput = false;
+          continueExecution(code, output, btn);
         };
         return;
       }
-
       output.textContent = '❌ ' + msg;
-      output.className = 'py-output error';
-    }
-
-    btn.disabled = false;
-    btn.textContent = '▶ Ejecutar';
-  }
-
-  async function reRunWithInput(code, userValue) {
-    const output = document.getElementById('py-fab-output');
-    const btn = document.getElementById('py-fab-run');
-    btn.disabled = true;
-    btn.textContent = '⏳ Ejecutando…';
-
-    try {
-      // Redefinir input() para que devuelva el valor del usuario
-      pyodide.runPython(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-      `);
-
-      // Reemplazar input() en el código del usuario
-      const safeValue = userValue.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-      const patchedCode = code.replace(
-        /input\s*\(([^)]*)\)/g,
-        `'${safeValue}' /* input reemplazado */`
-      );
-
-      pyodide.runPython(patchedCode);
-      const result = pyodide.runPython('sys.stdout.getvalue()');
-
-      if (result && result.trim()) {
-        output.textContent = result;
-        output.className = 'py-output success';
-      } else {
-        output.textContent = '✅ Código ejecutado sin errores.';
-        output.className = 'py-output success';
-      }
-    } catch (e) {
-      output.textContent = '❌ ' + e.message;
       output.className = 'py-output error';
     }
 
