@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proyecto Final — Curso Informática</title>
   <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .proyecto-fase {
+      background:var(--bg-card2);border-radius:.75rem;padding:1.25rem;
+      border-left:4px solid var(--primary);margin-bottom:1rem;
+    }
+    .proyecto-fase h4 { margin-bottom:.5rem;font-size:.95rem; }
+    .proyecto-fase ul { font-size:.85rem;color:var(--text-secondary);line-height:1.9;list-style:disc;padding-left:1.25rem; }
+    .proyecto-fase code { background:var(--bg-card);padding:.05rem .35rem;border-radius:.3rem;font-size:.8rem; }
+    .proyecto-req { display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.75rem; }
+    .proyecto-req-num { background:var(--primary);color:white;border-radius:50%;width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;margin-top:.1rem; }
+  </style>
 </head>
 <body>
 
@@ -49,234 +60,257 @@
         <div class="badge badge-amber" style="margin-bottom:1rem;">🏆 Proyecto Final</div>
         <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">Mi <span style="background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Asistente Digital</span> Personal</h1>
         <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
-          Integra todo lo aprendido en un proyecto funcional y personal. No hay una solución única — cada estudiante resuelve un problema real de su vida.
+          Ha llegado el momento de poner todo en práctica. Vas a construir un programa en Python que integre TODO lo que aprendiste en el curso: variables, decisiones, bucles, listas y funciones. ¡Tu primer programa real!
         </p>
       </div>
     </div>
 
-    <!-- ¿Qué es? -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <div class="card-header"><div style="font-weight:700;">📋 ¿Qué es el Proyecto Integrador?</div></div>
+    <!-- QUÉ INCLUYE -->
+    <div class="card" style="margin-bottom:2rem;border-color:rgba(251,191,36,0.3);">
+      <div class="card-header" style="border-color:rgba(251,191,36,0.2);">
+        <div style="font-weight:700;">🎯 ¿Qué vas a construir?</div>
+      </div>
       <div class="card-body">
         <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
-          Es un programa funcional (en Scratch, Python básico o una hoja de cálculo con lógica) que resuelve un problema <strong style="color:var(--text-primary);">real y personal</strong>. Integra habilidades de las 3 unidades:
+          Un <strong style="color:var(--text-primary);">Asistente Digital Personal</strong> que se ejecuta en la consola de Python. Tu asistente podrá:
         </p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;">
-          <div style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);border-radius:.75rem;padding:.75rem;">
-            <div style="color:#22d3ee;font-weight:700;margin-bottom:.3rem;">De Unidad 1</div>
-            <div style="font-size:.82rem;color:var(--text-secondary);">Busca información confiable sobre tu tema. Organiza en Drive.</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;">
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:.3rem;">👋</div>
+            <div style="font-size:.85rem;font-weight:600;">Saludar</div>
+            <div style="font-size:.75rem;color:var(--text-secondary);">Te recibe por tu nombre</div>
           </div>
-          <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:.75rem;padding:.75rem;">
-            <div style="color:#fbbf24;font-weight:700;margin-bottom:.3rem;">De Unidad 2</div>
-            <div style="font-size:.82rem;color:var(--text-secondary);">Identifica qué software usar y asegúrate de que tu equipo lo soporta.</div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:.3rem;">📋</div>
+            <div style="font-size:.85rem;font-weight:600;">Gestión de tareas</div>
+            <div style="font-size:.75rem;color:var(--text-secondary);">Agrega, lista y completa tareas</div>
           </div>
-          <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:.75rem;">
-            <div style="color:#34d399;font-weight:700;margin-bottom:.3rem;">De Unidad 3</div>
-            <div style="font-size:.82rem;color:var(--text-secondary);">Diseña algoritmo → diagrama → pseudocódigo → código.</div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:.3rem;">🧮</div>
+            <div style="font-size:.85rem;font-weight:600;">Calculadora</div>
+            <div style="font-size:.75rem;color:var(--text-secondary);">Suma, resta y más</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:.3rem;">💭</div>
+            <div style="font-size:.85rem;font-weight:600;">Frases motivadoras</div>
+            <div style="font-size:.75rem;color:var(--text-secondary);">Te anima con frases aleatorias</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:.3rem;">📝</div>
+            <div style="font-size:.85rem;font-weight:600;">Diario personal</div>
+            <div style="font-size:.75rem;color:var(--text-secondary);">Guarda notas y recuerdos</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:.3rem;">🎮</div>
+            <div style="font-size:.85rem;font-weight:600;">Minijuego</div>
+            <div style="font-size:.75rem;color:var(--text-secondary);">Adivina el número secreto</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- OPCIONES DE PROYECTO -->
-    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">🎯 Elige tu proyecto</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:2rem;">
+    <!-- FASES DE CONSTRUCCIÓN -->
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">📅 Fases de Construcción</h2>
 
-      <div class="card" style="border-color:rgba(6,182,212,0.4);">
-        <div class="card-body">
-          <div style="font-size:2rem;margin-bottom:.5rem;">💰</div>
-          <div style="font-weight:700;margin-bottom:.4rem;color:#22d3ee;">Calculadora de Gastos</div>
-          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Registra tus gastos del mes, calcula totales y te dice cuánto te queda del presupuesto.</div>
-          <div style="font-size:.78rem;">
-            <span class="badge badge-cyan">Google Sheets</span>
-            <span class="badge badge-green" style="margin-left:.3rem;">Scratch</span>
-          </div>
-          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐</div>
-        </div>
+    <div class="proyecto-fase" style="border-left-color:#22d3ee;">
+      <h4 style="color:#22d3ee;">Fase 1: Saludo y menú principal 🔵</h4>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">Tu asistente te recibe, te pregunta tu nombre y muestra un menú con opciones.</p>
+      <div class="code-block" style="margin-bottom:.5rem;">
+        <div class="code-header"><span>Estructura del menú</span></div>
+        <div class="code-body">nombre = input("¿Cómo te llamas? ")<br/>print(f"¡Hola, {nombre}! Bienvenida a tu asistente")<br/><br/>while True:<br/>&nbsp;&nbsp;print("\\n--- MENÚ PRINCIPAL ---")<br/>&nbsp;&nbsp;print("1. Ver tareas")<br/>&nbsp;&nbsp;print("2. Calculadora")<br/>&nbsp;&nbsp;print("3. Frase motivadora")<br/>&nbsp;&nbsp;print("4. Diario personal")<br/>&nbsp;&nbsp;print("5. Jugar")<br/>&nbsp;&nbsp;print("6. Salir")<br/>&nbsp;&nbsp;opcion = input("Elige una opción: ")</div>
       </div>
-
-      <div class="card" style="border-color:rgba(99,102,241,0.4);">
-        <div class="card-body">
-          <div style="font-size:2rem;margin-bottom:.5rem;">📅</div>
-          <div style="font-weight:700;margin-bottom:.4rem;color:#818cf8;">Organizador de Tareas</div>
-          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Lista de pendientes con fecha y prioridad. Te recuerda qué hacer hoy.</div>
-          <div style="font-size:.78rem;">
-            <span class="badge badge-primary">Google Sheets</span>
-            <span class="badge badge-cyan" style="margin-left:.3rem;">Scratch</span>
-          </div>
-          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐</div>
-        </div>
-      </div>
-
-      <div class="card" style="border-color:rgba(245,158,11,0.4);">
-        <div class="card-body">
-          <div style="font-size:2rem;margin-bottom:.5rem;">❓</div>
-          <div style="font-weight:700;margin-bottom:.4rem;color:#fbbf24;">Juego de Trivia</div>
-          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Quiz de preguntas y respuestas sobre un tema que dominas. Guarda el puntaje.</div>
-          <div style="font-size:.78rem;">
-            <span class="badge badge-green">Scratch</span>
-          </div>
-          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐⭐</div>
-        </div>
-      </div>
-
-      <div class="card" style="border-color:rgba(16,185,129,0.4);">
-        <div class="card-body">
-          <div style="font-size:2rem;margin-bottom:.5rem;">🍲</div>
-          <div style="font-weight:700;margin-bottom:.4rem;color:#34d399;">Catálogo de Recetas</div>
-          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">Busca recetas por ingrediente disponible y calcula porciones automáticamente.</div>
-          <div style="font-size:.78rem;">
-            <span class="badge badge-primary">Google Sheets</span>
-          </div>
-          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: ⭐⭐</div>
-        </div>
-      </div>
-
-      <div class="card" style="border-color:rgba(239,68,68,0.4);">
-        <div class="card-body">
-          <div style="font-size:2rem;margin-bottom:.5rem;">💡</div>
-          <div style="font-weight:700;margin-bottom:.4rem;color:#f87171;">Tu Propia Idea</div>
-          <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:.75rem;">¿Tienes un problema de tu vida diaria que quieras resolver? ¡Propónlo y lo analizamos juntas!</div>
-          <div style="font-size:.78rem;">
-            <span class="badge badge-red">Cualquier herramienta</span>
-          </div>
-          <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-secondary);">Dificultad: variable</div>
-        </div>
-      </div>
-
+      <div class="badge badge-cyan" style="font-size:.75rem;">✅ Conceptos: variables, input(), while, print()</div>
     </div>
 
-    <!-- ETAPAS DEL PROYECTO -->
-    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">📅 Etapas del Proyecto</h2>
-
-    <div class="session-block">
-      <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
-          <span class="badge badge-primary">Etapa 1</span>
-          <span style="font-weight:600;">Planteamiento del problema</span>
-        </div>
-        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+    <div class="proyecto-fase" style="border-left-color:#34d399;">
+      <h4 style="color:#34d399;">Fase 2: Gestión de tareas 🟢</h4>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">Usa una lista para guardar tareas. Puedes agregar, ver y marcar como completadas.</p>
+      <div class="code-block" style="margin-bottom:.5rem;">
+        <div class="code-header"><span>Gestión de tareas</span></div>
+        <div class="code-body">tareas = []<br/><br/>def mostrar_tareas():<br/>&nbsp;&nbsp;if not tareas:<br/>&nbsp;&nbsp;&nbsp;&nbsp;print("No hay tareas pendientes 🎉")<br/>&nbsp;&nbsp;else:<br/>&nbsp;&nbsp;&nbsp;&nbsp;for i, t in enumerate(tareas, 1):<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"{i}. {t}")</div>
       </div>
-      <div class="session-content">
-        <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:.75rem;">Responde estas preguntas en un documento:</p>
-        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
-          <li>¿Qué problema quiero resolver?</li>
-          <li>¿Para quién es útil?</li>
-          <li>¿Qué datos necesita el programa?</li>
-          <li>¿Qué resultados entregará?</li>
-          <li>¿Qué herramienta usaré (Scratch, Sheets, etc.)?</li>
-        </ul>
-        <div class="checklist-item" data-id="proy-1-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Documenté el planteamiento del problema</span></div>
+      <div class="badge badge-green" style="font-size:.75rem;">✅ Conceptos: listas, for, funciones, if/else</div>
+    </div>
+
+    <div class="proyecto-fase" style="border-left-color:#fbbf24;">
+      <h4 style="color:#fbbf24;">Fase 3: Calculadora 🟡</h4>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">Una mini calculadora que suma, resta, multiplica y divide.</p>
+      <div class="code-block" style="margin-bottom:.5rem;">
+        <div class="code-header"><span>Calculadora</span></div>
+        <div class="code-body">def calculadora():<br/>&nbsp;&nbsp;a = float(input("Primer número: "))<br/>&nbsp;&nbsp;b = float(input("Segundo número: "))<br/>&nbsp;&nbsp;print("1. Sumar 2. Restar 3. Multiplicar 4. Dividir")<br/>&nbsp;&nbsp;op = input("Operación: ")<br/>&nbsp;&nbsp;if op == "1":<br/>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Resultado: {a + b}")<br/>&nbsp;&nbsp;elif op == "2":<br/>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Resultado: {a - b}")<br/>&nbsp;&nbsp;# ...</div>
+      </div>
+      <div class="badge badge-amber" style="font-size:.75rem;">✅ Conceptos: funciones, if/elif, input(), float()</div>
+    </div>
+
+    <div class="proyecto-fase" style="border-left-color:#a78bfa;">
+      <h4 style="color:#a78bfa;">Fase 4: Frases motivadoras 🟣</h4>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">Una lista de frases. Cada vez que el usuario elige esta opción, aparece una frase aleatoria.</p>
+      <div class="code-block" style="margin-bottom:.5rem;">
+        <div class="code-header"><span>Frases aleatorias</span></div>
+        <div class="code-body">import random<br/><br/>def frase_motivadora():<br/>&nbsp;&nbsp;frases = [<br/>&nbsp;&nbsp;&nbsp;&nbsp;"¡Tú puedes con todo!",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Cada error es un aprendizaje",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"La práctica hace al maestro",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Nunca dejes de aprender",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"El único fracaso es rendirse"<br/>&nbsp;&nbsp;]<br/>&nbsp;&nbsp;print(random.choice(frases))</div>
+      </div>
+      <div class="badge badge-primary" style="font-size:.75rem;">✅ Conceptos: import, listas, random.choice()</div>
+    </div>
+
+    <div class="proyecto-fase" style="border-left-color:#f87171;">
+      <h4 style="color:#f87171;">Fase 5: Diario personal 🔴</h4>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">Guarda notas en una lista y permite verlas. Cada nota tiene fecha y hora.</p>
+      <div class="code-block" style="margin-bottom:.5rem;">
+        <div class="code-header"><span>Diario personal</span></div>
+        <div class="code-body">from datetime import datetime<br/><br/>notas = []<br/><br/>def escribir_nota():<br/>&nbsp;&nbsp;texto = input("Escribe tu nota: ")<br/>&nbsp;&nbsp;momento = datetime.now().strftime("%d/%m/%Y %H:%M")<br/>&nbsp;&nbsp;notas.append(f"[{momento}] {texto}")<br/>&nbsp;&nbsp;print("Nota guardada ✅")</div>
+      </div>
+      <div class="badge badge-red" style="font-size:.75rem;">✅ Conceptos: import, datetime, listas, funciones</div>
+    </div>
+
+    <div class="proyecto-fase" style="border-left-color:#f59e0b;margin-bottom:2rem;">
+      <h4 style="color:#f59e0b;">Fase 6: Minijuego "Adivina el número" 🟠</h4>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;">El clásico juego de adivinar un número entre 1 y 20 con intentos limitados.</p>
+      <div class="code-block" style="margin-bottom:.5rem;">
+        <div class="code-header"><span>Adivina el número</span></div>
+        <div class="code-body">import random<br/><br/>def jugar():<br/>&nbsp;&nbsp;secreto = random.randint(1, 20)<br/>&nbsp;&nbsp;intentos = 5<br/>&nbsp;&nbsp;print("Adivina el número (1-20). Tienes 5 intentos.")<br/>&nbsp;&nbsp;while intentos > 0:<br/>&nbsp;&nbsp;&nbsp;&nbsp;n = int(input("Tu número: "))<br/>&nbsp;&nbsp;&nbsp;&nbsp;if n == secreto:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("¡Correcto! 🎉")<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br/>&nbsp;&nbsp;&nbsp;&nbsp;elif n < secreto:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Más alto")<br/>&nbsp;&nbsp;&nbsp;&nbsp;else:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Más bajo")<br/>&nbsp;&nbsp;&nbsp;&nbsp;intentos -= 1<br/>&nbsp;&nbsp;print(f"Se acabaron. Era {secreto}")</div>
+      </div>
+      <div class="badge badge-amber" style="font-size:.75rem;">✅ Conceptos: random, while, if/elif/else, variables</div>
+    </div>
+
+    <!-- RETOS EXTRAS -->
+    <div class="card" style="margin-bottom:2rem;border-color:rgba(139,92,246,0.3);background:rgba(139,92,246,0.03);">
+      <div class="card-header" style="border-color:rgba(139,92,246,0.2);">
+        <div style="font-weight:700;color:#a78bfa;">⭐ Retos adicionales (opcionales)</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:1rem;">¿Terminaste rápido? Agrega una o más de estas funcionalidades extra:</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem;">
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
+            <div style="font-weight:600;color:#a78bfa;margin-bottom:.25rem;">🌤️ Clima mental</div>
+            <div style="font-size:.8rem;color:var(--text-secondary);">Pregunta cómo se siente el usuario y guarda su estado de ánimo del día.</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
+            <div style="font-weight:600;color:#a78bfa;margin-bottom:.25rem;">📊 Contador de progreso</div>
+            <div style="font-size:.8rem;color:var(--text-secondary);">Muestra cuántas tareas has completado vs pendientes.</div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
+            <div style="font-weight:600;color:#a78bfa;margin-bottom:.25rem;">🎨 Personalización</div>
+            <div style="font-size:.8rem;color:var(--text-secondary);">Pregunta el color favorito y personaliza los mensajes del asistente.</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="session-block">
-      <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
-          <span class="badge badge-cyan">Etapa 2</span>
-          <span style="font-weight:600;">Diseño: algoritmo y diagrama de flujo</span>
-        </div>
-        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
+    <!-- RUBRICA -->
+    <div class="card" style="margin-bottom:2rem;">
+      <div class="card-header">
+        <div style="font-weight:700;">📊 Rúbrica de evaluación</div>
       </div>
-      <div class="session-content">
-        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
-          <li>Escribe el algoritmo completo en pseudocódigo.</li>
-          <li>Dibuja el diagrama de flujo (en papel o draw.io).</li>
-          <li>Identifica: ¿cuántas condiciones tiene? ¿cuántos bucles?</li>
-        </ul>
-        <div class="checklist-item" data-id="proy-2-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Pseudocódigo del proyecto completado</span></div>
-        <div class="checklist-item" data-id="proy-2-2"><div class="check-box"></div><span class="check-text">Diagrama de flujo creado y guardado</span></div>
-      </div>
-    </div>
-
-    <div class="session-block">
-      <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
-          <span class="badge badge-green">Etapa 3</span>
-          <span style="font-weight:600;">Implementación: construye el programa</span>
-        </div>
-        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
-      </div>
-      <div class="session-content">
-        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
-          <li>Construye tu programa paso a paso siguiendo el pseudocódigo.</li>
-          <li>Prueba con datos reales. ¿Funciona?</li>
-          <li>Documenta los errores que encuentres y cómo los resolviste ("debugging reflexivo").</li>
-        </ul>
-        <div class="checklist-item" data-id="proy-3-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Programa funciona con datos básicos</span></div>
-        <div class="checklist-item" data-id="proy-3-2"><div class="check-box"></div><span class="check-text">Documenté al menos 3 errores y sus soluciones</span></div>
-      </div>
-    </div>
-
-    <div class="session-block" style="margin-bottom:2rem;">
-      <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
-          <span class="badge badge-amber">Etapa 4</span>
-          <span style="font-weight:600;">Presentación y evaluación</span>
-        </div>
-        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
-      </div>
-      <div class="session-content">
-        <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:.75rem;">Prepara una presentación de 5 minutos que incluya:</p>
-        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
-          <li>¿Qué problema resuelve tu programa?</li>
-          <li>Muestra el diagrama de flujo</li>
-          <li>Demuestra el programa en vivo</li>
-          <li>Menciona 2 errores que tuviste y cómo los solucionaste</li>
-          <li>¿Qué mejorarías con más tiempo?</li>
-        </ul>
-        <div class="checklist-item" data-id="proy-4-1" style="margin-top:.75rem;"><div class="check-box"></div><span class="check-text">Preparé mi presentación</span></div>
-        <div class="checklist-item" data-id="proy-4-2"><div class="check-box"></div><span class="check-text">Presenté el proyecto a la clase / profesora</span></div>
-        <div class="checklist-item" data-id="proy-4-3"><div class="check-box"></div><span class="check-text">Subí todos los archivos a mi carpeta en Drive</span></div>
-      </div>
-    </div>
-
-    <!-- RÚBRICA -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <div class="card-header"><div style="font-weight:700;">📊 Rúbrica de Evaluación</div></div>
       <div class="card-body" style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:.82rem;min-width:500px;">
+        <table style="width:100%;border-collapse:collapse;font-size:.85rem;">
           <thead>
-            <tr style="background:var(--bg-card2);">
-              <th style="padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);">Criterio</th>
-              <th style="padding:.6rem 1rem;text-align:center;border-bottom:1px solid var(--border);color:#34d399;">Excelente</th>
-              <th style="padding:.6rem 1rem;text-align:center;border-bottom:1px solid var(--border);color:#fbbf24;">En proceso</th>
-              <th style="padding:.6rem 1rem;text-align:center;border-bottom:1px solid var(--border);color:#f87171;">Inicio</th>
+            <tr style="border-bottom:1px solid var(--border);color:var(--text-secondary);">
+              <th style="text-align:left;padding:.5rem .75rem;">Criterio</th>
+              <th style="text-align:center;padding:.5rem .75rem;">Puntos</th>
+              <th style="text-align:left;padding:.5rem .75rem;">¿Qué revisamos?</th>
             </tr>
           </thead>
           <tbody>
             <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:.5rem 1rem;font-weight:600;">Algoritmo</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Completo, sin ambigüedades</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Algunos pasos poco claros</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Incompleto o confuso</td>
+              <td style="padding:.5rem .75rem;">Menú funcional con bucle</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#22d3ee;">15</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">while True + if/elif para las opciones</td>
             </tr>
             <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:.5rem 1rem;font-weight:600;">Diagrama de flujo</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Símbolos correctos, flujo claro</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Algunos errores de símbolos</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Sin diagrama</td>
+              <td style="padding:.5rem .75rem;">Gestión de tareas</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#34d399;">20</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">Lista, funciones para agregar/ver, for para mostrar</td>
             </tr>
             <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:.5rem 1rem;font-weight:600;">Programa funcional</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Funciona sin errores</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Funciona parcialmente</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">No funciona</td>
+              <td style="padding:.5rem .75rem;">Calculadora</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#fbbf24;">15</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">Función, if/elif, float/int</td>
             </tr>
-            <tr>
-              <td style="padding:.5rem 1rem;font-weight:600;">Reflexión de errores</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">3+ errores documentados con solución</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">1–2 errores mencionados</td>
-              <td style="padding:.5rem 1rem;text-align:center;color:var(--text-secondary);">Sin documentación</td>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem .75rem;">Frases motivadoras</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#a78bfa;">10</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">Lista, random.choice(), función</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem .75rem;">Diario personal</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#f87171;">15</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">datetime, lista de notas, formato [fecha] texto</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem .75rem;">Minijuego</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#f59e0b;">15</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">random.randint(), while con intentos, if anidados</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.5rem .75rem;">Retos extra</td>
+              <td style="text-align:center;padding:.5rem .75rem;font-weight:700;color:#818cf8;">10</td>
+              <td style="padding:.5rem .75rem;color:var(--text-secondary);font-size:.8rem;">Cada reto extra suma puntos</td>
+            </tr>
+            <tr style="background:rgba(251,191,36,0.05);">
+              <td style="padding:.6rem .75rem;font-weight:700;">Total</td>
+              <td style="text-align:center;padding:.6rem .75rem;font-weight:700;color:#fbbf24;">100</td>
+              <td style="padding:.6rem .75rem;color:var(--text-secondary);font-size:.8rem;">Mínimo aprobatorio: 60 puntos</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- CONSEJOS -->
+    <div class="card" style="margin-bottom:2rem;border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.03);">
+      <div class="card-header" style="border-color:rgba(34,211,238,0.2);">
+        <div style="font-weight:700;color:#22d3ee;">💡 Consejos para el éxito</div>
+      </div>
+      <div class="card-body">
+        <ul style="font-size:.85rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.25rem;">
+          <li><strong style="color:var(--text-primary);">Construye por partes:</strong> No intentes hacer todo de una vez. Termina una función, pruébala, y luego pasa a la siguiente.</li>
+          <li><strong style="color:var(--text-primary);">Prueba cada fase:</strong> Después de cada fase, ejecuta el código y verifica que funciona antes de seguir.</li>
+          <li><strong style="color:var(--text-primary);">Usa el editor:</strong> Escribe tu código en el editor Python de la Unidad 3 para probar fragmentos pequeños.</li>
+          <li><strong style="color:var(--text-primary);">No importa el orden:</strong> Puedes empezar por la funcionalidad que más te guste. El menú principal es lo único que va al final conectando todo.</li>
+          <li><strong style="color:var(--text-primary);">Guarda tu progreso:</strong> Cada vez que termines una fase, guarda tu código en MiCurso/Proyecto/</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ENTREGABLE -->
+    <div class="card" style="border-color:rgba(251,191,36,0.4);background:rgba(251,191,36,0.05);margin-bottom:1.5rem;">
+      <div class="card-header" style="border-color:rgba(251,191,36,0.3);">
+        <div style="font-weight:700;color:#fbbf24;">🏅 Entregable Final</div>
+      </div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          <div class="proyecto-req">
+            <div class="proyecto-req-num">1</div>
+            <div>
+              <div style="font-weight:600;">Archivo <code>asistente.py</code> completo</div>
+              <div style="font-size:.82rem;color:var(--text-secondary);">Tu programa funcionando con el menú principal y al menos 4 de las 6 fases implementadas.</div>
+            </div>
+          </div>
+          <div class="proyecto-req">
+            <div class="proyecto-req-num">2</div>
+            <div>
+              <div style="font-weight:600;">Captura de pantalla del programa ejecutándose</div>
+              <div style="font-size:.82rem;color:var(--text-secondary);">Muestra el menú principal con al menos 2 opciones funcionando.</div>
+            </div>
+          </div>
+          <div class="proyecto-req">
+            <div class="proyecto-req-num">3</div>
+            <div>
+              <div style="font-weight:600;">Reflexión escrita</div>
+              <div style="font-size:.82rem;color:var(--text-secondary);">Responde: ¿Qué fue lo más difícil? ¿Qué fue lo que más te gustó? ¿Qué te gustaría aprender después?</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;">
+          <span class="badge badge-amber">🏆 Proyecto completo</span>
+          <span class="badge badge-green">📁 Guardar en MiCurso/Proyecto/</span>
+        </div>
+      </div>
+    </div>
+
     <div style="display:flex;justify-content:space-between;">
       <a href="unidad3.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">← Unidad 3</a>
-      <a href="glosario.html" style="background:var(--primary);color:white;padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">Ver Glosario →</a>
+      <a href="glosario.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">📖 Glosario →</a>
     </div>
   </div>
 </main>
