@@ -1,0 +1,15 @@
+{
+  "userId": "73d77c21-a38a-4be7-baea-1d03fab7e14b",
+  "email": "dual@verify.com",
+  "name": "Dual Test",
+  "registeredAt": "2026-07-08T05:33:25.336Z",
+  "lastActivity": "2026-07-08T05:33:35.761Z",
+  "completedCount": 1,
+  "percentComplete": 2,
+  "progress": {
+    "f0-1-1": {
+      "checked": true,
+      "updatedAt": "2026-07-08T05:33:35.761Z"
+    }
+  }
+}

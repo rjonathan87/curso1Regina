@@ -6,6 +6,20 @@
       "name": "JOhn",
       "registeredAt": "2026-04-30T14:56:03.519Z",
       "lastActivity": "2026-04-30T14:57:50.903Z"
+    },
+    {
+      "id": "73d77c21-a38a-4be7-baea-1d03fab7e14b",
+      "email": "dual@verify.com",
+      "name": "Dual Test",
+      "registeredAt": "2026-07-08T05:33:25.336Z",
+      "lastActivity": "2026-07-08T05:33:35.761Z"
+    },
+    {
+      "id": "47f0fdb3-4026-4c20-8f39-65e6ec61e012",
+      "email": "test@ejemplo.com",
+      "name": "Test",
+      "registeredAt": "2026-07-08T14:00:18.657Z",
+      "lastActivity": "2026-07-08T14:00:18.657Z"
     }
   ]
 }
