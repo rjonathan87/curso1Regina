@@ -161,14 +161,30 @@
     html = html.replace(/&#160;/gi, ' ');
     // Reemplazar &amp;nbsp; (doble escape)
     html = html.replace(/&amp;nbsp;/g, ' ');
-    // Reemplazar entidades HTML comunes que pueden aparecer en codigo
+    // Reemplazar entidades HTML comunes
     html = html.replace(/&gt;/g, '>');
     html = html.replace(/&lt;/g, '<');
     html = html.replace(/&amp;/g, '&');
     html = html.replace(/&quot;/g, '"');
     html = html.replace(/&#39;/g, "'");
     html = html.replace(/&#x27;/g, "'");
-    const text = html.replace(/<[^>]+>/g, '');
+
+    // Proteger operadores < y > antes de eliminar etiquetas HTML
+    // Si innerHTML devolvio < y > literales, hay que preservarlos
+    // porque <[^>]+> los eliminaria como si fueran etiquetas
+    html = html.replace(/>/g, '__GT__');
+    html = html.replace(/</g, '__LT__');
+
+    // Quitar etiquetas HTML
+    html = html.replace(/__LT__\/?[a-zA-Z][^>]*__GT__/g, '');
+    // Limpiar cualquier otra etiqueta que sobreviva
+    html = html.replace(/<[^>]+>/g, '');
+
+    // Restaurar operadores
+    html = html.replace(/__GT__/g, '>');
+    html = html.replace(/__LT__/g, '<');
+
+    const text = html;
     const lines = text.split('\n').map(l => l.trimEnd());
     return lines.join('\n').trim();
   }
