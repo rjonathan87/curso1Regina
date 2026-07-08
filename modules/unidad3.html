@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 3 · Algoritmos y Programación — Curso Informática</title>
+  <title>Unidad 3 · Python — Curso Informática</title>
   <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .py-editor-wrap { background:#0f172a;border:1px solid #334155;border-radius:.75rem;overflow:hidden; }
+    .py-editor-header { background:#1e293b;padding:.5rem 1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #334155; }
+    .py-editor-header span { font-size:.8rem;color:#94a3b8;font-weight:600; }
+    .py-editor-btn { background:linear-gradient(90deg,#22d3ee,#06b6d4);border:none;color:#0f172a;padding:.35rem 1rem;border-radius:.4rem;font-weight:700;font-size:.8rem;cursor:pointer;transition:opacity .2s; }
+    .py-editor-btn:hover { opacity:.85; }
+    .py-editor-btn:disabled { opacity:.4;cursor:not-allowed; }
+    .py-editor-textarea { width:100%;min-height:120px;background:#0f172a;border:none;color:#e2e8f0;font-family:'Fira Code','Cascadia Code','Courier New',monospace;font-size:.85rem;padding:1rem;resize:vertical;outline:none;tab-size:2; }
+    .py-editor-output { background:#0f172a;padding:.75rem 1rem;font-family:'Fira Code','Courier New',monospace;font-size:.82rem;min-height:40px;border-top:1px solid #334155;white-space:pre-wrap;color:#94a3b8; }
+    .py-editor-output.success { color:#34d399; }
+    .py-editor-output.error { color:#f87171; }
+    .py-loading { display:flex;align-items:center;gap:.5rem;padding:.5rem 0;font-size:.82rem;color:#94a3b8; }
+    .py-loading .spinner { width:14px;height:14px;border:2px solid #334155;border-top-color:#22d3ee;border-radius:50%;animation:spin .8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
 </head>
 <body>
 
@@ -24,7 +39,7 @@
     <a href="fase0.html"><span>🚀</span> Fase 0 · Bienvenida</a>
     <a href="unidad1.html"><span>🔍</span> Unidad 1 · Información Digital</a>
     <a href="unidad2.html"><span>🧩</span> Unidad 2 · Lógica y Programación</a>
-    <a href="unidad3.html" class="active"><span>⚙️</span> Unidad 3 · Algoritmos</a>
+    <a href="unidad3.html" class="active"><span>🐍</span> Unidad 3 · Python</a>
     <a href="proyecto.html"><span>🏆</span> Proyecto Final</a>
     <a href="glosario.html"><span>📖</span> Glosario</a>
   </nav>
@@ -35,11 +50,11 @@
     <div style="display:flex;align-items:center;gap:1rem;">
       <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem;">☰</button>
       <div>
-        <div style="font-weight:600;font-size:0.95rem;">Unidad 3 · Metodología de Solución de Problemas</div>
-        <div style="font-size:0.75rem;color:var(--text-secondary);">5 sesiones · Semanas 5–6</div>
+        <div style="font-weight:600;font-size:0.95rem;">Unidad 3 · Tu Primer Lenguaje — Python</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);">4 sesiones · Semanas 5–6</div>
       </div>
     </div>
-    <span class="badge badge-green">⚙️ Unidad 3</span>
+    <span class="badge badge-green">🐍 Unidad 3</span>
   </div>
 
   <div style="padding:2rem;">
@@ -47,42 +62,51 @@
     <div class="hero-banner" style="border-radius:1rem;margin-bottom:2rem;">
       <div style="position:relative;z-index:1;">
         <div class="badge badge-green" style="margin-bottom:1rem;">Unidad 3 · Semanas 5–6</div>
-        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">⚙️ <span class="text-gradient">Piensa como Programador</span></h1>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem;">🐍 <span class="text-gradient">Tu Primer Lenguaje</span></h1>
         <p style="color:var(--text-secondary);max-width:560px;line-height:1.7;">
-          Aprende a descomponer problemas, diseñar soluciones paso a paso y crear tus primeros programas sin frustrarte con la sintaxis.
+          Llegó el momento de escribir código real. Python es el lenguaje ideal para empezar: se lee como inglés, es usado por profesionales y, lo mejor de todo, puedes probarlo aquí mismo, en tu navegador, sin instalar nada.
         </p>
       </div>
     </div>
 
-    <!-- Ruta de aprendizaje visual -->
-    <div class="card" style="margin-bottom:2rem;">
-      <div class="card-header"><div style="font-weight:700;">🗺 Ruta de Aprendizaje — Unidad 3</div></div>
+    <!-- Editor Python embebido (visible siempre) -->
+    <div class="card" style="margin-bottom:2rem;border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.03);">
+      <div class="card-header" style="border-color:rgba(34,211,238,0.2);">
+        <div style="font-weight:700;color:#22d3ee;">💻 Consola de Python — ¡Pruébalo aquí mismo!</div>
+      </div>
       <div class="card-body">
-        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-size:.85rem;">
-          <div style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:.4rem .8rem;border-radius:99px;color:#34d399;">🌍 Problema real</div>
-          <span style="color:var(--text-secondary);">→</span>
-          <div style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);padding:.4rem .8rem;border-radius:99px;color:#818cf8;">📝 Algoritmo</div>
-          <span style="color:var(--text-secondary);">→</span>
-          <div style="background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3);padding:.4rem .8rem;border-radius:99px;color:#22d3ee;">📊 Diagrama de flujo</div>
-          <span style="color:var(--text-secondary);">→</span>
-          <div style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);padding:.4rem .8rem;border-radius:99px;color:#fbbf24;">💬 Pseudocódigo</div>
-          <span style="color:var(--text-secondary);">→</span>
-          <div style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);padding:.4rem .8rem;border-radius:99px;color:#f87171;">💻 Código (Scratch/Python)</div>
+        <div class="py-editor-wrap">
+          <div class="py-editor-header">
+            <span>🐍 Python 3.12 (en tu navegador)</span>
+            <button class="py-editor-btn" id="py-run-btn" onclick="runPython()">▶ Ejecutar</button>
+          </div>
+          <textarea class="py-editor-textarea" id="py-code" placeholder="# Escribe tu código Python aquí y presiona Ejecutar
+print('¡Hola, mundo!')
+nombre = input('¿Cómo te llamas? ')
+print('Mucho gusto, ' + nombre)" spellcheck="false">print('¡Hola, mundo!')</textarea>
+          <div class="py-editor-output" id="py-output">💡 Escribe código arriba y presiona "Ejecutar" para ver el resultado aquí.</div>
+          <div class="py-loading" id="py-loading" style="display:none;">
+            <div class="spinner"></div>
+            Cargando Python…
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- SESIÓN 1 -->
+    <!-- SESIONES -->
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">📋 Sesiones</h2>
+
+    <!-- Sesión 1 -->
     <div class="session-block">
       <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
           <span class="badge badge-green">Sesión 1</span>
-          <span style="font-weight:600;">Algoritmos: instrucciones para un alienígena</span>
+          <span style="font-weight:600;">¡Hola, Python! — Tu primer programa</span>
         </div>
         <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
       </div>
       <div class="session-content">
-        <div id="tabs-u3-1">
+        <div id="tabs-u3-1" style="margin-bottom:1rem;">
           <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('tabs-u3-1',0)">📖 Teoría</button>
             <button class="tab-btn" onclick="switchTab('tabs-u3-1',1)">🎬 Videos</button>
@@ -91,80 +115,93 @@
           </div>
           <div style="margin-top:1rem;">
             <div class="tab-panel active">
-              <h4 style="color:#34d399;margin-bottom:.75rem;">¿Qué es un algoritmo?</h4>
-              <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
-                Un algoritmo es una secuencia de pasos <strong style="color:var(--text-primary);">finita, ordenada y precisa</strong> para resolver un problema. Las computadoras solo entienden instrucciones exactas — no pueden "adivinar" ni "interpretar".
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">¿Qué es Python?</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Python es un lenguaje de programación creado en 1991 por Guido van Rossum. Se diseñó para ser <strong style="color:var(--text-primary);">fácil de leer y escribir</strong>. Hoy es uno de los lenguajes más usados del mundo: en YouTube, Instagram, Google y hasta en la NASA.
               </p>
-              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
-                <div style="font-weight:700;color:#34d399;margin-bottom:.5rem;">🥪 Ejemplo: hacer un sándwich</div>
-                <div class="code-block">
-                  <div class="code-header"><span>Algoritmo natural — Sándwich de jamón</span></div>
-                  <div class="code-body">1. Tomar 2 rebanadas de pan<br/>2. Abrir el refrigerador<br/>3. Sacar el jamón<br/>4. Colocar 1 rebanada de jamón sobre el pan<br/>5. Si hay queso disponible:<br/>   5.1 Colocar 1 rebanada de queso<br/>6. Poner la segunda rebanada de pan encima<br/>7. Cortar el sándwich a la mitad<br/>8. Servir en un plato</div>
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1rem;margin-bottom:1rem;">
+                <div style="font-weight:700;margin-bottom:0.5rem;color:#34d399;">💡 Tu primer programa</div>
+                <div style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+                  En casi todos los lenguajes, el primer programa es mostrar "¡Hola, mundo!" En Python es muy simple:
+                </div>
+                <div class="code-block" style="margin-top:0.5rem;">
+                  <div class="code-header"><span>Python</span></div>
+                  <div class="code-body">print("¡Hola, mundo!")</div>
                 </div>
               </div>
-              <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:.75rem;padding:1rem;">
-                <div style="font-weight:700;color:#fbbf24;margin-bottom:.4rem;">⚠️ Características clave</div>
-                <ul style="font-size:.83rem;color:var(--text-secondary);line-height:1.8;list-style:disc;padding-left:1.25rem;">
-                  <li><strong style="color:var(--text-primary);">Finito:</strong> tiene un inicio y un fin</li>
-                  <li><strong style="color:var(--text-primary);">Preciso:</strong> cada paso es claro y sin ambigüedad</li>
-                  <li><strong style="color:var(--text-primary);">Determinista:</strong> el mismo input siempre da el mismo output</li>
-                  <li><strong style="color:var(--text-primary);">Eficaz:</strong> resuelve el problema sin pasos innecesarios</li>
-                </ul>
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">📦 Variables: guardar información</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Una variable es como una <strong style="color:var(--text-primary);">cajita con nombre</strong> donde guardas datos. Puedes guardar texto, números y muchas cosas más.
+              </p>
+              <div class="code-block">
+                <div class="code-header"><span>Python — Variables</span></div>
+                <div class="code-body">nombre = "Regina"        # texto<br/>edad   = 15              # número entero<br/>altura = 1.65            # número decimal<br/><br/>print("Me llamo", nombre)<br/>print("Tengo", edad, "años")</div>
               </div>
             </div>
+
             <div class="tab-panel">
-              <a href="https://www.youtube.com/watch?v=U3CGMyjzlvM" target="_blank" class="resource-link">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=1p6e8ipCZ58" target="_blank" class="resource-link">
                 <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">¿Qué es un algoritmo? (animación)</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~5 min · Español</div></div>
-              </a>
-              <a href="https://www.youtube.com/watch?v=6hfOvs8pY1k" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">Algoritmos explicados con ejemplos cotidianos</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~8 min · Español</div></div>
-              </a>
-              <a href="https://studio.code.org/s/coursea-2022" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(99,102,241,0.2);">🎮</div>
-                <div><div style="font-weight:600;">Hour of Code — Pensamiento computacional (Code.org)</div><div style="font-size:.75rem;color:var(--text-secondary);">Actividad interactiva sin código · Gratis</div></div>
-              </a>
-            </div>
-            <div class="tab-panel">
-              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
-                <h4 style="color:#34d399;margin-bottom:.75rem;">👽 "Instrucciones para un alienígena"</h4>
-                <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.75rem;">El alienígena no sabe NADA de lo que es normal para nosotros. Escribe en papel instrucciones para que pueda hacer una de estas tareas:</p>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.5rem;margin-bottom:1rem;">
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.5rem .75rem;font-size:.82rem;text-align:center;">🚿 Ducharse</div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.5rem .75rem;font-size:.82rem;text-align:center;">🦷 Cepillarse los dientes</div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.5rem .75rem;font-size:.82rem;text-align:center;">🚗 Cruzar la calle</div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.5rem .75rem;font-size:.82rem;text-align:center;">☕ Preparar café</div>
+                <div>
+                  <div style="font-weight:600;">Python en 5 minutos — Introducción para principiantes</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
                 </div>
-                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
-                  <li>Escribe mínimo 10 pasos muy específicos.</li>
-                  <li>Lee tu algoritmo en voz alta. ¿Algún paso es ambiguo?</li>
-                  <li>Pide a alguien que "ejecute" tu algoritmo literalmente — ¿funciona?</li>
-                  <li>Corrige los pasos confusos.</li>
-                </ol>
+              </a>
+              <a href="https://www.youtube.com/watch?v=cQMoSqX7lPo" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Variables en Python — Explicación fácil con ejemplos</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">💻 "Mis primeros pasos en Python"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+                  Usa el editor de Python de arriba para escribir y ejecutar estos programas:
+                </p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Programa 1:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Escribe <code>print("Hola, soy [tu nombre]")</code> y ejecútalo.</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#fbbf24;">Programa 2:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Crea una variable con tu color favorito y muéstralo con <code>print()</code>.</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#a78bfa;">Programa 3:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Crea variables con nombre, edad y ciudad, luego muestra una presentación completa.</span>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="tab-panel">
-              <div class="checklist-item" data-id="u3-1-1"><div class="check-box"></div><span class="check-text">Escribí un algoritmo de 10+ pasos para una tarea cotidiana</span></div>
-              <div class="checklist-item" data-id="u3-1-2"><div class="check-box"></div><span class="check-text">Lo probé con otra persona y corregí los errores</span></div>
-              <div class="checklist-item" data-id="u3-1-3"><div class="check-box"></div><span class="check-text">Identifiqué las 4 características de un buen algoritmo</span></div>
+              <div class="checklist-item" data-id="u3-1-1"><div class="check-box"></div><span class="check-text">Entendí qué es Python y para qué sirve</span></div>
+              <div class="checklist-item" data-id="u3-1-2"><div class="check-box"></div><span class="check-text">Ejecuté mi primer <code>print()</code> en el editor</span></div>
+              <div class="checklist-item" data-id="u3-1-3"><div class="check-box"></div><span class="check-text">Creé y usé variables (texto y números)</span></div>
+              <div class="checklist-item" data-id="u3-1-4"><div class="check-box"></div><span class="check-text">Guardé mis programas en MiCurso/Unidad3/</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SESIÓN 2 -->
+    <!-- Sesión 2 -->
     <div class="session-block">
       <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
           <span class="badge badge-green">Sesión 2</span>
-          <span style="font-weight:600;">Diagramas de flujo: el lenguaje visual</span>
+          <span style="font-weight:600;">Input y decisiones — programas que preguntan</span>
         </div>
         <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
       </div>
       <div class="session-content">
-        <div id="tabs-u3-2">
+        <div id="tabs-u3-2" style="margin-bottom:1rem;">
           <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('tabs-u3-2',0)">📖 Teoría</button>
             <button class="tab-btn" onclick="switchTab('tabs-u3-2',1)">🎬 Videos</button>
@@ -173,87 +210,95 @@
           </div>
           <div style="margin-top:1rem;">
             <div class="tab-panel active">
-              <h4 style="color:#34d399;margin-bottom:.75rem;">Símbolos básicos de un diagrama de flujo</h4>
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-bottom:1rem;">
-                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
-                  <div style="width:60px;height:35px;border:2px solid #34d399;border-radius:50%;margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#34d399;font-weight:700;">INICIO/FIN</div>
-                  <div style="font-size:.8rem;color:var(--text-secondary);">Óvalo = Inicio o Fin del proceso</div>
-                </div>
-                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
-                  <div style="width:60px;height:35px;border:2px solid #818cf8;margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#818cf8;font-weight:700;">ACCIÓN</div>
-                  <div style="font-size:.8rem;color:var(--text-secondary);">Rectángulo = Proceso o acción</div>
-                </div>
-                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
-                  <div style="width:60px;height:40px;border:2px solid #fbbf24;transform:rotate(0);margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fbbf24;font-weight:700;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);">SÍ/NO</div>
-                  <div style="font-size:.8rem;color:var(--text-secondary);">Rombo = Decisión (condición)</div>
-                </div>
-                <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;text-align:center;">
-                  <div style="width:60px;height:35px;border:2px solid #22d3ee;border-radius:4px;transform:skewX(-10deg);margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#22d3ee;font-weight:700;">E/S</div>
-                  <div style="font-size:.8rem;color:var(--text-secondary);">Paralelogramo = Entrada/Salida</div>
-                </div>
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">🗣️ Input — preguntar al usuario</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Con <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">input()</code> puedes hacer que tu programa le pregunte algo al usuario y guarde su respuesta.
+              </p>
+              <div class="code-block" style="margin-bottom:1rem;">
+                <div class="code-header"><span>Python — Input</span></div>
+                <div class="code-body">nombre = input("¿Cómo te llamas? ")<br/>print("¡Hola,", nombre, "!")</div>
               </div>
-              <div class="code-block">
-                <div class="code-header"><span>Diagrama textual — "¿Hay pan?"</span></div>
-                <div class="code-body">
-[INICIO]
-    ↓
-[¿Hay pan?] → NO → [Ir al supermercado] → [Comprar pan]
-    ↓ SÍ                                        ↓
-[Sacar el pan]  ←────────────────────────────────
-    ↓
-[Poner ingredientes]
-    ↓
-[¿Quieres tostado?] → SÍ → [Tostar el pan]
-    ↓ NO                          ↓
-[Armar el sándwich] ←────────────
-    ↓
-[FIN]</div>
+
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">🔀 If / Else — tomar decisiones</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                En la Unidad 2 aprendiste sobre decisiones (SI/SINO). En Python se escribe con <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">if</code> y <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">else</code>.
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="code-block">
+                  <div class="code-header"><span>If / Else</span></div>
+                  <div class="code-body">edad = int(input("Tu edad: "))<br/>if edad >= 18:<br/>&nbsp;&nbsp;print("Eres mayor de edad")<br/>else:<br/>&nbsp;&nbsp;print("Eres menor de edad")</div>
+                </div>
+                <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:0.75rem;padding:1rem;">
+                  <div style="font-weight:700;color:#fbbf24;margin-bottom:0.4rem;">⚡ Importante</div>
+                  <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">
+                    <strong>input()</strong> siempre devuelve texto. Para números usa <strong>int()</strong> o <strong>float()</strong>.<br/><br/>
+                    Los <strong>dos puntos ( : )</strong> y la <strong>sangría (espacios)</strong> son obligatorios en Python.
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="tab-panel">
-              <a href="https://www.youtube.com/watch?v=Kucgc6NpGwc" target="_blank" class="resource-link">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=N8zJ3uvQyVQ" target="_blank" class="resource-link">
                 <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">¿Qué es un diagrama de flujo? Cómo hacerlo paso a paso</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
+                <div>
+                  <div style="font-weight:600;">Input y print en Python — Cómo pedir datos al usuario</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
               </a>
-              <a href="https://app.diagrams.net/" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(16,185,129,0.2);">🖊️</div>
-                <div><div style="font-weight:600;">draw.io — Herramienta gratuita de diagramas</div><div style="font-size:.75rem;color:var(--text-secondary);">Online · Sin registro · Gratis</div></div>
+              <a href="https://www.youtube.com/watch?v=2n9WHlMhofg" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Condicionales if/else en Python — Explicado fácil</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
               </a>
             </div>
+
             <div class="tab-panel">
-              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
-                <h4 style="color:#34d399;margin-bottom:.75rem;">📊 "Mi primer diagrama de flujo"</h4>
-                <ol style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:decimal;padding-left:1.5rem;">
-                  <li>Toma el algoritmo que escribiste en la Sesión 1.</li>
-                  <li>En papel o en <a href="https://app.diagrams.net/" target="_blank" style="color:#22d3ee;">draw.io</a>, convierte cada paso en un símbolo correcto.</li>
-                  <li>Agrega al menos UNA condición (rombo) con caminos "SÍ" y "NO".</li>
-                  <li>Verifica que el diagrama tenga un solo INICIO y un solo FIN.</li>
-                  <li>Exporta como imagen y guárdala en tu carpeta MiCurso/Unidad3.</li>
-                </ol>
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">💻 "Programas que conversan"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Escribe y ejecuta estos programas en el editor de Python:</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Programa 1:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Pregunta el nombre y saluda. Pregunta la edad y di si es mayor o menor de edad.</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#fbbf24;">Programa 2:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Pide dos números y muestra cuál es mayor (o si son iguales).</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#a78bfa;">Programa 3 (reto):</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Pregunta la calificación del examen (0-100) y muestra "Excelente" (≥90), "Bien" (≥70), "Necesitas mejorar" (&lt;70).</span>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="tab-panel">
-              <div class="checklist-item" data-id="u3-2-1"><div class="check-box"></div><span class="check-text">Memoricé los 4 símbolos básicos de diagrama de flujo</span></div>
-              <div class="checklist-item" data-id="u3-2-2"><div class="check-box"></div><span class="check-text">Dibujé mi diagrama en papel o draw.io</span></div>
-              <div class="checklist-item" data-id="u3-2-3"><div class="check-box"></div><span class="check-text">Incluí al menos una condición (sí/no)</span></div>
-              <div class="checklist-item" data-id="u3-2-4"><div class="check-box"></div><span class="check-text">Guardé la imagen del diagrama</span></div>
+              <div class="checklist-item" data-id="u3-2-1"><div class="check-box"></div><span class="check-text">Usé <code>input()</code> para preguntar al usuario</span></div>
+              <div class="checklist-item" data-id="u3-2-2"><div class="check-box"></div><span class="check-text">Escribí un <code>if/else</code> que funciona</span></div>
+              <div class="checklist-item" data-id="u3-2-3"><div class="check-box"></div><span class="check-text">Entendí por qué usamos <code>int()</code> para convertir texto a número</span></div>
+              <div class="checklist-item" data-id="u3-2-4"><div class="check-box"></div><span class="check-text">Guardé mis programas en MiCurso/Unidad3/</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SESIÓN 3 -->
+    <!-- Sesión 3 -->
     <div class="session-block">
       <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
           <span class="badge badge-green">Sesión 3</span>
-          <span style="font-weight:600;">Pseudocódigo: español estructurado</span>
+          <span style="font-weight:600;">Bucles en Python — for y while</span>
         </div>
         <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
       </div>
       <div class="session-content">
-        <div id="tabs-u3-3">
+        <div id="tabs-u3-3" style="margin-bottom:1rem;">
           <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('tabs-u3-3',0)">📖 Teoría</button>
             <button class="tab-btn" onclick="switchTab('tabs-u3-3',1)">🎬 Videos</button>
@@ -262,79 +307,85 @@
           </div>
           <div style="margin-top:1rem;">
             <div class="tab-panel active">
-              <h4 style="color:#34d399;margin-bottom:.75rem;">Estructuras de control en pseudocódigo</h4>
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
-                <div>
-                  <div style="font-size:.8rem;font-weight:700;color:#22d3ee;margin-bottom:.4rem;">📋 Secuencia</div>
-                  <div class="code-block">
-                    <div class="code-header"><span>Pasos en orden</span></div>
-                    <div class="code-body">Inicio<br/>  Escribir "Ingresa tu nombre"<br/>  Leer nombre<br/>  Escribir "Hola, " + nombre<br/>Fin</div>
-                  </div>
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">🔁 For — repetir un número fijo de veces</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                El bucle <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">for</code> se usa cuando sabes cuántas veces quieres repetir algo.
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                <div class="code-block">
+                  <div class="code-header"><span>For con range()</span></div>
+                  <div class="code-body"># Contar del 1 al 5<br/>for i in range(1, 6):<br/>&nbsp;&nbsp;print("Número", i)</div>
                 </div>
-                <div>
-                  <div style="font-size:.8rem;font-weight:700;color:#fbbf24;margin-bottom:.4rem;">🔀 Decisión (Si/Sino)</div>
-                  <div class="code-block">
-                    <div class="code-header"><span>Condicional</span></div>
-                    <div class="code-body">Si edad >= 18 Entonces<br/>  Escribir "Mayor de edad"<br/>Sino<br/>  Escribir "Menor de edad"<br/>FinSi</div>
-                  </div>
-                </div>
-                <div>
-                  <div style="font-size:.8rem;font-weight:700;color:#a78bfa;margin-bottom:.4rem;">🔁 Repetición (Mientras)</div>
-                  <div class="code-block">
-                    <div class="code-header"><span>Bucle</span></div>
-                    <div class="code-body">contador = 1<br/>Mientras contador <= 10 Hacer<br/>  Escribir contador<br/>  contador = contador + 1<br/>FinMientras</div>
-                  </div>
+                <div class="code-block">
+                  <div class="code-header"><span>For con lista</span></div>
+                  <div class="code-body"># Recorrer una lista<br/>amigos = ["Ana","Luis","Sofía"]<br/>for a in amigos:<br/>&nbsp;&nbsp;print("Hola,", a)</div>
                 </div>
               </div>
+
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">🔄 While — repetir mientras algo sea cierto</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                El bucle <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">while</code> se usa cuando NO sabes cuántas veces vas a repetir, solo cuándo parar.
+              </p>
+              <div class="code-block" style="margin-bottom:1rem;">
+                <div class="code-header"><span>While — adivina el número</span></div>
+                <div class="code-body">secreto = 7<br/>intento = 0<br/>while intento != secreto:<br/>&nbsp;&nbsp;intento = int(input("Adivina el número: "))<br/>&nbsp;&nbsp;if intento < secreto:<br/>&nbsp;&nbsp;&nbsp;&nbsp;print("Más alto")<br/>&nbsp;&nbsp;elif intento > secreto:<br/>&nbsp;&nbsp;&nbsp;&nbsp;print("Más bajo")<br/>print("¡Correcto!")</div>
+              </div>
             </div>
+
             <div class="tab-panel">
-              <a href="https://www.youtube.com/watch?v=NJavXHU5MW8" target="_blank" class="resource-link">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=Wvpy4rm0gF0" target="_blank" class="resource-link">
                 <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">¿Qué es el pseudocódigo en programación? Ejemplos básicos</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
-              </a>
-              <a href="https://pseint.sourceforge.net/" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(99,102,241,0.2);">💻</div>
-                <div><div style="font-weight:600;">PSeInt — Pseudocódigo en español (descargable)</div><div style="font-size:.75rem;color:var(--text-secondary);">Software gratuito · Windows/Linux/Mac</div></div>
+                <div>
+                  <div style="font-weight:600;">Bucles For y While en Python — Explicado con ejemplos prácticos</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
+                </div>
               </a>
             </div>
+
             <div class="tab-panel">
-              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
-                <h4 style="color:#34d399;margin-bottom:.75rem;">💬 "Algoritmo en pseudocódigo"</h4>
-                <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:.75rem;">Escribe pseudocódigo para resolver estos 3 problemas:</p>
-                <div style="display:flex;flex-direction:column;gap:.6rem;">
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
-                    <strong style="color:#22d3ee;">Problema 1:</strong> <span style="font-size:.85rem;color:var(--text-secondary);">Pedir al usuario dos números y mostrar su suma.</span>
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">💻 "Bucles en acción"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Escribe y ejecuta estos programas:</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Programa 1:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Usa <code>for</code> para contar del 1 al 10 y mostrar cada número.</span>
                   </div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
-                    <strong style="color:#fbbf24;">Problema 2:</strong> <span style="font-size:.85rem;color:var(--text-secondary);">Leer un número y decir si es par o impar.</span>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#fbbf24;">Programa 2:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Usa <code>for</code> para mostrar la tabla de multiplicar del 5 (5×1=5, 5×2=10...).</span>
                   </div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
-                    <strong style="color:#a78bfa;">Problema 3:</strong> <span style="font-size:.85rem;color:var(--text-secondary);">Contar del 1 al 10 usando un bucle.</span>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#a78bfa;">Programa 3 (reto):</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Usa <code>while</code> para un juego donde el usuario debe adivinar un número y el programa dice "más alto" o "más bajo".</span>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="tab-panel">
-              <div class="checklist-item" data-id="u3-3-1"><div class="check-box"></div><span class="check-text">Entendí la diferencia entre secuencia, decisión y repetición</span></div>
-              <div class="checklist-item" data-id="u3-3-2"><div class="check-box"></div><span class="check-text">Escribí pseudocódigo para los 3 problemas</span></div>
-              <div class="checklist-item" data-id="u3-3-3"><div class="check-box"></div><span class="check-text">Instalé o abrí PSeInt (opcional)</span></div>
+              <div class="checklist-item" data-id="u3-3-1"><div class="check-box"></div><span class="check-text">Entendí la diferencia entre <code>for</code> y <code>while</code></span></div>
+              <div class="checklist-item" data-id="u3-3-2"><div class="check-box"></div><span class="check-text">Usé <code>for</code> con <code>range()</code> para contar</span></div>
+              <div class="checklist-item" data-id="u3-3-3"><div class="check-box"></div><span class="check-text">Escribí un programa con <code>while</code> que funciona</span></div>
+              <div class="checklist-item" data-id="u3-3-4"><div class="check-box"></div><span class="check-text">Guardé mis programas en MiCurso/Unidad3/</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SESIÓN 4 -->
-    <div class="session-block">
+    <!-- Sesión 4 -->
+    <div class="session-block" style="margin-bottom:2rem;">
       <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
           <span class="badge badge-green">Sesión 4</span>
-          <span style="font-weight:600;">Primeros programas en Scratch</span>
+          <span style="font-weight:600;">Listas y funciones — organiza y reutiliza</span>
         </div>
         <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
       </div>
       <div class="session-content">
-        <div id="tabs-u3-4">
+        <div id="tabs-u3-4" style="margin-bottom:1rem;">
           <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('tabs-u3-4',0)">📖 Teoría</button>
             <button class="tab-btn" onclick="switchTab('tabs-u3-4',1)">🎬 Videos</button>
@@ -343,121 +394,69 @@
           </div>
           <div style="margin-top:1rem;">
             <div class="tab-panel active">
-              <h4 style="color:#34d399;margin-bottom:.75rem;">¿Por qué Scratch?</h4>
-              <p style="font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
-                Scratch usa bloques visuales que se ensamblan como rompecabezas. Elimina la frustración de los errores de sintaxis y te permite enfocarte en la lógica. Creado por el MIT, completamente gratuito.
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">📋 Listas — colecciones de datos</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Una <strong style="color:var(--text-primary);">lista</strong> es como una mochila donde puedes guardar varios elementos. Se escribe entre <strong style="color:var(--text-primary);">corchetes [ ]</strong> separando los elementos con comas.
               </p>
-              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1rem;">
-                <div style="font-weight:700;color:#34d399;margin-bottom:.5rem;">🔧 Conceptos en Scratch → Código real</div>
-                <div style="font-size:.83rem;color:var(--text-secondary);line-height:1.8;">
-                  <strong style="color:#22d3ee;">Bloques de Eventos</strong> = "cuando pase X, haz Y"<br/>
-                  <strong style="color:#fbbf24;">Bloques de Control</strong> = condicionales y bucles<br/>
-                  <strong style="color:#a78bfa;">Bloques de Movimiento</strong> = instrucciones de posición<br/>
-                  <strong style="color:#f87171;">Bloques de Variables</strong> = almacenar datos
-                </div>
+              <div class="code-block" style="margin-bottom:1rem;">
+                <div class="code-header"><span>Python — Listas</span></div>
+                <div class="code-body">materias = ["Matemáticas", "Español", "Ciencias"]<br/>print(materias[0])  # Matemáticas (posición 0)<br/>print(materias[1])  # Español<br/>materias.append("Historia")  # Agregar al final<br/><br/># Recorrer la lista<br/>for m in materias:<br/>&nbsp;&nbsp;print("Estudio:", m)</div>
               </div>
-            </div>
-            <div class="tab-panel">
-              <a href="https://www.youtube.com/watch?v=a5DOIvjxiQ0" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">Curso de Scratch 3.0 desde cero — Para principiantes</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · Español</div></div>
-              </a>
-              <a href="https://scratch.mit.edu" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(99,102,241,0.2);">🐱</div>
-                <div><div style="font-weight:600;">Scratch — Plataforma oficial (MIT)</div><div style="font-size:.75rem;color:var(--text-secondary);">scratch.mit.edu · Gratis · Sin instalación</div></div>
-              </a>
-            </div>
-            <div class="tab-panel">
-              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:.75rem;padding:1.25rem;">
-                <h4 style="color:#34d399;margin-bottom:.75rem;">🐱 "Mis 3 primeros programas en Scratch"</h4>
-                <div style="display:flex;flex-direction:column;gap:.75rem;">
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
-                    <strong style="color:#22d3ee;">Programa 1:</strong> <span style="font-size:.85rem;color:var(--text-secondary);">El gato dice "Hola, ¿cómo te llamas?" y repite tu nombre.</span>
-                  </div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
-                    <strong style="color:#fbbf24;">Programa 2:</strong> <span style="font-size:.85rem;color:var(--text-secondary);">Pide dos números y muestra la suma.</span>
-                  </div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.75rem;">
-                    <strong style="color:#a78bfa;">Programa 3:</strong> <span style="font-size:.85rem;color:var(--text-secondary);">El gato cuenta del 1 al 10 diciendo cada número.</span>
-                  </div>
-                </div>
-                <div style="margin-top:1rem;padding:.75rem;background:rgba(99,102,241,0.1);border-radius:.5rem;font-size:.82rem;color:#818cf8;">
-                  💡 Compara cada programa con el pseudocódigo que escribiste en la Sesión 3. ¿Son equivalentes?
-                </div>
-              </div>
-            </div>
-            <div class="tab-panel">
-              <div class="checklist-item" data-id="u3-4-1"><div class="check-box"></div><span class="check-text">Abrí Scratch y creé mi cuenta</span></div>
-              <div class="checklist-item" data-id="u3-4-2"><div class="check-box"></div><span class="check-text">Hice el Programa 1 (saludo con nombre)</span></div>
-              <div class="checklist-item" data-id="u3-4-3"><div class="check-box"></div><span class="check-text">Hice el Programa 2 (suma de dos números)</span></div>
-              <div class="checklist-item" data-id="u3-4-4"><div class="check-box"></div><span class="check-text">Hice el Programa 3 (contar del 1 al 10)</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- SESIÓN 5 -->
-    <div class="session-block" style="margin-bottom:2rem;">
-      <div class="session-header" onclick="toggleSession(this)">
-        <div style="display:flex;align-items:center;gap:.75rem;">
-          <span class="badge badge-red">Sesión 5</span>
-          <span style="font-weight:600;">Límites, riesgos y ética de la programación</span>
-        </div>
-        <span class="toggle-icon" style="transition:transform 0.2s;color:var(--text-secondary);">▼</span>
-      </div>
-      <div class="session-content">
-        <div id="tabs-u3-5">
-          <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('tabs-u3-5',0)">📖 Reflexión</button>
-            <button class="tab-btn" onclick="switchTab('tabs-u3-5',1)">🎬 Videos</button>
-            <button class="tab-btn" onclick="switchTab('tabs-u3-5',2)">💬 Debate</button>
-            <button class="tab-btn" onclick="switchTab('tabs-u3-5',3)">✅ Checklist</button>
-          </div>
-          <div style="margin-top:1rem;">
-            <div class="tab-panel active">
-              <h4 style="color:#f87171;margin-bottom:.75rem;">¿Qué pasa si el programa falla?</h4>
-              <div style="display:flex;flex-direction:column;gap:.6rem;">
-                <div style="background:rgba(239,68,68,0.1);border-left:3px solid #ef4444;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;">
-                  <strong style="color:#f87171;">Sesgo algorítmico</strong>
-                  <p style="font-size:.83rem;color:var(--text-secondary);margin-top:.3rem;">Si los datos de entrenamiento tienen sesgos (racistas, de género, etc.), el programa los replica. Ejemplo: sistemas de reconocimiento facial con errores en personas de color.</p>
+              <h4 style="margin-bottom:0.75rem;color:#34d399;">🔧 Funciones — empaquetar código</h4>
+              <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+                Una <strong style="color:var(--text-primary);">función</strong> es un bloque de código con nombre que puedes reutilizar. Se define con <code style="background:var(--bg-card2);padding:0.1rem 0.4rem;border-radius:0.3rem;">def</code>.
+              </p>
+              <div class="code-block">
+                <div class="code-header"><span>Python — Funciones</span></div>
+                <div class="code-body">def saludar(nombre):<br/>&nbsp;&nbsp;print("¡Hola,", nombre, "!")<br/><br/>def suma(a, b):<br/>&nbsp;&nbsp;return a + b<br/><br/># Usar las funciones<br/>saludar("Regina")<br/>resultado = suma(5, 3)<br/>print("5 + 3 =", resultado)</div>
+              </div>
+            </div>
+
+            <div class="tab-panel">
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">Mira estos videos antes de la práctica:</p>
+              <a href="https://www.youtube.com/watch?v=1b84cP1XJTE" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Listas en Python desde cero — Fácil y rápido</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
                 </div>
-                <div style="background:rgba(245,158,11,0.1);border-left:3px solid #f59e0b;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;">
-                  <strong style="color:#fbbf24;">Privacidad y datos personales</strong>
-                  <p style="font-size:.83rem;color:var(--text-secondary);margin-top:.3rem;">Los programas que recopilan datos pueden ser usados para vigilancia, manipulación o venta a terceros sin consentimiento.</p>
+              </a>
+              <a href="https://www.youtube.com/watch?v=w3VwQmYTB4g" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
+                <div>
+                  <div style="font-weight:600;">Funciones en Python — def, parámetros y return</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary);">YouTube · Español</div>
                 </div>
-                <div style="background:rgba(99,102,241,0.1);border-left:3px solid #6366f1;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;">
-                  <strong style="color:#818cf8;">Responsabilidad del programador</strong>
-                  <p style="font-size:.83rem;color:var(--text-secondary);margin-top:.3rem;">Quien escribe el código es responsable de sus consecuencias. "No lo supe" no es excusa válida en software crítico.</p>
+              </a>
+            </div>
+
+            <div class="tab-panel">
+              <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:0.75rem;padding:1.25rem;">
+                <h4 style="color:#34d399;margin-bottom:0.75rem;">💻 "Organizando mi código"</h4>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">Escribe y ejecuta estos programas:</p>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#22d3ee;">Programa 1:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Crea una lista con 3 frutas y muéstralas una por una con un bucle <code>for</code>.</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#fbbf24;">Programa 2:</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Escribe una función <code>doble()</code> que reciba un número y devuelva el doble. Pruébala.</span>
+                  </div>
+                  <div style="background:var(--bg-card2);border-radius:0.5rem;padding:0.65rem 0.75rem;">
+                    <strong style="color:#a78bfa;">Programa 3 (reto):</strong>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">Crea una función que reciba un nombre y lo salude, y una lista de nombres. Usa un bucle para saludar a todos.</span>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div class="tab-panel">
-              <a href="https://www.youtube.com/watch?v=59bMh59JQDo" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">¿Pueden los algoritmos ser racistas? — TED</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~13 min · Subtítulos español</div></div>
-              </a>
-              <a href="https://www.youtube.com/watch?v=UG_X_7g63rY" target="_blank" class="resource-link">
-                <div class="resource-icon" style="background:rgba(239,68,68,0.2);">▶️</div>
-                <div><div style="font-weight:600;">Ética en Inteligencia Artificial — Para principiantes</div><div style="font-size:.75rem;color:var(--text-secondary);">YouTube · ~10 min · Español</div></div>
-              </a>
-            </div>
-            <div class="tab-panel">
-              <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:.75rem;padding:1.25rem;">
-                <h4 style="color:#f87171;margin-bottom:.75rem;">🧠 Preguntas de reflexión</h4>
-                <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.88rem;color:var(--text-secondary);">
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.6rem .75rem;">1. Si un programa decide quién entra a un edificio y tiene un error, ¿quién es responsable?</div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.6rem .75rem;">2. ¿Qué datos personales tuyas están guardados en internet en este momento?</div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.6rem .75rem;">3. ¿Programarías algo que sabes que podría usarse para dañar a alguien?</div>
-                  <div style="background:var(--bg-card2);border-radius:.5rem;padding:.6rem .75rem;">4. ¿Cómo verificarías que tu programa no tiene sesgos?</div>
-                </div>
-                <p style="font-size:.83rem;color:var(--text-secondary);margin-top:1rem;">Escribe tus respuestas en un documento y guárdalas. No hay respuestas incorrectas, es reflexión crítica.</p>
-              </div>
-            </div>
-            <div class="tab-panel">
-              <div class="checklist-item" data-id="u3-5-1"><div class="check-box"></div><span class="check-text">Vi un video sobre ética en algoritmos</span></div>
-              <div class="checklist-item" data-id="u3-5-2"><div class="check-box"></div><span class="check-text">Respondí las 4 preguntas de reflexión</span></div>
-              <div class="checklist-item" data-id="u3-5-3"><div class="check-box"></div><span class="check-text">Guardé mis reflexiones en mi portfolio</span></div>
+              <div class="checklist-item" data-id="u3-4-1"><div class="check-box"></div><span class="check-text">Creé y recorrí una lista con <code>for</code></span></div>
+              <div class="checklist-item" data-id="u3-4-2"><div class="check-box"></div><span class="check-text">Usé <code>append()</code> para agregar elementos a una lista</span></div>
+              <div class="checklist-item" data-id="u3-4-3"><div class="check-box"></div><span class="check-text">Escribí y usé una función con <code>def</code></span></div>
+              <div class="checklist-item" data-id="u3-4-4"><div class="check-box"></div><span class="check-text">Guardé mis programas en MiCurso/Unidad3/</span></div>
             </div>
           </div>
         </div>
@@ -470,23 +469,104 @@
         <div style="font-weight:700;color:#34d399;">🏅 Entregable de la Unidad 3</div>
       </div>
       <div class="card-body">
-        <ul style="font-size:.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
-          <li>Algoritmo escrito en lenguaje natural (papel o documento)</li>
-          <li>Diagrama de flujo (imagen exportada de draw.io)</li>
-          <li>Pseudocódigo de los 3 problemas</li>
-          <li>Enlace a los 3 programas de Scratch</li>
-          <li>Reflexión escrita sobre ética en programación</li>
+        <ul style="font-size:0.88rem;color:var(--text-secondary);line-height:2;list-style:disc;padding-left:1.5rem;">
+          <li>3 programas básicos con <code>print()</code> y variables (Sesión 1)</li>
+          <li>2 programas con <code>input()</code> y <code>if/else</code> (Sesión 2)</li>
+          <li>3 programas con bucles <code>for</code> y <code>while</code> (Sesión 3)</li>
+          <li>3 programas con listas y funciones (Sesión 4)</li>
         </ul>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span class="badge badge-green">🐍 11 programas</span>
+          <span class="badge badge-amber">📁 Guardar en MiCurso/Unidad3/</span>
+        </div>
       </div>
     </div>
 
     <div style="display:flex;justify-content:space-between;">
-      <a href="unidad2.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">← Unidad 2</a>
-      <a href="proyecto.html" style="background:var(--primary);color:white;padding:.65rem 1.5rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.9rem;">Proyecto Final →</a>
+      <a href="unidad2.html" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">← Unidad 2</a>
+      <a href="proyecto.html" style="background:var(--primary);color:white;padding:0.65rem 1.5rem;border-radius:0.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;">Siguiente: Proyecto Final →</a>
     </div>
   </div>
 </main>
 
 <script src="../js/app.js"></script>
+<script>
+// ── Pyodide — Python en el navegador ────────────────────────────────────
+let pyodide = null;
+const pyBtn     = document.getElementById('py-run-btn');
+const pyCode    = document.getElementById('py-code');
+const pyOutput  = document.getElementById('py-output');
+const pyLoading = document.getElementById('py-loading');
+
+async function loadPyodideRuntime() {
+  if (pyodide) return;
+  pyLoading.style.display = 'flex';
+  pyOutput.textContent = '⏳ Cargando Python en tu navegador… (solo la primera vez)';
+  try {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js';
+    script.onload = async () => {
+      pyodide = await globalThis.loadPyodide();
+      pyLoading.style.display = 'none';
+      pyOutput.textContent = '✅ Python listo. Escribe código y presiona "Ejecutar".';
+      pyOutput.className = 'py-editor-output success';
+      pyBtn.disabled = false;
+    };
+    document.head.appendChild(script);
+  } catch (e) {
+    pyLoading.style.display = 'none';
+    pyOutput.textContent = '❌ Error al cargar Python: ' + e.message;
+    pyOutput.className = 'py-editor-output error';
+  }
+}
+
+async function runPython() {
+  if (!pyodide) {
+    pyOutput.textContent = '⏳ Python todavía no termina de cargar. Espera un momento…';
+    pyOutput.className = 'py-editor-output';
+    return;
+  }
+
+  const code = pyCode.value.trim();
+  if (!code) {
+    pyOutput.textContent = '✏️ Escribe código en el editor antes de ejecutar.';
+    pyOutput.className = 'py-editor-output';
+    return;
+  }
+
+  pyBtn.disabled = true;
+  pyBtn.textContent = '⏳ Ejecutando…';
+  pyOutput.className = 'py-editor-output';
+
+  try {
+    // Capturar print()
+    pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+    `);
+    pyodide.runPython(code);
+    const result = pyodide.runPython('sys.stdout.getvalue()');
+    if (result && result.trim()) {
+      pyOutput.textContent = result;
+      pyOutput.className = 'py-editor-output success';
+    } else {
+      pyOutput.textContent = '✅ Código ejecutado sin errores (no hubo output de print())';
+      pyOutput.className = 'py-editor-output success';
+    }
+  } catch (e) {
+    pyOutput.textContent = '❌ ' + e.message;
+    pyOutput.className = 'py-editor-output error';
+  }
+
+  pyBtn.disabled = false;
+  pyBtn.textContent = '▶ Ejecutar';
+}
+
+// Cargar Pyodide al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  loadPyodideRuntime();
+});
+</script>
 </body>
 </html>
