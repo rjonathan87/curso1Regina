@@ -28,30 +28,21 @@
       <div id="py-console-modal">
         <div class="py-editor-header">
           <span>🐍 Python 3.12 (en tu navegador)</span>
-          <div style="display:flex;align-items:center;gap:.5rem;">
+          <div>
             <button class="py-run-btn" id="py-fab-run">▶ Ejecutar</button>
             <button id="py-console-close">✕</button>
           </div>
         </div>
-        <textarea id="py-fab-code" spellcheck="false" placeholder="# Escribe tu código Python aquí" style="min-height:120px;">print('¡Hola desde la consola!')</textarea>
-        <!-- Campo de entrada para input() -->
-        <div id="py-input-area" style="display:none;border-top:1px solid #334155;padding:.5rem .75rem;background:#0f172a;">
-          <div style="display:flex;gap:.5rem;align-items:center;">
-            <span style="color:#22d3ee;font-family:'Fira Code',monospace;font-size:.8rem;">&gt;&gt;&gt;</span>
-            <input id="py-fab-input" type="text" spellcheck="false" autocomplete="off"
-              style="flex:1;background:#1e293b;border:1px solid #334155;border-radius:.4rem;
-                     color:#e2e8f0;font-family:'Fira Code',monospace;font-size:.82rem;
-                     padding:.4rem .6rem;outline:none;transition:border-color .2s;"
-              placeholder="Escribe tu respuesta aquí y presiona Enter…"
-              onfocus="this.style.borderColor='#22d3ee'" onblur="this.style.borderColor='#334155'">
-            <button id="py-input-send"
-              style="background:linear-gradient(90deg,#22d3ee,#06b6d4);border:none;color:#0f172a;
-                     padding:.35rem .7rem;border-radius:.4rem;font-weight:700;font-size:.75rem;
-                     cursor:pointer;white-space:nowrap;">Enviar</button>
+        <textarea id="py-fab-code" spellcheck="false" placeholder="# Escribe tu código Python aquí">print('¡Hola desde la consola!')</textarea>
+        <div id="py-input-area" style="display:none">
+          <div>
+            <span class="py-input-prompt">&gt;&gt;&gt;</span>
+            <input id="py-fab-input" type="text" spellcheck="false" autocomplete="off" placeholder="Escribe tu respuesta aquí y presiona Enter…">
+            <button id="py-input-send">Enviar</button>
           </div>
         </div>
         <div class="py-output" id="py-fab-output">💡 Escribe código arriba y presiona "Ejecutar".</div>
-        <div class="py-loading" id="py-fab-loading" style="display:none;">
+        <div class="py-loading" id="py-fab-loading" style="display:none">
           <div class="spinner"></div>
           Cargando Python…
         </div>

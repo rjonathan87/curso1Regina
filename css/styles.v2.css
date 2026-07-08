@@ -412,12 +412,20 @@ body {
 
 /* Textarea: ocupa el espacio disponible sin pasarse */
 #py-console-modal textarea {
-  width: 100% !important; min-height: 100px !important;
+  width: 100% !important;
+  min-height: 80px !important;
   flex: 1 1 auto !important;
-  background: #0f172a !important; border: none !important;
-  color: #e2e8f0 !important; font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: .85rem !important; padding: .75rem !important; resize: none !important; outline: none !important; tab-size: 2 !important;
+  background: #0f172a !important;
+  border: none !important;
+  color: #e2e8f0 !important;
+  font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: .85rem !important;
+  padding: .75rem !important;
+  resize: none !important;
+  outline: none !important;
+  tab-size: 2 !important;
   box-sizing: border-box !important;
+  line-height: 1.5 !important;
 }
 
 /* Input area: fijo abajo */
@@ -471,6 +479,57 @@ body {
 }
 
 /* ===== ESTILOS DE MÓDULOS (movidos de estilos inline) ===== */
+
+/* Input area del modal */
+#py-input-area {
+  flex-shrink: 0;
+  border-top: 1px solid #334155;
+  padding: .5rem .75rem;
+  background: #0f172a;
+}
+#py-input-area > div {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+.py-input-prompt {
+  color: #22d3ee;
+  font-family: 'Fira Code', monospace;
+  font-size: .8rem;
+  flex-shrink: 0;
+}
+#py-fab-input {
+  flex: 1;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: .4rem;
+  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+  font-size: .82rem;
+  padding: .4rem .6rem;
+  outline: none;
+  transition: border-color .2s;
+}
+#py-fab-input:focus { border-color: #22d3ee; }
+#py-input-send {
+  background: linear-gradient(90deg,#22d3ee,#06b6d4);
+  border: none;
+  color: #0f172a;
+  padding: .35rem .7rem;
+  border-radius: .4rem;
+  font-weight: 700;
+  font-size: .75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Header del modal - botones alineados */
+#py-console-modal .py-editor-header > div {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
 
 /* Index - cuadrícula de módulos */
 .modules-grid {
