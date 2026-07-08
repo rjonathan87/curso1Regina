@@ -1,6 +1,6 @@
 // ===== PYTHON CONSOLE FLOATING BUTTON — Curso Informática Regina =====
-// Botón flotante + modal con Pyodide, disponible desde cualquier página.
-// Se auto-inicializa al cargar el script.
+// Botón flotante + modal con Pyodide + botones "Ejecutar" en bloques de código.
+// Disponible desde cualquier página del curso.
 
 (function() {
   'use strict';
@@ -51,6 +51,9 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
     });
+
+    // Agregar botones a bloques de código Python
+    setTimeout(addRunButtonsToCodeBlocks, 500);
   }
 
   function openModal() {
@@ -61,6 +64,68 @@
 
   function closeModal() {
     document.getElementById('py-console-overlay').classList.remove('open');
+  }
+
+  // ── Botones "▶ Ejecutar" en bloques de código ────────────────────────
+  function addRunButtonsToCodeBlocks() {
+    const codeBlocks = document.querySelectorAll('.code-body');
+
+    codeBlocks.forEach(block => {
+      // No agregar si ya tiene botón
+      if (block.querySelector('.py-run-code-btn')) return;
+
+      const text = block.textContent.trim();
+
+      // Detectar si es código Python (keywords del lenguaje)
+      const isPython = /^(print|if |for |while |def |import |from |class |try:|elif |else:|return |# )/m.test(text)
+        || /\b(input|int\(|float\(|range\(|len\(|random\.|datetime\.|\.append\(|\.strip\(|\.lower\(|\.upper\()/.test(text)
+        || /^[a-zA-Z_]\w*\s*[=<>]/.test(text.split('\n')[0]);  // variable = algo
+
+      if (!isPython) return;
+
+      // Crear botón ▶
+      const btn = document.createElement('button');
+      btn.className = 'py-run-code-btn';
+      btn.textContent = '▶ Ejecutar';
+      btn.title = 'Ejecutar este código en la consola Python';
+      btn.setAttribute('aria-label', 'Ejecutar código Python');
+
+      // Insertar botón dentro del code-header o al inicio del bloque
+      const header = block.closest('.code-block')?.querySelector('.code-header');
+      if (header) {
+        const wrapper = document.createElement('span');
+        wrapper.style.cssText = 'display:inline-flex;align-items:center;gap:.3rem;';
+        wrapper.appendChild(btn);
+        header.querySelector('span')?.after(wrapper);
+      }
+
+      // Evento: abrir modal + pegar código + ejecutar
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const code = extractPythonCode(block);
+        openModalAndRun(code);
+      });
+    });
+  }
+
+  // Extraer código limpio, eliminando números de línea si existen
+  function extractPythonCode(block) {
+    let html = block.innerHTML;
+    // Reemplazar <br/> con saltos de línea
+    html = html.replace(/<br\s*\/?>/gi, '\n');
+    // Quitar etiquetas HTML
+    const text = html.replace(/<[^>]+>/g, '');
+    // Limpiar espacios al inicio de cada línea (sangría)
+    const lines = text.split('\n').map(l => l.replace(/\u00a0/g, ' ').trimEnd());
+    return lines.join('\n').trim();
+  }
+
+  function openModalAndRun(code) {
+    openModal();
+    const codeEl = document.getElementById('py-fab-code');
+    codeEl.value = code;
+    // Ejecutar después de un breve delay para que Pyodide cargue
+    setTimeout(() => runPython(), 300);
   }
 
   // ── Pyodide ──────────────────────────────────────────────────────────
@@ -136,6 +201,9 @@ sys.stdout = StringIO()
     btn.disabled = false;
     btn.textContent = '▶ Ejecutar';
   }
+
+  // Exponer función para que pueda ser llamada desde cualquier lado
+  window.runPythonCode = openModalAndRun;
 
   // ── Init ─────────────────────────────────────────────────────────────
   if (document.readyState === 'loading') {

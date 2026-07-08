@@ -428,6 +428,17 @@ body {
 }
 @keyframes py-spin { to { transform: rotate(360deg); } }
 
+/* ===== BOTÓN "EJECUTAR" EN BLOQUES DE CÓDIGO ===== */
+.py-run-code-btn {
+  background: linear-gradient(90deg,#22d3ee,#06b6d4);
+  border: none; color: #0f172a; padding: .15rem .55rem;
+  border-radius: .3rem; font-weight: 700; font-size: .68rem;
+  cursor: pointer; transition: opacity .2s; white-space: nowrap;
+  font-family: 'Inter', sans-serif; line-height: 1.5;
+}
+.py-run-code-btn:hover { opacity: .85; }
+.py-run-code-btn:active { opacity: .7; }
+
 /* Responsive: pantallas pequeñas */
 @media (max-width: 480px) {
   #py-console-fab { width: 2.8rem; height: 2.8rem; font-size: 1.2rem; bottom: 1rem; right: 1rem; }
