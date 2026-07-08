@@ -159,8 +159,15 @@
     html = html.replace(/\u00a0/g, ' ');
     html = html.replace(/&#xa0;/gi, ' ');
     html = html.replace(/&#160;/gi, ' ');
-    // Tambien limpiar &amp;nbsp; (doble escape)
+    // Reemplazar &amp;nbsp; (doble escape)
     html = html.replace(/&amp;nbsp;/g, ' ');
+    // Reemplazar entidades HTML comunes que pueden aparecer en codigo
+    html = html.replace(/&gt;/g, '>');
+    html = html.replace(/&lt;/g, '<');
+    html = html.replace(/&amp;/g, '&');
+    html = html.replace(/&quot;/g, '"');
+    html = html.replace(/&#39;/g, "'");
+    html = html.replace(/&#x27;/g, "'");
     const text = html.replace(/<[^>]+>/g, '');
     const lines = text.split('\n').map(l => l.trimEnd());
     return lines.join('\n').trim();
